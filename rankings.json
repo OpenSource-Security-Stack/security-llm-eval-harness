@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "suite": "CyberSOCEval (Meta \u00d7 CrowdStrike)",
+    "n": 30,
+    "generated": "unset (stamp on publish)"
+  },
+  "domains": {
+    "cti": {
+      "name": "Threat-Intel Reasoning",
+      "benchmark": "CyberSOCEval (Meta \u00d7 CrowdStrike) \u00b7 CTI task \u00b7 metric: Jaccard",
+      "metric": "jaccard",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.75,
+          "exact_pct": 66.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 227.06
+        },
+        {
+          "model": "Mixture \u2014 3 open models",
+          "type": "mixture",
+          "score": 0.744,
+          "exact_pct": 63.3,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.0
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.722,
+          "exact_pct": 60.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.0
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.722,
+          "exact_pct": 66.7,
+          "answered_pct": 90,
+          "cost_per_1k_usd": 0.0
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.7,
+          "exact_pct": 60.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 14.17
+        },
+        {
+          "model": "Qwen3-235B",
+          "type": "open",
+          "score": 0.684,
+          "exact_pct": 56.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.0
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.672,
+          "exact_pct": 56.7,
+          "answered_pct": 97,
+          "cost_per_1k_usd": 0.0
+        }
+      ]
+    }
+  }
+}

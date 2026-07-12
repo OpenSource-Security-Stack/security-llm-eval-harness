@@ -1,0 +1,14 @@
+[
+  {
+    "model": "opus-4.8",
+    "n": 1,
+    "exact_pct": 100.0,
+    "mean_jaccard": 1.0,
+    "parse_pct": 100.0,
+    "mean_latency": 1.46,
+    "mean_completion_tokens": 26,
+    "cost_per_1k_questions_usd": 106.08,
+    "cost_per_correct_usd": 0.10608,
+    "total_cost_usd": 0.10608
+  }
+]

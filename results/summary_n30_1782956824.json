@@ -1,0 +1,11 @@
+[
+  {
+    "model": "gpt-oss-120b",
+    "n": 30,
+    "exact_pct": 23.3,
+    "mean_jaccard": 0.5425,
+    "parse_errors": 0,
+    "query_errors": 0,
+    "mean_latency": 6.54
+  }
+]

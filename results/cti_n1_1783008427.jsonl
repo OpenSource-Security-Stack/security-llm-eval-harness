@@ -1,0 +1,1 @@
+{"model": "opus-4.8", "qkey": "0hnpUJdM", "strata": "alpha-spider", "correct_options": ["A"], "latency": 1.46, "prompt_tokens": 6942, "completion_tokens": 26, "cost_usd": 0.10608, "model_answers": ["A"], "parse_ok": true, "score": 1.0, "answered_correctly": "true"}

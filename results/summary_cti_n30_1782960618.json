@@ -1,0 +1,62 @@
+[
+  {
+    "model": "gpt-5.1",
+    "n": 30,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.0,
+    "parse_pct": 0.0,
+    "mean_latency": 20.44,
+    "mean_completion_tokens": 0,
+    "cost_per_1k_questions_usd": 0.0,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.0
+  },
+  {
+    "model": "minimax-m3",
+    "n": 30,
+    "exact_pct": 60.0,
+    "mean_jaccard": 0.7222,
+    "parse_pct": 100.0,
+    "mean_latency": 9.87,
+    "mean_completion_tokens": 641,
+    "cost_per_1k_questions_usd": 3.5088,
+    "cost_per_correct_usd": 0.005848,
+    "total_cost_usd": 0.105263
+  },
+  {
+    "model": "qwen3-235b",
+    "n": 30,
+    "exact_pct": 56.7,
+    "mean_jaccard": 0.6844,
+    "parse_pct": 100.0,
+    "mean_latency": 1.39,
+    "mean_completion_tokens": 18,
+    "cost_per_1k_questions_usd": 1.9491,
+    "cost_per_correct_usd": 0.00344,
+    "total_cost_usd": 0.058474
+  },
+  {
+    "model": "glm-5.2",
+    "n": 30,
+    "exact_pct": 66.7,
+    "mean_jaccard": 0.7222,
+    "parse_pct": 90.0,
+    "mean_latency": 25.97,
+    "mean_completion_tokens": 3899,
+    "cost_per_1k_questions_usd": 29.9927,
+    "cost_per_correct_usd": 0.044989,
+    "total_cost_usd": 0.899782
+  },
+  {
+    "model": "gpt-oss-120b",
+    "n": 30,
+    "exact_pct": 56.7,
+    "mean_jaccard": 0.6722,
+    "parse_pct": 100.0,
+    "mean_latency": 2.79,
+    "mean_completion_tokens": 394,
+    "cost_per_1k_questions_usd": 1.6048,
+    "cost_per_correct_usd": 0.002832,
+    "total_cost_usd": 0.048144
+  }
+]

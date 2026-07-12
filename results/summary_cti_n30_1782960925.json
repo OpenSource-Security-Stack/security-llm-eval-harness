@@ -1,0 +1,14 @@
+[
+  {
+    "model": "gpt-5.1",
+    "n": 30,
+    "exact_pct": 66.7,
+    "mean_jaccard": 0.7389,
+    "parse_pct": 100.0,
+    "mean_latency": 1.56,
+    "mean_completion_tokens": 25,
+    "cost_per_1k_questions_usd": 11.5783,
+    "cost_per_correct_usd": 0.017367,
+    "total_cost_usd": 0.347349
+  }
+]

@@ -1,0 +1,24 @@
+# secrets — NEVER commit
+.env
+.env.*
+*.key
+
+# open-core: private benchmarks/metrics/scoring live here, never published
+plugins/private/
+plugins/**/private/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.mypy_cache/
+.pytest_cache/
+
+# local data / caches
+cache/
+*.tmp
+.DS_Store
+
+# large raw datasets (documented, not vendored)
+benchmarks/**/data/

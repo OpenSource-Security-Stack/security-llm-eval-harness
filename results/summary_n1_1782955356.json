@@ -1,0 +1,38 @@
+[
+  {
+    "model": "gpt-5.1",
+    "n": 1,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.75,
+    "parse_errors": 0,
+    "query_errors": 0,
+    "mean_latency": 1.26
+  },
+  {
+    "model": "minimax-m3",
+    "n": 1,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.75,
+    "parse_errors": 0,
+    "query_errors": 0,
+    "mean_latency": 4.64
+  },
+  {
+    "model": "qwen3-235b",
+    "n": 1,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.5,
+    "parse_errors": 0,
+    "query_errors": 0,
+    "mean_latency": 3.72
+  },
+  {
+    "model": "glm-5.2",
+    "n": 1,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.75,
+    "parse_errors": 0,
+    "query_errors": 0,
+    "mean_latency": 12.26
+  }
+]

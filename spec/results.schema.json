@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/allyai/security-llm-eval-harness/spec/results.schema.json",
+  "title": "Security Router rankings.json",
+  "description": "The contract between the eval harness (producer) and the leaderboard + router (consumers). The harness emits this; downstreams render or route on it.",
+  "type": "object",
+  "required": ["meta", "domains"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["suite", "n", "generated"],
+      "properties": {
+        "suite": {"type": "string", "description": "Benchmark suite name"},
+        "n": {"type": "integer", "description": "Questions per task"},
+        "generated": {"type": "string", "description": "ISO date the rankings were produced"}
+      }
+    },
+    "domains": {
+      "type": "object",
+      "description": "Keyed by domain/task id (e.g. 'cti', 'malware').",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "benchmark", "metric", "models"],
+        "properties": {
+          "name": {"type": "string"},
+          "benchmark": {"type": "string"},
+          "metric": {"type": "string", "description": "Primary quality metric id, e.g. 'jaccard'"},
+          "note": {"type": "string"},
+          "models": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["model", "type", "score"],
+              "properties": {
+                "model": {"type": "string"},
+                "type": {"enum": ["open", "closed", "mixture"]},
+                "score": {"type": "number", "description": "Primary metric value (higher = better)"},
+                "exact_pct": {"type": "number"},
+                "answered_pct": {"type": "number"},
+                "cost_per_1k_usd": {"type": "number"},
+                "latency_s": {"type": "number"},
+                "ci": {"type": "array", "items": {"type": "number"}, "description": "[low, high] confidence interval on score"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
