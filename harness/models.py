@@ -27,7 +27,12 @@ ROSTER = {
 # No longer runnable (delisted from serverless) — kept in ROSTER so cached
 # results still price correctly. Excluded from default runs.
 LEGACY = {"qwen3-235b"}   # Together retired ALL large serverless Qwen 2026-07; slot -> deepseek-v4
-DEFAULT_MODELS = [k for k in ROSTER if k not in LEGACY]
+
+# Runnable but excluded from the analysis/leaderboard (2026-07-12, per Manish:
+# gpt-5.5 already represents OpenAI's frontier). Run explicitly via --models.
+EXCLUDED = {"gpt-5.1"}
+
+DEFAULT_MODELS = [k for k in ROSTER if k not in LEGACY | EXCLUDED]
 
 PROVIDERS = {
     "openai":    ("https://api.openai.com/v1/chat/completions", "OPENAI_API_KEY"),

@@ -20,14 +20,6 @@ window.RANKINGS = {
           "cost_per_1k_usd": 227.06
         },
         {
-          "model": "GPT-5.1",
-          "type": "closed",
-          "score": 0.739,
-          "exact_pct": 66.7,
-          "answered_pct": 100,
-          "cost_per_1k_usd": 11.58
-        },
-        {
           "model": "MiniMax M3",
           "type": "open",
           "score": 0.722,
@@ -107,14 +99,6 @@ window.RANKINGS = {
           "cost_per_1k_usd": 1.9
         },
         {
-          "model": "GPT-5.1",
-          "type": "closed",
-          "score": 0.4,
-          "exact_pct": 40.0,
-          "answered_pct": 100,
-          "cost_per_1k_usd": 1.17
-        },
-        {
           "model": "GLM-5.2",
           "type": "open",
           "score": 0.4,
@@ -152,14 +136,6 @@ window.RANKINGS = {
           "exact_pct": 30.0,
           "answered_pct": 97,
           "cost_per_1k_usd": 19.57
-        },
-        {
-          "model": "GPT-5.1",
-          "type": "closed",
-          "score": 0.543,
-          "exact_pct": 16.7,
-          "answered_pct": 100,
-          "cost_per_1k_usd": 15.86
         },
         {
           "model": "gpt-oss-120b",
