@@ -17,7 +17,7 @@ window.RANKINGS = {
           "score": 0.75,
           "exact_pct": 66.7,
           "answered_pct": 100,
-          "cost_per_1k_usd": 227.06,
+          "cost_per_1k_usd": 75.69,
           "latency_s": 2.2,
           "ci": [
             0.617,
@@ -56,7 +56,7 @@ window.RANKINGS = {
           "score": 0.7,
           "exact_pct": 60.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 14.17,
+          "cost_per_1k_usd": 53.85,
           "latency_s": 6.0,
           "ci": [
             0.561,
@@ -102,7 +102,7 @@ window.RANKINGS = {
           "score": 0.567,
           "exact_pct": 56.7,
           "answered_pct": 100,
-          "cost_per_1k_usd": 41.5,
+          "cost_per_1k_usd": 13.83,
           "latency_s": 7.9,
           "ci": [
             0.4,
@@ -128,7 +128,7 @@ window.RANKINGS = {
           "score": 0.533,
           "exact_pct": 53.3,
           "answered_pct": 100,
-          "cost_per_1k_usd": 2.81,
+          "cost_per_1k_usd": 8.59,
           "latency_s": 5.7,
           "ci": [
             0.367,
@@ -187,7 +187,7 @@ window.RANKINGS = {
           "score": 0.601,
           "exact_pct": 30.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 295.44,
+          "cost_per_1k_usd": 98.48,
           "latency_s": 2.5,
           "ci": [
             0.479,
@@ -200,7 +200,7 @@ window.RANKINGS = {
           "score": 0.582,
           "exact_pct": 30.0,
           "answered_pct": 97,
-          "cost_per_1k_usd": 19.57,
+          "cost_per_1k_usd": 74.3,
           "latency_s": 8.2,
           "ci": [
             0.458,

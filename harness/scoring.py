@@ -38,9 +38,13 @@ def index(recs, task):
         qid = r["_qid"]
         pred = r.get("model_answers")
         answered = bool(r.get("parse_ok")) and answered_fn(pred)
-        cost = r.get("cost_usd")
-        if cost is None:
-            cost = cost_usd(r["model"], r.get("prompt_tokens"), r.get("completion_tokens"))
+        # Recompute cost from tokens at current verified prices — stored per-record
+        # costs may embed prices that were wrong at run time (2026-07-13 audit found
+        # both manual placeholders off by 3-4x). Stored value is the fallback only
+        # when token counts are missing.
+        cost = cost_usd(r["model"], r.get("prompt_tokens"), r.get("completion_tokens"))
+        if not cost:
+            cost = r.get("cost_usd") or 0.0
         byq[qid][r["model"]] = {"pred": pred, "answered": answered,
                                 "cost": cost, "latency": r.get("latency") or 0}
         correct[qid] = r["correct_options"]

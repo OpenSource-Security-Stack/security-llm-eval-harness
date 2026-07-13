@@ -45,9 +45,9 @@ PROVIDERS = {
 # Together ids listed here act as FALLBACKS when the live lookup returns no/zero
 # price (e.g. a delisted endpoint) — pinned to the price in effect at run time.
 PRICES_MANUAL = {
-    "gpt-5.1":         {"input": 1.25, "output": 10.0},   # confirmed by user
-    "gpt-5.5":         {"input": 1.25, "output": 10.0},   # PLACEHOLDER (= gpt-5.1); confirm
-    "claude-opus-4-8": {"input": 15.0, "output": 75.0},   # PLACEHOLDER (std Opus tier); confirm
+    "gpt-5.1":         {"input": 1.25, "output": 10.0},   # user-confirmed at run time; delisted from OpenAI pricing page by 2026-07
+    "gpt-5.5":         {"input": 5.0,  "output": 30.0},   # verified 2026-07-13: developers.openai.com/api/docs/pricing
+    "claude-opus-4-8": {"input": 5.0,  "output": 25.0},   # verified 2026-07-13: platform.claude.com/docs/en/about-claude/pricing
     "Qwen/Qwen3-235B-A22B-Instruct-2507-tput": {"input": 0.20, "output": 0.60},  # delisted 2026-07
 }
 PRICES = {}  # filled by load_prices(): model_key -> {"input":$/1M, "output":$/1M}
