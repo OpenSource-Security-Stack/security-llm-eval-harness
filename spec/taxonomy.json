@@ -1,7 +1,7 @@
 {
   "version": "0.1",
-  "updated": "2026-07-12",
-  "note": "The routing spine: security domains x tasks, each mapped to a target benchmark + primary metric. run: api|judge|sandbox. status: live|queued|gap.",
+  "updated": "2026-07-13",
+  "note": "The routing spine: security domains x tasks, each mapped to a target benchmark + primary metric. run: api|judge|sandbox. status: live|queued|gap. | Sources fetch-verified 2026-07-13; admission policy: spec/benchmark-policy.md",
   "domains": [
     {
       "id": "soc",
@@ -13,28 +13,52 @@
           "benchmark": "CyberSOCEval",
           "metric": "jaccard",
           "run": "api",
-          "status": "live"
+          "status": "live",
+          "source": {
+            "repo": "https://github.com/meta-llama/PurpleLlama",
+            "data": "https://github.com/CrowdStrike/CyberSOCEval_data",
+            "paper": "https://arxiv.org/abs/2509.20166",
+            "license": "MIT (code) · CC BY-SA 4.0 (hybrid-analysis) · CC BY-ND 4.0 (crwd reports)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Long-context log analysis",
           "benchmark": "AuditBench",
           "metric": "f1",
           "run": "api",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "paper": "https://arxiv.org/abs/2606.10281",
+            "license": "n/a (release promised, not out)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Threat-hunting lifecycle",
           "benchmark": "CyberTeam",
           "metric": "f1_hit@k",
           "run": "api",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "repo": "https://github.com/mengyuqiao/LLM-Cyberteam",
+            "paper": "https://arxiv.org/abs/2509.23571",
+            "license": "MIT (repo; dataset not downloadable yet)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Alert triage",
-          "benchmark": "BOTSv3 / Simbian",
+          "benchmark": "BOTSv3 (Splunk)",
           "metric": "precision_recall",
           "run": "sandbox",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/splunk/botsv3",
+            "license": "CC0-1.0",
+            "note": "Simbian benchmark dropped: results page only, no public artifact",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -48,28 +72,56 @@
           "benchmark": "CyberSOCEval-CTI",
           "metric": "jaccard",
           "run": "api",
-          "status": "live"
+          "status": "live",
+          "source": {
+            "repo": "https://github.com/meta-llama/PurpleLlama",
+            "data": "https://github.com/CrowdStrike/CyberSOCEval_data",
+            "paper": "https://arxiv.org/abs/2509.20166",
+            "license": "MIT (code) · CC BY-SA 4.0 (hybrid-analysis) · CC BY-ND 4.0 (crwd reports)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Knowledge / attribution",
           "benchmark": "CTIBench-MCQ",
           "metric": "accuracy",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/xashru/cti-bench",
+            "data": "https://huggingface.co/datasets/AI4Sec/cti-bench",
+            "paper": "https://arxiv.org/abs/2406.07599",
+            "license": "CC-BY-NC-SA-4.0 (non-commercial)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "ATT&CK technique extraction",
           "benchmark": "CTIBench-ATE",
           "metric": "hierarchical_f1",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/xashru/cti-bench",
+            "data": "https://huggingface.co/datasets/AI4Sec/cti-bench",
+            "paper": "https://arxiv.org/abs/2406.07599",
+            "license": "CC-BY-NC-SA-4.0 (non-commercial)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "RAG-grounded CTI",
           "benchmark": "CTIConnect",
           "metric": "f1_judge",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/peng-gao-lab/CTIConnect",
+            "paper": "https://arxiv.org/abs/2510.11974",
+            "license": "MIT (code) · CC-BY-4.0 (data)",
+            "note": "vendor report full texts withheld (copyright); repo ships summaries",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -83,21 +135,41 @@
           "benchmark": "CyberSOCEval",
           "metric": "jaccard",
           "run": "api",
-          "status": "live"
+          "status": "live",
+          "source": {
+            "repo": "https://github.com/meta-llama/PurpleLlama",
+            "data": "https://github.com/CrowdStrike/CyberSOCEval_data",
+            "paper": "https://arxiv.org/abs/2509.20166",
+            "license": "MIT (code) · CC BY-SA 4.0 (hybrid-analysis) · CC BY-ND 4.0 (crwd reports)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Behavior classification",
           "benchmark": "behavior-audit",
           "metric": "macro_f1",
           "run": "api",
-          "status": "queued"
+          "status": "gap",
+          "source": {
+            "license": "n/a",
+            "note": "no public artifact exists for this task",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Reverse engineering",
           "benchmark": "REBench",
           "metric": "exact_match",
           "run": "sandbox",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "repo": "https://github.com/OSUSecLab/REBench",
+            "data": "https://zenodo.org/records/19899116",
+            "paper": "https://arxiv.org/abs/2604.27319",
+            "license": "CC-BY-4.0 (Zenodo data); repo unlicensed",
+            "note": "needs Ghidra/IDA preprocessing — sandbox-heavy",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -111,21 +183,42 @@
           "benchmark": "CTIBench-RCM",
           "metric": "accuracy",
           "run": "api",
-          "status": "live"
+          "status": "live",
+          "source": {
+            "repo": "https://github.com/xashru/cti-bench",
+            "data": "https://huggingface.co/datasets/AI4Sec/cti-bench",
+            "paper": "https://arxiv.org/abs/2406.07599",
+            "license": "CC-BY-NC-SA-4.0 (non-commercial)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "CVSS scoring",
           "benchmark": "CTIBench-VSP",
           "metric": "mae",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/xashru/cti-bench",
+            "data": "https://huggingface.co/datasets/AI4Sec/cti-bench",
+            "paper": "https://arxiv.org/abs/2406.07599",
+            "license": "CC-BY-NC-SA-4.0 (non-commercial)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Prioritization",
           "benchmark": "custom-KEV-EPSS",
           "metric": "ndcg",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "data": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+            "paper": "https://arxiv.org/abs/2302.14172",
+            "license": "CC0 (KEV) · free w/ attribution (EPSS scores)",
+            "note": "EPSS API: https://api.first.org/data/v1/epss",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -139,28 +232,52 @@
           "benchmark": "PrimeVul",
           "metric": "vd_score_prauc",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/DLVulDet/PrimeVul",
+            "paper": "https://arxiv.org/abs/2403.18624",
+            "license": "MIT (repo; dataset via Drive links)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "CWE-type identification",
           "benchmark": "VulDetectBench",
           "metric": "accuracy",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/Sweetaroo/VulDetectBench",
+            "paper": "https://arxiv.org/abs/2406.07595",
+            "license": "MIT",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Secure code generation",
           "benchmark": "SecurityEval",
           "metric": "secure@k",
           "run": "judge",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/s2e-lab/SecurityEval",
+            "data": "https://huggingface.co/datasets/s2e-lab/SecurityEval",
+            "license": "none found (public, no license file)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Vuln repair",
           "benchmark": "VulRepair",
           "metric": "functional_security_pass",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/awsm-research/VulRepair",
+            "license": "MIT",
+            "note": "known train/test duplication issue (ACSAC'24) — dedupe before use",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -171,17 +288,29 @@
       "tasks": [
         {
           "task": "Sigma to ATT&CK",
-          "benchmark": "Sigma (cotool)",
+          "benchmark": "Sigma→ATT&CK (SigmaHQ-derived)",
           "metric": "hierarchical_f1",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/SigmaHQ/sigma",
+            "license": "DRL 1.1 (Detection Rule License)",
+            "note": "benchmark reconstructed from SigmaHQ rules' ATT&CK tags; credit SigmaHQ",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Detection-rule generation",
           "benchmark": "GenTI / CTI-REALM",
           "metric": "validity_efficacy",
           "run": "sandbox",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "paper": "https://arxiv.org/abs/2606.05844",
+            "license": "n/a (papers only, no artifacts)",
+            "note": "CTI-REALM: https://arxiv.org/abs/2603.13517 — also unreleased",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -195,14 +324,27 @@
           "benchmark": "DFIR-Metric I",
           "metric": "accuracy",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/DFIR-Metric/DFIR-Metric",
+            "paper": "https://arxiv.org/abs/2505.19973",
+            "license": "none found (data in-repo, no license file)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Log / anomaly analysis",
           "benchmark": "LogEval",
           "metric": "f1_auc",
           "run": "api",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "repo": "https://github.com/LinDuoming/LogEval",
+            "paper": "https://arxiv.org/abs/2407.01896",
+            "license": "none found",
+            "note": "repo may be leaderboard frontend only — verify full dataset before adopting",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -216,14 +358,25 @@
           "benchmark": "IaC-Eval",
           "metric": "pass@1_checkov",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/autoiac-project/iac-eval",
+            "data": "https://huggingface.co/datasets/autoiac-project/iac-eval",
+            "license": "MIT (code) · CC-BY-4.0 (data)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "K8s misconfig",
           "benchmark": "GenKubeSec",
           "metric": "weighted_f1",
           "run": "api",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "paper": "https://arxiv.org/abs/2405.19954",
+            "license": "n/a (no verifiable official artifact)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "CSPM/CNAPP posture reasoning",
@@ -244,14 +397,27 @@
           "benchmark": "OrgAccess",
           "metric": "f1",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/respailab/orgaccess",
+            "data": "https://huggingface.co/datasets/respai-lab/orgaccess",
+            "paper": "https://arxiv.org/abs/2505.19165",
+            "license": "MIT",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Policy comprehension/repair",
           "benchmark": "Quacky",
           "metric": "smt_ground_truth",
           "run": "judge",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "repo": "https://github.com/vlab-cs-ucsb/quacky",
+            "license": "BSD-2-Clause",
+            "note": "an SMT policy-analysis tool, not an LLM benchmark — task construction needed",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "AD attack/defense reasoning",
@@ -272,14 +438,28 @@
           "benchmark": "CyberCertBench",
           "metric": "exact_accuracy",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/GKeppler/CyberCertBench",
+            "paper": "https://arxiv.org/abs/2604.20389",
+            "license": "MIT (repo)",
+            "note": "questions scraped from cert-exam sites — upstream IP murky",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Substation attack agent",
           "benchmark": "CritBench",
           "metric": "state_verification",
           "run": "sandbox",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "repo": "https://github.com/GKeppler/CritBench",
+            "paper": "https://arxiv.org/abs/2604.06019",
+            "license": "none found",
+            "note": "sandbox agent harness, not API-runnable",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -293,14 +473,24 @@
           "benchmark": "GenTI",
           "metric": "validity_efficacy",
           "run": "judge",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "paper": "https://arxiv.org/abs/2606.05844",
+            "license": "n/a (paper only)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "PCAP forensic reasoning",
           "benchmark": "RAG-PCAP",
           "metric": "indicator_grading",
           "run": "api",
-          "status": "queued"
+          "status": "gap",
+          "source": {
+            "license": "n/a",
+            "note": "no public artifact; nearest paper released no data",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Firewall/config security",
@@ -321,21 +511,39 @@
           "benchmark": "PII-Bench",
           "metric": "span_f1",
           "run": "api",
-          "status": "queued"
+          "status": "gap",
+          "source": {
+            "paper": "https://arxiv.org/abs/2502.18545",
+            "license": "n/a",
+            "note": "paper only — no public artifact",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Secret / credential detection",
-          "benchmark": "secret-leak",
+          "benchmark": "SecretBench (gated)",
           "metric": "f1_mcc",
           "run": "api",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "repo": "https://github.com/setu1421/SecretBench",
+            "paper": "https://arxiv.org/abs/2303.06729",
+            "license": "MIT (repo); data gated (signed agreement)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Data-exfil via agents",
-          "benchmark": "Tool-Agents",
+          "benchmark": "AgentDojo (exfil tasks)",
           "metric": "correctness_safety",
           "run": "sandbox",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/ethz-spylab/agentdojo",
+            "paper": "https://arxiv.org/abs/2406.13352",
+            "license": "MIT",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -349,14 +557,28 @@
           "benchmark": "CyberCertBench",
           "metric": "accuracy",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/GKeppler/CyberCertBench",
+            "paper": "https://arxiv.org/abs/2604.20389",
+            "license": "MIT (repo)",
+            "note": "questions scraped from cert-exam sites — upstream IP murky",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Data-protection law QA",
           "benchmark": "LegiLM",
           "metric": "lqa_accuracy",
           "run": "judge",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "repo": "https://github.com/DAOLegalAI/LegiLM",
+            "paper": "https://arxiv.org/abs/2409.13721",
+            "license": "GPL-3.0",
+            "note": "GDPR dataset folder only; model never released",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Control to framework mapping",
@@ -377,14 +599,26 @@
           "benchmark": "PhreshPhish",
           "metric": "f1_low_base_rate",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "data": "https://huggingface.co/datasets/phreshphish/phreshphish",
+            "paper": "https://arxiv.org/abs/2507.10854",
+            "license": "CC-BY-4.0 (anti-phishing research use note)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Email (agentic)",
           "benchmark": "PhishNChips",
           "metric": "composite",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "data": "https://huggingface.co/datasets/AreLit/PhishNChips",
+            "paper": "https://arxiv.org/abs/2603.25056",
+            "license": "MIT",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "BEC detection",
@@ -405,7 +639,14 @@
           "benchmark": "OrgForge-IT",
           "metric": "f1_baseline_fpr",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/aeriesec/orgforge",
+            "data": "https://huggingface.co/datasets/aeriesec/orgforge-insider-threat",
+            "paper": "https://arxiv.org/abs/2603.22499",
+            "license": "MIT",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -419,28 +660,52 @@
           "benchmark": "Cybench / NYU CTF",
           "metric": "pass@k_subtask",
           "run": "sandbox",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/andyzorigin/cybench",
+            "paper": "https://arxiv.org/abs/2408.08926",
+            "license": "Apache-2.0 (Cybench) · GPL-2.0 (NYU CTF)",
+            "note": "NYU CTF: https://github.com/NYU-LLM-CTF/NYU_CTF_Bench",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Pentest lifecycle",
           "benchmark": "AutoPenBench",
           "metric": "progress_rate",
           "run": "sandbox",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/lucagioacchini/auto-pen-bench",
+            "paper": "https://arxiv.org/abs/2410.03225",
+            "license": "MIT",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Exploit development",
           "benchmark": "ExploitGym",
           "metric": "capability_bitmap",
           "run": "sandbox",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/sunblaze-ucb/exploitgym",
+            "paper": "https://arxiv.org/abs/2605.11086",
+            "license": "Apache-2.0 (code) + per-source data licenses",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Vuln discovery + patch",
           "benchmark": "ZeroDayBench",
           "metric": "discover_patch",
           "run": "sandbox",
-          "status": "queued"
+          "status": "watch",
+          "source": {
+            "paper": "https://arxiv.org/abs/2603.02297",
+            "license": "n/a (paper only)",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -454,7 +719,14 @@
           "benchmark": "CyberMetric / SecEval",
           "metric": "accuracy",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/cybermetric/CyberMetric",
+            "paper": "https://arxiv.org/abs/2402.07688",
+            "license": "none found (CyberMetric) · MIT code + CC-BY-NC-SA data (SecEval)",
+            "note": "SecEval: https://github.com/XuanwuAI/SecEval",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -468,21 +740,41 @@
           "benchmark": "CyberSecEval-MITRE / StrongREJECT",
           "metric": "asr_graded",
           "run": "judge",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/dsbowen/strong_reject",
+            "paper": "https://arxiv.org/abs/2402.10260",
+            "license": "MIT (both)",
+            "note": "CyberSecEval: meta-llama/PurpleLlama; original strongreject repo deprecated",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Over-refusal (benign)",
           "benchmark": "CyberSecEval-FRR / XSTest",
           "metric": "frr",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/paul-rottger/xstest",
+            "paper": "https://arxiv.org/abs/2308.01263",
+            "license": "MIT (CyberSecEval) · CC-BY-4.0 (XSTest prompts)",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "Hazardous knowledge",
           "benchmark": "WMDP-cyber",
           "metric": "accuracy",
           "run": "api",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/centerforaisafety/wmdp",
+            "data": "https://huggingface.co/datasets/cais/wmdp",
+            "paper": "https://arxiv.org/abs/2403.03218",
+            "license": "MIT",
+            "verified": "2026-07-13"
+          }
         }
       ]
     },
@@ -496,14 +788,28 @@
           "benchmark": "AgentDojo / InjecAgent",
           "metric": "asr_utility",
           "run": "sandbox",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/ethz-spylab/agentdojo",
+            "paper": "https://arxiv.org/abs/2406.13352",
+            "license": "MIT (both)",
+            "note": "InjecAgent (lighter, API-only): https://github.com/uiuc-kang-lab/InjecAgent",
+            "verified": "2026-07-13"
+          }
         },
         {
           "task": "MCP tool-use security",
           "benchmark": "MSB",
           "metric": "attack_success",
           "run": "sandbox",
-          "status": "queued"
+          "status": "queued",
+          "source": {
+            "repo": "https://github.com/dongsenzhang/MSB",
+            "paper": "https://arxiv.org/abs/2510.15994",
+            "license": "MIT",
+            "note": "distinct from MCPSecBench (AIS2Lab/MCPSecBench) — verify intent before wiring",
+            "verified": "2026-07-13"
+          }
         }
       ]
     }

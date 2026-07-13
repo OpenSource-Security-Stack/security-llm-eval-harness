@@ -33,7 +33,7 @@ Two rules drive every choice:
 | **Code Sec — CWE-type ID** | class | **Accuracy / F1** | balanced | VulDetectBench T2 |
 | **Code Sec — secure code gen** | code | **Vulnerable-rate (secure@k)** + functional-pass | insecure output *and* over-refusal both costly | SecurityEval, CyberSecEval |
 | **Code Sec — vuln repair** | code | **Functional-test + security-check pass** (or exact-match) | must fix without breaking function | VulRepair |
-| **Detection Eng — Sigma→ATT&CK** | technique-ID set | **Hierarchical multi-label F1** | partial credit for parent technique | Sigma (cotool) ⭐ |
+| **Detection Eng — Sigma→ATT&CK** | technique-ID set | **Hierarchical multi-label F1** | partial credit for parent technique | Sigma→ATT&CK (SigmaHQ-derived) ⭐ |
 | **Detection Eng — rule generation** | rule (YAML) | **Syntactic validity + detection efficacy** (TP on attack / FP on benign) | FP costly | GenTI, CTI-REALM |
 | **DFIR — knowledge** | MCQ | **Accuracy** | balanced | DFIR-Metric I |
 | **Offense — CTF / exploitation** | flag / success | **Success-rate, pass@k**; capability-milestone score | binary; partial via milestones | Cybench, 3CB, NYU CTF |

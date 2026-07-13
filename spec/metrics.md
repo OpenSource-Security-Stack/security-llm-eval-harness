@@ -15,7 +15,7 @@ task on this metric, then composes it with universal secondary axes: **cost, lat
 | `ndcg@k` | ranking | vuln prioritization (KEV/EPSS) | standard IR | ✅ ready (`ndcg_at_k`) |
 | `pass@k` | agentic | CTF / exploitation (import path) | Cybench et al. | ✅ ready (`pass_at_k`) |
 | `asr` / `frr` | safety | refusal / over-refusal | Meta CyberSecEval | ✅ ready (mean of flags, direction: lower) |
-| `hier credit` | classification | CVE→CWE with CWE-tree partial credit | cotool Sigma (0.75 parent) | ✅ ready (`hier_match`, benchmark supplies parent map) |
+| `hier credit` | classification | CVE→CWE with CWE-tree partial credit | SigmaHQ-derived Sigma→ATT&CK (0.75 parent) | ✅ ready (`hier_match`, benchmark supplies parent map) |
 | `vd_score_prauc` / Recall@low-FPR | detection | code vuln detection ops point | PrimeVul | ⏳ needs per-item confidence outputs |
 | judge-graded (StrongREJECT etc.) | safety / codegen | graded harmfulness, secure-code quality | StrongREJECT | ⏳ needs judge-model hook |
 

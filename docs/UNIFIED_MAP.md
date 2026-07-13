@@ -56,7 +56,7 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 ## Detection Engineering
 | Task | Benchmark | Metric | Run | St |
 |---|---|---|:--:|:--:|
-| Sigma → ATT&CK mapping | Sigma Detection Classif. (cotool) | Hierarchical multi-label F1 | 🟢 | ⭐ |
+| Sigma → ATT&CK mapping | Sigma→ATT&CK (SigmaHQ-derived, DRL 1.1) | Hierarchical multi-label F1 | 🟢 | ⭐ |
 | Elastic rule → ATT&CK mapping 🆕 | ElasticRule (✓ self-derive from `elastic/detection-rules`, ~1k+ tagged TOML rules, Elastic Lic. 2.0) | Technique-ID accuracy/F1 | 🟢 | ◻︎ |
 | Detection-rule generation | GenTI / CTI-REALM | Syntactic validity + detection efficacy | 🔴 | ◻︎ |
 

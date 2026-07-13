@@ -1,7 +1,7 @@
 # Security Router — Eval Map (by domain)
 
 Benchmarks for evaluating LLMs/agents on security tasks, grouped by taxonomy domain.
-Built from the 2026-07 landscape survey (+ cotool.ai). See `reference-security-eval-landscape`
+Built from the 2026-07 landscape survey. Sources fetch-verified 2026-07-13 — canonical links/licenses in `spec/taxonomy.json`. See `reference-security-eval-landscape`
 (memory) for full source links. Refreshed 2026-07-12 via deep search (new finds marked 🆕);
 same day, every flagged repo was verified by fetching the actual artifact — availability
 notes are inline and current as of 2026-07-12. Meta-resource for future refreshes:
@@ -22,8 +22,8 @@ notes are inline and current as of 2026-07-12. Meta-resource for future refreshe
 |---|:--:|:--:|---|
 | CyberSOCEval (malware + CTI) | 🟢 | ✅ | Interpret detonation/threat reports → multi-select answers (Meta × CrowdStrike). *Already run.* |
 | SEvenLLM | 🟡 | ◻︎ | Read incident report → extract IoCs, prioritize alerts, summarize. 1,300 Q, judge-scored. |
-| BOTSv3 (cotool) | 🔴 | ◻︎ | Agent queries a live **Splunk** SIEM (2.7M logs) to answer IR/hunting questions. |
-| macOS / Windows Enterprise Intrusion (cotool) | 🔴 | ◻︎ | Agentic multi-host investigation: IR + detection + forensics across AD/endpoints. |
+| BOTSv3 (Splunk, CC0) | 🔴 | ◻︎ | Agent queries a live **Splunk** SIEM (2.7M logs) to answer IR/hunting questions. |
+| macOS / Windows Enterprise Intrusion (no public artifact) | 🔴 | ◻︎ | Agentic multi-host investigation: IR + detection + forensics across AD/endpoints. |
 | ExCyTIn-Bench (Microsoft) | 🔴 | ◻︎ | Agent investigates a simulated Azure/Sentinel SOC; 7,542 Q over attack graphs. |
 | 🆕 SIABench (Concordia+DRDC, 2026) | 🔴 | ◻︎ | 25 deep-investigation scenarios (229 Q) + 135 triage scenarios; agent runs forensic tools (Tshark/Volatility) in a Kali VM. Ranks 11 models (Claude 4.5 Sonnet & GPT-5 top; best solves 8/25). ✓ Excerpt repo public: `llmslayer/SIABench` (JSON Q&A for both datasets) — but **no license** + self-described as evolving. |
 | 🆕 Cyber Defense Benchmark (Simbian, 2026-04) | 🔴 | ◻︎ | Agentic threat hunting: SQL over 75–135k Windows event logs (Gymnasium env), flag malicious timestamps. Best frontier model ≈3.8%. ✓ MIT harness public (`simbianai/cyber_defense_benchmark`) but ships a sample only — full 106-episode corpus gated behind email to research@simbian.ai. |
@@ -75,7 +75,7 @@ notes are inline and current as of 2026-07-12. Meta-resource for future refreshe
 ## 6. Detection Engineering
 | Eval | Runnable | Status | What it tests |
 |---|:--:|:--:|---|
-| **Sigma Detection Classification** (cotool) | 🟢 | ⭐ | Given a Sigma rule (ATT&CK tags stripped) → output MITRE technique IDs. 2,733 rules, hierarchical F1. |
+| **Sigma→ATT&CK (SigmaHQ-derived)** | 🟢 | ⭐ | Given a Sigma rule (ATT&CK tags stripped) → output MITRE technique IDs. Reconstructed from SigmaHQ/sigma (DRL 1.1, ~3k tagged rules); hierarchical F1. |
 | 🆕 ElasticRule | 🟢 | ◻︎ | Elastic detection-rule → ATT&CK technique mapping (Sigma-task analogue). ✓ No standalone artifact — self-derive from `elastic/detection-rules` (~1,000+ TOML rules with `threat.technique` tags, Elastic License 2.0). Same recipe as the Sigma task; some mappings imperfect (issue #1987). |
 | CTI-REALM (Microsoft) | 🔴 | ◻︎ | Agent: CTI → telemetry → iterate KQL → emit validated Sigma rules + detections. |
 | GenTI | 🟡 | ◻︎ | Generate IDPS + YARA signatures for unseen attacks; validated by rule compilers. |
@@ -85,7 +85,7 @@ notes are inline and current as of 2026-07-12. Meta-resource for future refreshe
 |---|:--:|:--:|---|
 | DFIR-Metric — Module I | 🟢 | ◻︎ | Forensics knowledge MCQ (disk/memory/network, evidence handling). 700 Q. |
 | DFIR-Metric — Modules II/III | 🔴 | ◻︎ | Hands-on forensic challenges over disk images. |
-| NYU CTF / Cybench (forensics subsets) | 🔴 | ◻︎ | RE/forensics CTF challenges (cotool ran defensive subsets: 81 / 18). |
+| NYU CTF / Cybench (forensics subsets) | 🔴 | ◻︎ | RE/forensics CTF challenges (defensive subsets exist: 81 / 18). |
 
 ## 8. Offensive / Pentest / CTF / Exploitation
 | Eval | Runnable | Status | What it tests |
