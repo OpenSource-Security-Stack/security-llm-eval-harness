@@ -13,7 +13,15 @@ Mixture cost is the SUM of its members; latency is the MAX (parallel).
 """
 from collections import defaultdict
 
+from .metrics import AGGREGATORS
 from .models import cost_usd
+
+
+def _agg_fn(task):
+    name = task.metric.get("aggregate", "mean")
+    if name not in AGGREGATORS:
+        raise KeyError(f"unknown aggregate '{name}' (task {task.id}); known: {sorted(AGGREGATORS)}")
+    return AGGREGATORS[name]
 
 
 def norm_gold(c):
@@ -39,19 +47,25 @@ def index(recs, task):
     return byq, correct
 
 
-def _series_stats(answers_by_q, correct, task):
-    """answers_by_q: qid -> (pred, answered). -> (exact%, mean metric, answered%)."""
-    mid = task.metric["id"]
+def _score_items(answers_by_q, correct, task):
+    """answers_by_q: qid -> (pred, answered). Scores EVERY item — unanswered ones
+    as task.score(None, gold), which per-item scorers map to that metric's worst.
+    Returns (items: list of per-item dicts, exact%, answered%)."""
     n = len(correct)
-    ex = mv = ans = 0
+    items, ex, ans = [], 0, 0
     for qid, gold in correct.items():
         pred, answered = answers_by_q[qid]
-        if answered:
-            m = task.score(pred, gold)
-            mv += m[mid]
-            ex += 1 if m.get("exact") else 0
-            ans += 1
-    return 100 * ex / n, mv / n, 100 * ans / n
+        m = task.score(pred if answered else None, gold)
+        items.append(m)
+        ex += 1 if (answered and m.get("exact")) else 0
+        ans += 1 if answered else 0
+    return items, 100 * ex / n, 100 * ans / n
+
+
+def _series_stats(answers_by_q, correct, task):
+    """-> (exact%, aggregated metric, answered%). Aggregation per task.metric."""
+    items, ex, ans = _score_items(answers_by_q, correct, task)
+    return ex, _agg_fn(task)(items, task.metric["id"]), ans
 
 
 def single_stats(byq, correct, model, task):
@@ -74,30 +88,30 @@ def single_stats(byq, correct, model, task):
 
 
 def per_question(byq, correct, model, task):
-    """Per-question metric values for one model (0.0 when unanswered/missing).
-    The raw series behind the mean — feeds the bootstrap CI."""
-    mid = task.metric["id"]
-    vals = []
-    for qid, gold in correct.items():
+    """Per-item score dicts for one model (unanswered/missing scored as None-pred).
+    The raw series behind the domain score — feeds the bootstrap CI."""
+    ans = {}
+    for qid in correct:
         m = byq[qid].get(model)
-        if m and m["answered"]:
-            vals.append(task.score(m["pred"], gold)[mid])
-        else:
-            vals.append(0.0)
-    return vals
+        ans[qid] = (m["pred"], m["answered"]) if m else (None, False)
+    items, _, _ = _score_items(ans, correct, task)
+    return items
 
 
-def bootstrap_ci(values, n_boot=10000, alpha=0.05, seed=1337):
-    """Percentile bootstrap CI on the mean. Fixed seed -> reproducible exports."""
+def bootstrap_ci(items, task, n_boot=10000, alpha=0.05, seed=1337):
+    """Percentile bootstrap CI on the domain score: resample items with
+    replacement, re-aggregate (mean, macro_f1, mcc, ...) each time. Fixed
+    seed -> reproducible exports."""
     import random
-    if not values:
+    if not items:
         return [0.0, 0.0]
+    agg, mid = _agg_fn(task), task.metric["id"]
     rng = random.Random(seed)
-    n = len(values)
-    means = sorted(sum(rng.choice(values) for _ in range(n)) / n
+    n = len(items)
+    stats = sorted(agg([rng.choice(items) for _ in range(n)], mid)
                    for _ in range(n_boot))
-    lo = means[int(alpha / 2 * n_boot)]
-    hi = means[min(int((1 - alpha / 2) * n_boot), n_boot - 1)]
+    lo = stats[int(alpha / 2 * n_boot)]
+    hi = stats[min(int((1 - alpha / 2) * n_boot), n_boot - 1)]
     return [lo, hi]
 
 

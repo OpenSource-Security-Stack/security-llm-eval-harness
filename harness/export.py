@@ -34,7 +34,7 @@ def build_domain(task):
     rows = []
     for m in present:
         s = singles[m]
-        ci = bootstrap_ci(per_question(byq, correct, m, task))
+        ci = bootstrap_ci(per_question(byq, correct, m, task), task)
         rows.append({"model": DISPLAY.get(m, m), "type": "closed" if m in CLOSED else "open",
                      "score": round(s["mean"], 3), "exact_pct": round(s["exact"], 1),
                      "answered_pct": round(s["answered"]), "cost_per_1k_usd": round(s["cost_per_1k"], 2),
