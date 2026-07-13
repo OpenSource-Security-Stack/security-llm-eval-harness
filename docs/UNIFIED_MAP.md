@@ -11,6 +11,9 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | IoC extraction | SEvenLLM | Entity-level F1 | 🟡 | ◻︎ |
 | Alert triage / per-tactic detection | BOTSv3, Simbian | Precision/F1; recall-per-tactic | 🔴 | ◻︎ |
 | Investigation Q&A | ExCyTIn-Bench | Exact-match accuracy | 🔴 | ◻︎ |
+| Incident investigation + triage (agentic) 🆕 | SIABench | Fully-Solved / partial per-Q vs ground truth | 🔴 | ◻︎ |
+| Threat hunting over event logs (agentic) 🆕 | Cyber Defense Benchmark | CTF-style recall per tactic (Sigma-derived GT) | 🔴 | ◻︎ |
+| Defensive agent tasks 🆕 | DefenderBench | Task success | 🔴 | ◻︎ |
 
 ## Threat Intelligence (CTI)
 | Task | Benchmark | Metric | Run | St |
@@ -21,6 +24,7 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | RAG-grounded CTI | CTIConnect | P/R/F1 + judge | 🟢 | ◻︎ |
 | Multi-source reasoning | CTIArena | Accuracy + F1 | 🟡 | ◻︎ |
 | Attack-sequence reasoning | AttackSeqBench | Accuracy | 🟢 | ◻︎ |
+| CTI entity/relation/IoC extraction 🆕 | APTNER / AnnoCTR / AZERG / LANCE | Entity-level F1 | 🟢 | ◻︎ |
 
 ## Malware Analysis / RE
 | Task | Benchmark | Metric | Run | St |
@@ -45,11 +49,14 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | Secure code generation | SecurityEval / CyberSecEval | Vulnerable-rate (secure@k) + functional-pass | 🟡 | ◻︎ |
 | Vuln repair | VulRepair | Functional + security-check pass | 🟢 | ◻︎ |
 | SAST false-positive triage | SastBench | Triage accuracy (agentic) | 🔴 | ◻︎ |
+| Vuln detection (repo snapshots) 🆕 | eyeballvul | Detection P/R (LLM-scored) | 🟡 | ◻︎ |
+| Secure codegen / generated-code vulns 🆕 | SecureAgentBench / SafeGenBench / SecCodeBench-V2 | secure@k / detection F1 (repos unverified) | 🟡 | ◻︎ |
 
 ## Detection Engineering
 | Task | Benchmark | Metric | Run | St |
 |---|---|---|:--:|:--:|
 | Sigma → ATT&CK mapping | Sigma Detection Classif. (cotool) | Hierarchical multi-label F1 | 🟢 | ⭐ |
+| Elastic rule → ATT&CK mapping 🆕 | ElasticRule | Technique-ID accuracy/F1 (verify repo) | 🟢 | ◻︎ |
 | Detection-rule generation | GenTI / CTI-REALM | Syntactic validity + detection efficacy | 🔴 | ◻︎ |
 
 ## DFIR
@@ -64,7 +71,7 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | IaC security generation | IaC-Eval / Multi-IaC-Eval | pass@1 + Checkov security pass | 🟢🟡 | ◻︎ |
 | K8s misconfig detect/fix | GenKubeSec | Weighted P/R/F1 | 🟢 | ◻︎ |
 | Terraform repair trust | TerraProbe | Deceptive-fix rate | 🔴 | ◻︎ |
-| CSPM/CNAPP posture reasoning | — | — | — | ⬜ |
+| CSPM/CNAPP posture reasoning | — (lead: ACSE-Eval 🆕, AWS-only, unverified depth) | — | — | ⬜ |
 
 ## Identity & Access (IAM)
 | Task | Benchmark | Metric | Run | St |
@@ -73,6 +80,9 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | IAM policy comprehension/repair | Quacky (PolicySummarizer/CloudFix) | SMT model-counting ground truth | 🟡 | ◻︎ |
 | ABAC policy mining | ABAC Lab | Policy-mining accuracy | 🟢 | ◻︎ |
 | AD attack/defense reasoning | — | — | — | ⬜ |
+| ISPM visibility / posture (agentic) 🆕 | Sola ISPM ×2 | Expert accuracy + dual LLM-judge (vendor env, not reproducible) | 🔴 | ✗ |
+| NL policy → DB access control 🆕 | IBACBench | Exec-based synthesis acc + auditing F1 (no public artifact) | 🔴 | ◻︎ |
+| NL request → network ACL policy 🆕 | NLACBench | Policy accuracy vs GT (repo unverified) | 🟢 | ◻︎ |
 
 ## OT / ICS
 | Task | Benchmark | Metric | Run | St |
@@ -85,12 +95,15 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 |---|---|---|:--:|:--:|
 | IDS/IPS rule generation | GenTI | Rule validity + detection efficacy | 🟡 | ◻︎ |
 | PCAP forensic reasoning | RAG PCAP eval (Oprea) | Indicator-based grading | 🟢 | ◻︎ |
-| Firewall/config security analysis | — | — | — | ⬜ |
+| Config: reqs→spec, NL→API calls 🆕 | NetConfEval (2 of 4 tasks) | Programmatic validation (MIT, HF dataset verified) | 🟢 | ◻︎ |
+| Config: low-level device generation 🆕 | NetConfEval (task 4) | Execution in Kathará emulator | 🔴 | ◻︎ |
+| Config misconfiguration repair 🆕 | Cornetto (ETH) | Formal verification vs GT spec (repo unverified) | 🟡 | ◻︎ |
 
 ## Data Security / DLP
 | Task | Benchmark | Metric | Run | St |
 |---|---|---|:--:|:--:|
 | PII detection / masking | PII-Bench / PIIBench | Span-level F1 (Strict-F1) | 🟢 | ◻︎ |
+| PII handling in security contexts 🆕 | CyberPII-Bench (CAIBench) | P/R/F1/F2 (recall-weighted); 79 items, 23 entity types | 🟢 | ◻︎ |
 | Secret / credential detection | GitHub-issue secret-leak; CredData | P/R/F1; **MCC** | 🟢 | ◻︎ |
 | Data-exfil via agents | Data-Leakage-in-Tool-Agents | Correctness&Safety pass rate | 🔴 | ◻︎ |
 
@@ -107,7 +120,8 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | Phishing webpage detection | PhreshPhish | F1 at realistic low base rates | 🟢 | ◻︎ |
 | Phishing email (agentic) | PhishNChips | Deployability-aware composite | 🟢 | ◻︎ |
 | Social-eng reasoning | Oslo/ELTE emotion set | Jaccard (multi-label) | 🟢 | ◻︎ |
-| BEC detection | — | — | — | ⬜ |
+| BEC detection 🆕 | BEC-2 (279 emails, AGPL-3.0, verified public) | raw labeled dataset — classification F1 (build harness task) | 🟢 | ◻︎ |
+| Fraud/phishing inducement robustness 🆕 | Fraud-R1 (8,564 cases, HF verified) | Defense Success Rate, multi-round | 🟢 | ◻︎ |
 
 ## Insider Threat
 | Task | Benchmark | Metric | Run | St |
@@ -130,6 +144,7 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | Task | Benchmark | Metric | Run | St |
 |---|---|---|:--:|:--:|
 | Broad knowledge MCQ | CyberMetric / SecEval / SecBench | Accuracy | 🟢 | ◻︎ |
+| Knowledge + skills MCQ/QA 🆕 | RedSage-Bench (30k MCQ + 240 open) | Accuracy (lighteval); judge for open QA. MCQ data release pending — verify | 🟢 | ◻︎ |
 
 ## Safety / Dual-Use
 | Task | Benchmark | Metric | Run | St |
@@ -142,8 +157,13 @@ Run: 🟢 API · 🟡 API+judge/analyzer · 🔴 sandbox/infra.  Status: ✅ don
 | Task | Benchmark | Metric | Run | St |
 |---|---|---|:--:|:--:|
 | Prompt injection | AgentDojo / InjecAgent | ASR under attack + task-utility | 🔴🟡 | ◻︎ |
+| Agent attacks & defenses 🆕 | Agent Security Bench (ASB) | ASR / defense efficacy | 🟡 | ◻︎ |
+| Prompt-injection detection 🆕 | LLMail-Inject / WAInjectBench | Detection F1 / ASR | 🟢🟡 | ◻︎ |
+| OWASP agentic threats 🆕 | AgentThreatBench (UK AISI, inspect_evals) | Per-threat task success | 🟡 | ◻︎ |
 | MCP tool-use security | MSB | Attack-taxonomy success rate | 🔴 | ◻︎ |
 | AI-vs-AI (adversarial ML) | AIRTBench | CTF success | 🔴 | ◻︎ |
 
 ---
 *OrgForge-IT leaderboard is Bedrock-only; harness runs via API. Cross-cutting quality controls (apply to all): **temporal/post-cutoff splits** for contamination; **cost / latency / reliability** as universal secondary axes; **calibration** (False Trust rate, AUGRC) for routing/hand-off decisions.
+
+🆕 rows added 2026-07-12 from deep-search refresh. "Repo unverified" = paper-only so far — confirm a public artifact before adopting. Contamination caution: 2026 obfuscation study shows offensive/CTF scores collapse to ~0% under semantics-preserving rewrites — discount offensive rankings accordingly. Meta-list for future refreshes: `EvanThomasLuke/Awesome-AI-Security-Benchmarks` (~175 entries).

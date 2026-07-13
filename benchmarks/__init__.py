@@ -25,9 +25,11 @@ def all_tasks():
 
 # --- public benchmarks -------------------------------------------------------
 from .cybersoceval import CTI, MALWARE  # noqa: E402
+from .ctibench import CVE_CWE  # noqa: E402
 
 register(CTI)
 register(MALWARE)
+register(CVE_CWE)
 
 # --- private benchmarks (gitignored; absent in the public checkout) ----------
 try:

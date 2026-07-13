@@ -1,0 +1,1 @@
+{"model": "deepseek-v4", "qkey": "CVE-2024-0669", "strata": "CWE-1021", "correct_options": "CWE-1021", "latency": 9.7, "prompt_tokens": 96, "completion_tokens": 486, "cost_usd": 0.001858, "model_answers": "CWE-1021", "parse_ok": true, "score": 1.0, "answered_correctly": "true"}

@@ -1,0 +1,1 @@
+{"model": "gpt-oss-120b", "qkey": "CVE-2024-0669", "strata": "CWE-1021", "correct_options": "CWE-1021", "latency": 3.19, "prompt_tokens": 155, "completion_tokens": 271, "cost_usd": 0.000186, "model_answers": "CWE-79", "parse_ok": true, "score": 0.0, "answered_correctly": "false"}

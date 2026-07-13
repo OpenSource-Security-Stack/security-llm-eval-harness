@@ -36,7 +36,7 @@ def _cti_data():
 
 
 # ---------------------------------------------------------------------------
-# Shared parse + score (multi-select letters, Jaccard)
+# Shared parse + score + combine (multi-select letters, Jaccard)
 # ---------------------------------------------------------------------------
 def parse_letters(text):
     """Model response -> list of letters, or None on parse failure."""
@@ -47,8 +47,45 @@ def parse_letters(text):
 
 
 def score_letters(pred, gold):
-    j = jaccard(pred, [str(c).strip().upper()[:1] for c in gold])
+    j = jaccard(normalize_letters(pred), [str(c).strip().upper()[:1] for c in gold])
     return {"jaccard": j, "exact": j == 1.0}
+
+
+def answered_letters(pred):
+    """A record counts as answered only if it yields at least one letter."""
+    return len(normalize_letters(pred)) > 0
+
+
+def combine_letters(members, rule, weights=None):
+    """Merge a pool's letter-sets per question (majority/union/intersect/
+    weighted/thresh-k). Returns (letters, answered_any)."""
+    voting = [m for m in members if m["answered"]]
+    if not voting:
+        return [], False
+    n = len(voting)
+    sets = {id(m): set(normalize_letters(m["pred"])) for m in voting}
+    cand = set().union(*sets.values())
+    keep = []
+    for L in cand:
+        pickers = [m for m in voting if L in sets[id(m)]]
+        cnt = len(pickers)
+        if rule == "union":
+            ok = cnt >= 1
+        elif rule == "intersect":
+            ok = cnt == n
+        elif rule == "majority":
+            ok = cnt * 2 >= n
+        elif rule.startswith("thresh-"):
+            ok = cnt >= int(rule.split("-")[1])
+        elif rule == "weighted":
+            wsum = sum(weights[m["_model"]] for m in voting)
+            wpick = sum(weights[m["_model"]] for m in pickers)
+            ok = wpick * 2 >= wsum
+        else:
+            raise ValueError(rule)
+        if ok:
+            keep.append(L)
+    return sorted(keep), True
 
 
 # ---------------------------------------------------------------------------
@@ -213,6 +250,7 @@ MALWARE = Task(
     metric={"id": "jaccard", "direction": "higher", "aggregate": "mean"},
     load=mal_load, key=mal_key, strata=mal_strata, gold=mal_gold,
     prompt=mal_prompt, parse=parse_letters, score=score_letters,
+    answered=answered_letters, combine=combine_letters,
     load_results=mal_load_results,
 )
 
@@ -222,5 +260,6 @@ CTI = Task(
     metric={"id": "jaccard", "direction": "higher", "aggregate": "mean"},
     load=cti_load, key=cti_key, strata=cti_strata, gold=cti_gold,
     prompt=cti_prompt, parse=parse_letters, score=score_letters,
+    answered=answered_letters, combine=combine_letters,
     load_results=cti_load_results,
 )

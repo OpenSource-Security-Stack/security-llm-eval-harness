@@ -37,6 +37,11 @@ class Task:
     # optional import path: () -> list[record] with _qid/model/model_answers/...
     load_results: Optional[Callable] = None
 
+    # optional scoring refinements
+    answered: Optional[Callable] = None  # prediction -> bool (default: truthy)
+    combine: Optional[Callable] = None   # (members, rule, weights) -> (pred, answered)
+                                         # mixtures are built only when this exists
+
     def runnable(self) -> bool:
         return all([self.load, self.key, self.strata, self.gold, self.prompt,
                     self.parse, self.score])

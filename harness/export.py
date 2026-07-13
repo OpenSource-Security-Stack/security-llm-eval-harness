@@ -11,32 +11,36 @@ from . import config
 from .scoring import index, mixture_stats, single_stats
 
 DISPLAY = {"opus-4.8": "Claude Opus 4.8", "gpt-5.5": "GPT-5.5", "gpt-5.1": "GPT-5.1",
-           "minimax-m3": "MiniMax M3", "qwen3-235b": "Qwen3-235B", "glm-5.2": "GLM-5.2",
+           "minimax-m3": "MiniMax M3", "qwen3-235b": "Qwen3-235B",
+           "deepseek-v4": "DeepSeek-V4-Pro", "glm-5.2": "GLM-5.2",
            "gpt-oss-120b": "gpt-oss-120b"}
 CLOSED = {"opus-4.8", "gpt-5.5", "gpt-5.1"}
 MODEL_ORDER = ["opus-4.8", "gpt-5.5", "gpt-5.1",
-               "minimax-m3", "qwen3-235b", "glm-5.2", "gpt-oss-120b"]
-MIX_POOL = ["minimax-m3", "qwen3-235b", "glm-5.2"]
+               "minimax-m3", "qwen3-235b", "deepseek-v4", "glm-5.2", "gpt-oss-120b"]
+# The third mixture slot holds whichever model a domain was run with: qwen3-235b
+# on the v0 cached domains, deepseek-v4 after Together retired serverless Qwen.
+MIX_POOL = ["minimax-m3", "qwen3-235b", "deepseek-v4", "glm-5.2"]
 MIX_RULE = "majority"
 
 
 def build_domain(task):
     """One task -> (rows sorted best-first, n_questions)."""
     recs = task.load_results()
-    byq, correct = index(recs)
+    byq, correct = index(recs, task)
     present = [m for m in MODEL_ORDER if any(m in byq[q] for q in correct)]
-    weights = {m: single_stats(byq, correct, m)["meanJac"] for m in present}
+    singles = {m: single_stats(byq, correct, m, task) for m in present}
     rows = []
     for m in present:
-        s = single_stats(byq, correct, m)
+        s = singles[m]
         rows.append({"model": DISPLAY.get(m, m), "type": "closed" if m in CLOSED else "open",
-                     "score": round(s["meanJac"], 3), "exact_pct": round(s["exact"], 1),
+                     "score": round(s["mean"], 3), "exact_pct": round(s["exact"], 1),
                      "answered_pct": round(s["answered"]), "cost_per_1k_usd": round(s["cost_per_1k"], 2)})
     pool = [m for m in MIX_POOL if m in present]
-    if len(pool) >= 2:
-        sm = mixture_stats(byq, correct, pool, MIX_RULE, weights)
+    if task.combine and len(pool) >= 2:
+        weights = {m: singles[m]["mean"] for m in present}
+        sm = mixture_stats(byq, correct, pool, MIX_RULE, task, weights)
         rows.append({"model": f"Mixture — {len(pool)} open models", "type": "mixture",
-                     "score": round(sm["meanJac"], 3), "exact_pct": round(sm["exact"], 1),
+                     "score": round(sm["mean"], 3), "exact_pct": round(sm["exact"], 1),
                      "answered_pct": round(sm["answered"]), "cost_per_1k_usd": round(sm["cost_per_1k"], 2)})
     reverse = task.metric.get("direction", "higher") == "higher"
     rows.sort(key=lambda r: r["score"], reverse=reverse)

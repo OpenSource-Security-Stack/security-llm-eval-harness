@@ -3,96 +3,509 @@
   "updated": "2026-07-12",
   "note": "The routing spine: security domains x tasks, each mapped to a target benchmark + primary metric. run: api|judge|sandbox. status: live|queued|gap.",
   "domains": [
-    {"id": "soc", "name": "SOC / Incident Response", "csf": "detect+respond", "tasks": [
-      {"task": "Report interpretation", "benchmark": "CyberSOCEval", "metric": "jaccard", "run": "api", "status": "live"},
-      {"task": "Long-context log analysis", "benchmark": "AuditBench", "metric": "f1", "run": "api", "status": "queued"},
-      {"task": "Threat-hunting lifecycle", "benchmark": "CyberTeam", "metric": "f1_hit@k", "run": "api", "status": "queued"},
-      {"task": "Alert triage", "benchmark": "BOTSv3 / Simbian", "metric": "precision_recall", "run": "sandbox", "status": "queued"}
-    ]},
-    {"id": "cti", "name": "Threat Intelligence", "csf": "identify+detect", "tasks": [
-      {"task": "Multi-select reasoning", "benchmark": "CyberSOCEval-CTI", "metric": "jaccard", "run": "api", "status": "live"},
-      {"task": "Knowledge / attribution", "benchmark": "CTIBench-MCQ", "metric": "accuracy", "run": "api", "status": "queued"},
-      {"task": "ATT&CK technique extraction", "benchmark": "CTIBench-ATE", "metric": "hierarchical_f1", "run": "api", "status": "queued"},
-      {"task": "RAG-grounded CTI", "benchmark": "CTIConnect", "metric": "f1_judge", "run": "api", "status": "queued"}
-    ]},
-    {"id": "malware", "name": "Malware Analysis", "csf": "respond", "tasks": [
-      {"task": "Report interpretation", "benchmark": "CyberSOCEval", "metric": "jaccard", "run": "api", "status": "live"},
-      {"task": "Behavior classification", "benchmark": "behavior-audit", "metric": "macro_f1", "run": "api", "status": "queued"},
-      {"task": "Reverse engineering", "benchmark": "REBench", "metric": "exact_match", "run": "sandbox", "status": "queued"}
-    ]},
-    {"id": "vulnmgmt", "name": "Vulnerability Management", "csf": "identify", "tasks": [
-      {"task": "CVE to CWE (root-cause)", "benchmark": "CTIBench-RCM", "metric": "exact_match_hier", "run": "api", "status": "queued"},
-      {"task": "CVSS scoring", "benchmark": "CTIBench-VSP", "metric": "mae", "run": "api", "status": "queued"},
-      {"task": "Prioritization", "benchmark": "custom-KEV-EPSS", "metric": "ndcg", "run": "api", "status": "queued"}
-    ]},
-    {"id": "codesec", "name": "Code Security / AppSec", "csf": "protect", "tasks": [
-      {"task": "Vuln detection (binary)", "benchmark": "PrimeVul", "metric": "vd_score_prauc", "run": "api", "status": "queued"},
-      {"task": "CWE-type identification", "benchmark": "VulDetectBench", "metric": "accuracy", "run": "api", "status": "queued"},
-      {"task": "Secure code generation", "benchmark": "SecurityEval", "metric": "secure@k", "run": "judge", "status": "queued"},
-      {"task": "Vuln repair", "benchmark": "VulRepair", "metric": "functional_security_pass", "run": "api", "status": "queued"}
-    ]},
-    {"id": "deteng", "name": "Detection Engineering", "csf": "detect", "tasks": [
-      {"task": "Sigma to ATT&CK", "benchmark": "Sigma (cotool)", "metric": "hierarchical_f1", "run": "api", "status": "queued"},
-      {"task": "Detection-rule generation", "benchmark": "GenTI / CTI-REALM", "metric": "validity_efficacy", "run": "sandbox", "status": "queued"}
-    ]},
-    {"id": "dfir", "name": "Digital Forensics (DFIR)", "csf": "respond", "tasks": [
-      {"task": "Forensics knowledge", "benchmark": "DFIR-Metric I", "metric": "accuracy", "run": "api", "status": "queued"},
-      {"task": "Log / anomaly analysis", "benchmark": "LogEval", "metric": "f1_auc", "run": "api", "status": "queued"}
-    ]},
-    {"id": "cloud", "name": "Cloud Security", "csf": "protect", "tasks": [
-      {"task": "IaC security generation", "benchmark": "IaC-Eval", "metric": "pass@1_checkov", "run": "api", "status": "queued"},
-      {"task": "K8s misconfig", "benchmark": "GenKubeSec", "metric": "weighted_f1", "run": "api", "status": "queued"},
-      {"task": "CSPM/CNAPP posture reasoning", "benchmark": null, "metric": null, "run": null, "status": "gap"}
-    ]},
-    {"id": "iam", "name": "Identity & Access (IAM)", "csf": "protect", "tasks": [
-      {"task": "RBAC / authz policy", "benchmark": "OrgAccess", "metric": "f1", "run": "api", "status": "queued"},
-      {"task": "Policy comprehension/repair", "benchmark": "Quacky", "metric": "smt_ground_truth", "run": "judge", "status": "queued"},
-      {"task": "AD attack/defense reasoning", "benchmark": null, "metric": null, "run": null, "status": "gap"}
-    ]},
-    {"id": "ot", "name": "OT / ICS", "csf": "protect+detect", "tasks": [
-      {"task": "OT/ICS knowledge", "benchmark": "CyberCertBench", "metric": "exact_accuracy", "run": "api", "status": "queued"},
-      {"task": "Substation attack agent", "benchmark": "CritBench", "metric": "state_verification", "run": "sandbox", "status": "queued"}
-    ]},
-    {"id": "network", "name": "Network Security", "csf": "protect+detect", "tasks": [
-      {"task": "IDS/IPS rule generation", "benchmark": "GenTI", "metric": "validity_efficacy", "run": "judge", "status": "queued"},
-      {"task": "PCAP forensic reasoning", "benchmark": "RAG-PCAP", "metric": "indicator_grading", "run": "api", "status": "queued"},
-      {"task": "Firewall/config security", "benchmark": null, "metric": null, "run": null, "status": "gap"}
-    ]},
-    {"id": "datasec", "name": "Data Security / DLP", "csf": "protect", "tasks": [
-      {"task": "PII detection / masking", "benchmark": "PII-Bench", "metric": "span_f1", "run": "api", "status": "queued"},
-      {"task": "Secret / credential detection", "benchmark": "secret-leak", "metric": "f1_mcc", "run": "api", "status": "queued"},
-      {"task": "Data-exfil via agents", "benchmark": "Tool-Agents", "metric": "correctness_safety", "run": "sandbox", "status": "queued"}
-    ]},
-    {"id": "grc", "name": "GRC / Compliance", "csf": "govern", "tasks": [
-      {"task": "Certifications knowledge", "benchmark": "CyberCertBench", "metric": "accuracy", "run": "api", "status": "queued"},
-      {"task": "Data-protection law QA", "benchmark": "LegiLM", "metric": "lqa_accuracy", "run": "judge", "status": "queued"},
-      {"task": "Control to framework mapping", "benchmark": null, "metric": null, "run": null, "status": "gap"}
-    ]},
-    {"id": "phishing", "name": "Phishing / Social Eng", "csf": "protect+detect", "tasks": [
-      {"task": "Webpage detection", "benchmark": "PhreshPhish", "metric": "f1_low_base_rate", "run": "api", "status": "queued"},
-      {"task": "Email (agentic)", "benchmark": "PhishNChips", "metric": "composite", "run": "api", "status": "queued"},
-      {"task": "BEC detection", "benchmark": null, "metric": null, "run": null, "status": "gap"}
-    ]},
-    {"id": "insider", "name": "Insider Threat", "csf": "detect", "tasks": [
-      {"task": "Telemetry triage + verdict", "benchmark": "OrgForge-IT", "metric": "f1_baseline_fpr", "run": "api", "status": "queued"}
-    ]},
-    {"id": "offensive", "name": "Offensive / CTF / Exploitation", "csf": "offense", "tasks": [
-      {"task": "CTF solving", "benchmark": "Cybench / NYU CTF", "metric": "pass@k_subtask", "run": "sandbox", "status": "queued"},
-      {"task": "Pentest lifecycle", "benchmark": "AutoPenBench", "metric": "progress_rate", "run": "sandbox", "status": "queued"},
-      {"task": "Exploit development", "benchmark": "ExploitGym", "metric": "capability_bitmap", "run": "sandbox", "status": "queued"},
-      {"task": "Vuln discovery + patch", "benchmark": "ZeroDayBench", "metric": "discover_patch", "run": "sandbox", "status": "queued"}
-    ]},
-    {"id": "knowledge", "name": "General Security Knowledge", "csf": "cross-cutting", "tasks": [
-      {"task": "Broad MCQ", "benchmark": "CyberMetric / SecEval", "metric": "accuracy", "run": "api", "status": "queued"}
-    ]},
-    {"id": "safety", "name": "Safety / Dual-Use", "csf": "ai-native", "tasks": [
-      {"task": "Malicious-request refusal", "benchmark": "CyberSecEval-MITRE / StrongREJECT", "metric": "asr_graded", "run": "judge", "status": "queued"},
-      {"task": "Over-refusal (benign)", "benchmark": "CyberSecEval-FRR / XSTest", "metric": "frr", "run": "api", "status": "queued"},
-      {"task": "Hazardous knowledge", "benchmark": "WMDP-cyber", "metric": "accuracy", "run": "api", "status": "queued"}
-    ]},
-    {"id": "agentsec", "name": "LLM-App / Agent Security", "csf": "ai-native", "tasks": [
-      {"task": "Prompt injection", "benchmark": "AgentDojo / InjecAgent", "metric": "asr_utility", "run": "sandbox", "status": "queued"},
-      {"task": "MCP tool-use security", "benchmark": "MSB", "metric": "attack_success", "run": "sandbox", "status": "queued"}
-    ]}
+    {
+      "id": "soc",
+      "name": "SOC / Incident Response",
+      "csf": "detect+respond",
+      "tasks": [
+        {
+          "task": "Report interpretation",
+          "benchmark": "CyberSOCEval",
+          "metric": "jaccard",
+          "run": "api",
+          "status": "live"
+        },
+        {
+          "task": "Long-context log analysis",
+          "benchmark": "AuditBench",
+          "metric": "f1",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Threat-hunting lifecycle",
+          "benchmark": "CyberTeam",
+          "metric": "f1_hit@k",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Alert triage",
+          "benchmark": "BOTSv3 / Simbian",
+          "metric": "precision_recall",
+          "run": "sandbox",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "cti",
+      "name": "Threat Intelligence",
+      "csf": "identify+detect",
+      "tasks": [
+        {
+          "task": "Multi-select reasoning",
+          "benchmark": "CyberSOCEval-CTI",
+          "metric": "jaccard",
+          "run": "api",
+          "status": "live"
+        },
+        {
+          "task": "Knowledge / attribution",
+          "benchmark": "CTIBench-MCQ",
+          "metric": "accuracy",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "ATT&CK technique extraction",
+          "benchmark": "CTIBench-ATE",
+          "metric": "hierarchical_f1",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "RAG-grounded CTI",
+          "benchmark": "CTIConnect",
+          "metric": "f1_judge",
+          "run": "api",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "malware",
+      "name": "Malware Analysis",
+      "csf": "respond",
+      "tasks": [
+        {
+          "task": "Report interpretation",
+          "benchmark": "CyberSOCEval",
+          "metric": "jaccard",
+          "run": "api",
+          "status": "live"
+        },
+        {
+          "task": "Behavior classification",
+          "benchmark": "behavior-audit",
+          "metric": "macro_f1",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Reverse engineering",
+          "benchmark": "REBench",
+          "metric": "exact_match",
+          "run": "sandbox",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "vulnmgmt",
+      "name": "Vulnerability Management",
+      "csf": "identify",
+      "tasks": [
+        {
+          "task": "CVE to CWE (root-cause)",
+          "benchmark": "CTIBench-RCM",
+          "metric": "accuracy",
+          "run": "api",
+          "status": "live"
+        },
+        {
+          "task": "CVSS scoring",
+          "benchmark": "CTIBench-VSP",
+          "metric": "mae",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Prioritization",
+          "benchmark": "custom-KEV-EPSS",
+          "metric": "ndcg",
+          "run": "api",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "codesec",
+      "name": "Code Security / AppSec",
+      "csf": "protect",
+      "tasks": [
+        {
+          "task": "Vuln detection (binary)",
+          "benchmark": "PrimeVul",
+          "metric": "vd_score_prauc",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "CWE-type identification",
+          "benchmark": "VulDetectBench",
+          "metric": "accuracy",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Secure code generation",
+          "benchmark": "SecurityEval",
+          "metric": "secure@k",
+          "run": "judge",
+          "status": "queued"
+        },
+        {
+          "task": "Vuln repair",
+          "benchmark": "VulRepair",
+          "metric": "functional_security_pass",
+          "run": "api",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "deteng",
+      "name": "Detection Engineering",
+      "csf": "detect",
+      "tasks": [
+        {
+          "task": "Sigma to ATT&CK",
+          "benchmark": "Sigma (cotool)",
+          "metric": "hierarchical_f1",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Detection-rule generation",
+          "benchmark": "GenTI / CTI-REALM",
+          "metric": "validity_efficacy",
+          "run": "sandbox",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "dfir",
+      "name": "Digital Forensics (DFIR)",
+      "csf": "respond",
+      "tasks": [
+        {
+          "task": "Forensics knowledge",
+          "benchmark": "DFIR-Metric I",
+          "metric": "accuracy",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Log / anomaly analysis",
+          "benchmark": "LogEval",
+          "metric": "f1_auc",
+          "run": "api",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "cloud",
+      "name": "Cloud Security",
+      "csf": "protect",
+      "tasks": [
+        {
+          "task": "IaC security generation",
+          "benchmark": "IaC-Eval",
+          "metric": "pass@1_checkov",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "K8s misconfig",
+          "benchmark": "GenKubeSec",
+          "metric": "weighted_f1",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "CSPM/CNAPP posture reasoning",
+          "benchmark": null,
+          "metric": null,
+          "run": null,
+          "status": "gap"
+        }
+      ]
+    },
+    {
+      "id": "iam",
+      "name": "Identity & Access (IAM)",
+      "csf": "protect",
+      "tasks": [
+        {
+          "task": "RBAC / authz policy",
+          "benchmark": "OrgAccess",
+          "metric": "f1",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Policy comprehension/repair",
+          "benchmark": "Quacky",
+          "metric": "smt_ground_truth",
+          "run": "judge",
+          "status": "queued"
+        },
+        {
+          "task": "AD attack/defense reasoning",
+          "benchmark": null,
+          "metric": null,
+          "run": null,
+          "status": "gap"
+        }
+      ]
+    },
+    {
+      "id": "ot",
+      "name": "OT / ICS",
+      "csf": "protect+detect",
+      "tasks": [
+        {
+          "task": "OT/ICS knowledge",
+          "benchmark": "CyberCertBench",
+          "metric": "exact_accuracy",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Substation attack agent",
+          "benchmark": "CritBench",
+          "metric": "state_verification",
+          "run": "sandbox",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "network",
+      "name": "Network Security",
+      "csf": "protect+detect",
+      "tasks": [
+        {
+          "task": "IDS/IPS rule generation",
+          "benchmark": "GenTI",
+          "metric": "validity_efficacy",
+          "run": "judge",
+          "status": "queued"
+        },
+        {
+          "task": "PCAP forensic reasoning",
+          "benchmark": "RAG-PCAP",
+          "metric": "indicator_grading",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Firewall/config security",
+          "benchmark": null,
+          "metric": null,
+          "run": null,
+          "status": "gap"
+        }
+      ]
+    },
+    {
+      "id": "datasec",
+      "name": "Data Security / DLP",
+      "csf": "protect",
+      "tasks": [
+        {
+          "task": "PII detection / masking",
+          "benchmark": "PII-Bench",
+          "metric": "span_f1",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Secret / credential detection",
+          "benchmark": "secret-leak",
+          "metric": "f1_mcc",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Data-exfil via agents",
+          "benchmark": "Tool-Agents",
+          "metric": "correctness_safety",
+          "run": "sandbox",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "grc",
+      "name": "GRC / Compliance",
+      "csf": "govern",
+      "tasks": [
+        {
+          "task": "Certifications knowledge",
+          "benchmark": "CyberCertBench",
+          "metric": "accuracy",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Data-protection law QA",
+          "benchmark": "LegiLM",
+          "metric": "lqa_accuracy",
+          "run": "judge",
+          "status": "queued"
+        },
+        {
+          "task": "Control to framework mapping",
+          "benchmark": null,
+          "metric": null,
+          "run": null,
+          "status": "gap"
+        }
+      ]
+    },
+    {
+      "id": "phishing",
+      "name": "Phishing / Social Eng",
+      "csf": "protect+detect",
+      "tasks": [
+        {
+          "task": "Webpage detection",
+          "benchmark": "PhreshPhish",
+          "metric": "f1_low_base_rate",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Email (agentic)",
+          "benchmark": "PhishNChips",
+          "metric": "composite",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "BEC detection",
+          "benchmark": null,
+          "metric": null,
+          "run": null,
+          "status": "gap"
+        }
+      ]
+    },
+    {
+      "id": "insider",
+      "name": "Insider Threat",
+      "csf": "detect",
+      "tasks": [
+        {
+          "task": "Telemetry triage + verdict",
+          "benchmark": "OrgForge-IT",
+          "metric": "f1_baseline_fpr",
+          "run": "api",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "offensive",
+      "name": "Offensive / CTF / Exploitation",
+      "csf": "offense",
+      "tasks": [
+        {
+          "task": "CTF solving",
+          "benchmark": "Cybench / NYU CTF",
+          "metric": "pass@k_subtask",
+          "run": "sandbox",
+          "status": "queued"
+        },
+        {
+          "task": "Pentest lifecycle",
+          "benchmark": "AutoPenBench",
+          "metric": "progress_rate",
+          "run": "sandbox",
+          "status": "queued"
+        },
+        {
+          "task": "Exploit development",
+          "benchmark": "ExploitGym",
+          "metric": "capability_bitmap",
+          "run": "sandbox",
+          "status": "queued"
+        },
+        {
+          "task": "Vuln discovery + patch",
+          "benchmark": "ZeroDayBench",
+          "metric": "discover_patch",
+          "run": "sandbox",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "knowledge",
+      "name": "General Security Knowledge",
+      "csf": "cross-cutting",
+      "tasks": [
+        {
+          "task": "Broad MCQ",
+          "benchmark": "CyberMetric / SecEval",
+          "metric": "accuracy",
+          "run": "api",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "name": "Safety / Dual-Use",
+      "csf": "ai-native",
+      "tasks": [
+        {
+          "task": "Malicious-request refusal",
+          "benchmark": "CyberSecEval-MITRE / StrongREJECT",
+          "metric": "asr_graded",
+          "run": "judge",
+          "status": "queued"
+        },
+        {
+          "task": "Over-refusal (benign)",
+          "benchmark": "CyberSecEval-FRR / XSTest",
+          "metric": "frr",
+          "run": "api",
+          "status": "queued"
+        },
+        {
+          "task": "Hazardous knowledge",
+          "benchmark": "WMDP-cyber",
+          "metric": "accuracy",
+          "run": "api",
+          "status": "queued"
+        }
+      ]
+    },
+    {
+      "id": "agentsec",
+      "name": "LLM-App / Agent Security",
+      "csf": "ai-native",
+      "tasks": [
+        {
+          "task": "Prompt injection",
+          "benchmark": "AgentDojo / InjecAgent",
+          "metric": "asr_utility",
+          "run": "sandbox",
+          "status": "queued"
+        },
+        {
+          "task": "MCP tool-use security",
+          "benchmark": "MSB",
+          "metric": "attack_success",
+          "run": "sandbox",
+          "status": "queued"
+        }
+      ]
+    }
   ]
 }

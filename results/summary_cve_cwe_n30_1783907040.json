@@ -1,0 +1,86 @@
+[
+  {
+    "model": "gpt-5.1",
+    "n": 30,
+    "exact_pct": 40.0,
+    "mean_jaccard": 0.4,
+    "parse_pct": 100.0,
+    "mean_latency": 2.05,
+    "mean_completion_tokens": 101,
+    "cost_per_1k_questions_usd": 1.174,
+    "cost_per_correct_usd": 0.002935,
+    "total_cost_usd": 0.03522
+  },
+  {
+    "model": "gpt-5.5",
+    "n": 30,
+    "exact_pct": 53.3,
+    "mean_jaccard": 0.5333,
+    "parse_pct": 100.0,
+    "mean_latency": 5.66,
+    "mean_completion_tokens": 265,
+    "cost_per_1k_questions_usd": 2.8086,
+    "cost_per_correct_usd": 0.005266,
+    "total_cost_usd": 0.084258
+  },
+  {
+    "model": "opus-4.8",
+    "n": 30,
+    "exact_pct": 56.7,
+    "mean_jaccard": 0.5667,
+    "parse_pct": 100.0,
+    "mean_latency": 7.92,
+    "mean_completion_tokens": 513,
+    "cost_per_1k_questions_usd": 41.503,
+    "cost_per_correct_usd": 0.073241,
+    "total_cost_usd": 1.24509
+  },
+  {
+    "model": "minimax-m3",
+    "n": 30,
+    "exact_pct": 50.0,
+    "mean_jaccard": 0.5,
+    "parse_pct": 96.7,
+    "mean_latency": 12.57,
+    "mean_completion_tokens": 1522,
+    "cost_per_1k_questions_usd": 1.9017,
+    "cost_per_correct_usd": 0.003803,
+    "total_cost_usd": 0.057051
+  },
+  {
+    "model": "qwen3-235b",
+    "n": 30,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.0,
+    "parse_pct": 0.0,
+    "mean_latency": 0.14,
+    "mean_completion_tokens": 0,
+    "cost_per_1k_questions_usd": 0.0,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.0
+  },
+  {
+    "model": "glm-5.2",
+    "n": 30,
+    "exact_pct": 40.0,
+    "mean_jaccard": 0.4,
+    "parse_pct": 80.0,
+    "mean_latency": 24.89,
+    "mean_completion_tokens": 5641,
+    "cost_per_1k_questions_usd": 25.0103,
+    "cost_per_correct_usd": 0.062526,
+    "total_cost_usd": 0.750308
+  },
+  {
+    "model": "gpt-oss-120b",
+    "n": 30,
+    "exact_pct": 40.0,
+    "mean_jaccard": 0.4,
+    "parse_pct": 100.0,
+    "mean_latency": 3.16,
+    "mean_completion_tokens": 271,
+    "cost_per_1k_questions_usd": 0.1912,
+    "cost_per_correct_usd": 0.000478,
+    "total_cost_usd": 0.005736
+  }
+]

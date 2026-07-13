@@ -14,14 +14,20 @@ USER_AGENT = "security-router-eval/0.1"
 
 # friendly key -> (provider, api_id)
 ROSTER = {
-    "gpt-5.1":      ("openai",    "gpt-5.1"),
-    "gpt-5.5":      ("openai",    "gpt-5.5"),
-    "opus-4.8":     ("anthropic", "claude-opus-4-8"),
-    "minimax-m3":   ("together",  "MiniMaxAI/MiniMax-M3"),
-    "qwen3-235b":   ("together",  "Qwen/Qwen3-235B-A22B-Instruct-2507-tput"),
-    "glm-5.2":      ("together",  "zai-org/GLM-5.2"),
-    "gpt-oss-120b": ("together",  "openai/gpt-oss-120b"),
+    "gpt-5.1":       ("openai",    "gpt-5.1"),
+    "gpt-5.5":       ("openai",    "gpt-5.5"),
+    "opus-4.8":      ("anthropic", "claude-opus-4-8"),
+    "minimax-m3":    ("together",  "MiniMaxAI/MiniMax-M3"),
+    "qwen3-235b":    ("together",  "Qwen/Qwen3-235B-A22B-Instruct-2507-tput"),
+    "deepseek-v4":   ("together",  "deepseek-ai/DeepSeek-V4-Pro"),
+    "glm-5.2":       ("together",  "zai-org/GLM-5.2"),
+    "gpt-oss-120b":  ("together",  "openai/gpt-oss-120b"),
 }
+
+# No longer runnable (delisted from serverless) — kept in ROSTER so cached
+# results still price correctly. Excluded from default runs.
+LEGACY = {"qwen3-235b"}   # Together retired ALL large serverless Qwen 2026-07; slot -> deepseek-v4
+DEFAULT_MODELS = [k for k in ROSTER if k not in LEGACY]
 
 PROVIDERS = {
     "openai":    ("https://api.openai.com/v1/chat/completions", "OPENAI_API_KEY"),

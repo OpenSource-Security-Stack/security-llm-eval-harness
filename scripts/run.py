@@ -13,7 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from harness import config, runner  # noqa: E402
-from harness.models import ROSTER, load_prices  # noqa: E402
+from harness.models import DEFAULT_MODELS, ROSTER, load_prices  # noqa: E402
 import benchmarks  # noqa: E402
 
 
@@ -21,7 +21,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--task", help="task id, e.g. cti / malware")
     ap.add_argument("--n", type=int, default=30)
-    ap.add_argument("--models", nargs="*", default=list(ROSTER))
+    ap.add_argument("--models", nargs="*", default=DEFAULT_MODELS)
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--list", action="store_true", help="list registered tasks and exit")
     args = ap.parse_args()

@@ -1,0 +1,14 @@
+[
+  {
+    "model": "deepseek-v4",
+    "n": 30,
+    "exact_pct": 56.7,
+    "mean_jaccard": 0.5667,
+    "parse_pct": 100.0,
+    "mean_latency": 10.31,
+    "mean_completion_tokens": 458,
+    "cost_per_1k_questions_usd": 1.8283,
+    "cost_per_correct_usd": 0.003226,
+    "total_cost_usd": 0.05485
+  }
+]

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "suite": "CyberSOCEval (Meta \u00d7 CrowdStrike)",
+    "suite": "multiple suites",
     "n": 30,
     "generated": "unset (stamp on publish)"
   },
@@ -73,6 +73,77 @@
           "exact_pct": 56.7,
           "answered_pct": 97,
           "cost_per_1k_usd": 1.6
+        }
+      ]
+    },
+    "cve_cwe": {
+      "name": "CVE\u2192CWE Mapping",
+      "benchmark": "CTIBench-RCM \u00b7 CVE root-cause \u2192 CWE \u00b7 metric: accuracy",
+      "metric": "accuracy",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.567,
+          "exact_pct": 56.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 41.5
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.567,
+          "exact_pct": 56.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 1.83
+        },
+        {
+          "model": "Mixture \u2014 3 open models",
+          "type": "mixture",
+          "score": 0.567,
+          "exact_pct": 56.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 28.74
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.533,
+          "exact_pct": 53.3,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 2.81
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.5,
+          "exact_pct": 50.0,
+          "answered_pct": 97,
+          "cost_per_1k_usd": 1.9
+        },
+        {
+          "model": "GPT-5.1",
+          "type": "closed",
+          "score": 0.4,
+          "exact_pct": 40.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 1.17
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.4,
+          "exact_pct": 40.0,
+          "answered_pct": 80,
+          "cost_per_1k_usd": 25.01
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.4,
+          "exact_pct": 40.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.19
         }
       ]
     },

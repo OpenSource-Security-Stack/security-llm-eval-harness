@@ -1,16 +1,18 @@
 """Turn per-item result records into model stats + mixture stats.
 
+Metric-agnostic: the Task supplies score(pred, gold) (per-item metric dict),
+answered(pred) (does this prediction count as an answer?), and optionally
+combine(members, rule, weights) (how a pool merges predictions — mixtures are
+only built for tasks that define it).
+
 Works on the canonical record shape written by runner.run (and by the older
 monolith — the schema is unchanged): model, _qid, model_answers, parse_ok,
-correct_options, prompt_tokens, completion_tokens, latency.
+correct_options, prompt_tokens, completion_tokens, latency, cost_usd.
 
-Mixture = offline aggregation of the pool's per-question letter-sets, scored
-with the same Jaccard as single models. Cost of a mixture is the SUM of its
-members; latency is the MAX (members run in parallel).
+Mixture cost is the SUM of its members; latency is the MAX (parallel).
 """
 from collections import defaultdict
 
-from .metrics import jaccard, normalize_letters
 from .models import cost_usd
 
 
@@ -18,86 +20,58 @@ def norm_gold(c):
     return tuple(str(x).strip().upper()[:1] for x in c)
 
 
-def index(recs):
-    """records -> (byq: qid -> model -> {answers, answered, cost, latency},
-                   correct: qid -> gold letters)"""
+def index(recs, task):
+    """records -> (byq: qid -> model -> {pred, answered, cost, latency},
+                   correct: qid -> gold as stored)"""
+    answered_fn = task.answered or (lambda p: bool(p))
     byq = defaultdict(dict)
     correct = {}
     for r in recs:
         qid = r["_qid"]
-        answers = normalize_letters(r.get("model_answers") or [])
-        answered = bool(r.get("parse_ok")) and len(answers) > 0
+        pred = r.get("model_answers")
+        answered = bool(r.get("parse_ok")) and answered_fn(pred)
         cost = r.get("cost_usd")
         if cost is None:
             cost = cost_usd(r["model"], r.get("prompt_tokens"), r.get("completion_tokens"))
-        byq[qid][r["model"]] = {"answers": answers, "answered": answered,
+        byq[qid][r["model"]] = {"pred": pred, "answered": answered,
                                 "cost": cost, "latency": r.get("latency") or 0}
-        correct[qid] = norm_gold(r["correct_options"])
+        correct[qid] = r["correct_options"]
     return byq, correct
 
 
-def aggregate(members, rule, weights=None):
-    """members: list of {answers, answered, _model}. -> (letters, answered_any).
-
-    Rules: majority (>= half), union (any), intersect (all), weighted
-    (meanJac-weighted majority), thresh-k (>= k members)."""
-    voting = [m for m in members if m["answered"]]
-    if not voting:
-        return [], False
-    n = len(voting)
-    cand = set().union(*[set(m["answers"]) for m in voting])
-    keep = []
-    for L in cand:
-        pickers = [m for m in voting if L in m["answers"]]
-        cnt = len(pickers)
-        if rule == "union":
-            ok = cnt >= 1
-        elif rule == "intersect":
-            ok = cnt == n
-        elif rule == "majority":
-            ok = cnt * 2 >= n
-        elif rule.startswith("thresh-"):
-            ok = cnt >= int(rule.split("-")[1])
-        elif rule == "weighted":
-            wsum = sum(weights[m["_model"]] for m in voting)
-            wpick = sum(weights[m["_model"]] for m in pickers)
-            ok = wpick * 2 >= wsum
-        else:
-            raise ValueError(rule)
-        if ok:
-            keep.append(L)
-    return sorted(keep), True
-
-
-def score_series(answers_by_q, correct):
-    """answers_by_q: qid -> (letters, answered). -> (exact%, meanJac, answered%)."""
+def _series_stats(answers_by_q, correct, task):
+    """answers_by_q: qid -> (pred, answered). -> (exact%, mean metric, answered%)."""
+    mid = task.metric["id"]
     n = len(correct)
-    ex = mj = ans = 0
-    for qid, gt in correct.items():
-        letters, answered = answers_by_q[qid]
-        j = jaccard(letters, gt) if answered else 0.0
-        mj += j
-        ex += 1 if j == 1.0 else 0
-        ans += 1 if answered else 0
-    return 100 * ex / n, mj / n, 100 * ans / n
+    ex = mv = ans = 0
+    for qid, gold in correct.items():
+        pred, answered = answers_by_q[qid]
+        if answered:
+            m = task.score(pred, gold)
+            mv += m[mid]
+            ex += 1 if m.get("exact") else 0
+            ans += 1
+    return 100 * ex / n, mv / n, 100 * ans / n
 
 
-def single_stats(byq, correct, model):
+def single_stats(byq, correct, model, task):
     ans = {}
     cost = 0.0
     for qid in correct:
         m = byq[qid].get(model)
         if m:
-            ans[qid] = (m["answers"], m["answered"])
+            ans[qid] = (m["pred"], m["answered"])
             cost += m["cost"]
         else:
-            ans[qid] = ([], False)
-    ex, mj, ap = score_series(ans, correct)
-    return {"exact": ex, "meanJac": mj, "answered": ap,
+            ans[qid] = (None, False)
+    ex, mv, ap = _series_stats(ans, correct, task)
+    return {"exact": ex, "mean": mv, "answered": ap,
             "cost_per_1k": cost / len(correct) * 1000}
 
 
-def mixture_stats(byq, correct, pool, rule, weights=None):
+def mixture_stats(byq, correct, pool, rule, task, weights=None):
+    """Requires task.combine. Combines the pool's predictions per question,
+    then scores the combined prediction like any single model's."""
     ans = {}
     cost = 0.0
     lat = 0.0
@@ -111,23 +85,24 @@ def mixture_stats(byq, correct, pool, rule, weights=None):
                 members.append(mm)
                 cost += m["cost"]                                  # sum of members
         lat += max([m["latency"] for m in members], default=0)     # parallel -> max
-        ans[qid] = aggregate(members, rule, weights)
-    ex, mj, ap = score_series(ans, correct)
-    return {"exact": ex, "meanJac": mj, "answered": ap,
+        ans[qid] = task.combine(members, rule, weights)
+    ex, mv, ap = _series_stats(ans, correct, task)
+    return {"exact": ex, "mean": mv, "answered": ap,
             "cost_per_1k": cost / len(correct) * 1000,
             "lat_per_q": lat / len(correct)}
 
 
-def oracle(byq, correct, pool):
+def oracle(byq, correct, pool, task):
     """Upper bounds (peek at the key): ceiling for a perfect per-question router."""
+    mid = task.metric["id"]
     n = len(correct)
     any_exact = 0
-    best_jac = 0.0
-    for qid, gt in correct.items():
-        js = [jaccard(m["answers"], gt) for mdl in pool
-              if (m := byq[qid].get(mdl)) and m["answered"]]
-        if js:
-            best_jac += max(js)
-            if max(js) == 1.0:
+    best = 0.0
+    for qid, gold in correct.items():
+        vals = [task.score(m["pred"], gold) for mdl in pool
+                if (m := byq[qid].get(mdl)) and m["answered"]]
+        if vals:
+            best += max(v[mid] for v in vals)
+            if any(v.get("exact") for v in vals):
                 any_exact += 1
-    return {"any_exact": 100 * any_exact / n, "best_jac": best_jac / n}
+    return {"any_exact": 100 * any_exact / n, "best": best / n}
