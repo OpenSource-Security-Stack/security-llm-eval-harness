@@ -24,7 +24,15 @@
           "score": 0.744,
           "exact_pct": 63.3,
           "answered_pct": 100,
-          "cost_per_1k_usd": 0.0
+          "cost_per_1k_usd": 35.45
+        },
+        {
+          "model": "GPT-5.1",
+          "type": "closed",
+          "score": 0.739,
+          "exact_pct": 66.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 11.58
         },
         {
           "model": "MiniMax M3",
@@ -32,7 +40,7 @@
           "score": 0.722,
           "exact_pct": 60.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 0.0
+          "cost_per_1k_usd": 3.51
         },
         {
           "model": "GLM-5.2",
@@ -40,7 +48,7 @@
           "score": 0.722,
           "exact_pct": 66.7,
           "answered_pct": 90,
-          "cost_per_1k_usd": 0.0
+          "cost_per_1k_usd": 29.99
         },
         {
           "model": "GPT-5.5",
@@ -56,7 +64,7 @@
           "score": 0.684,
           "exact_pct": 56.7,
           "answered_pct": 100,
-          "cost_per_1k_usd": 0.0
+          "cost_per_1k_usd": 1.95
         },
         {
           "model": "gpt-oss-120b",
@@ -64,7 +72,78 @@
           "score": 0.672,
           "exact_pct": 56.7,
           "answered_pct": 97,
-          "cost_per_1k_usd": 0.0
+          "cost_per_1k_usd": 1.6
+        }
+      ]
+    },
+    "malware": {
+      "name": "Malware Analysis",
+      "benchmark": "CyberSOCEval (Meta \u00d7 CrowdStrike) \u00b7 malware task \u00b7 metric: Jaccard",
+      "metric": "jaccard",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.601,
+          "exact_pct": 30.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 295.44
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.582,
+          "exact_pct": 30.0,
+          "answered_pct": 97,
+          "cost_per_1k_usd": 19.57
+        },
+        {
+          "model": "Mixture \u2014 3 open models",
+          "type": "mixture",
+          "score": 0.553,
+          "exact_pct": 23.3,
+          "answered_pct": 93,
+          "cost_per_1k_usd": 55.42
+        },
+        {
+          "model": "GPT-5.1",
+          "type": "closed",
+          "score": 0.543,
+          "exact_pct": 16.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 15.86
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.542,
+          "exact_pct": 23.3,
+          "answered_pct": 93,
+          "cost_per_1k_usd": 2.33
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.527,
+          "exact_pct": 23.3,
+          "answered_pct": 87,
+          "cost_per_1k_usd": 7.59
+        },
+        {
+          "model": "Qwen3-235B",
+          "type": "open",
+          "score": 0.516,
+          "exact_pct": 23.3,
+          "answered_pct": 93,
+          "cost_per_1k_usd": 2.73
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.445,
+          "exact_pct": 16.7,
+          "answered_pct": 80,
+          "cost_per_1k_usd": 45.1
         }
       ]
     }

@@ -13,21 +13,34 @@ No single model is best across security tasks. On CyberSOCEval the ranking reshu
 malware analysis and threat-intel; open-weight models win on some leaves and lose on others.
 This harness measures those per-task differences reproducibly so routing can act on them.
 
-## What's here
+## How it works
+
+**Plugins ask, engine runs, contract publishes.** Each benchmark is a small plugin answering
+four questions — where's my data, how do I ask, how do I read the answer, how do I grade it —
+plus its metric metadata. The engine handles everything else identically for every benchmark:
+model fan-out, retries, cost tracking, append-only results. Export squashes results into
+`rankings.json`.
 
 ```
-run_cybersoceval.py   # task-aware runner (malware + CTI leaves), multi-provider, cost-aware
-mixture_analysis.py   # offline "mixture of models" analysis over cached results
-full_analysis.py      # cross-leaf comparison → ANALYSIS.md
+harness/              # THE ENGINE — benchmark-agnostic
+  config.py             # paths, .env loading, $SECROUTER_DATA_DIR dataset override
+  models.py             # model roster, provider clients, pricing
+  metrics.py            # pure metric fns (jaccard, letter parsing, …)
+  task.py               # the Task plugin interface (4 fns + metric metadata)
+  runner.py             # generic run loop → results/*.jsonl
+  scoring.py            # records → model stats + mixture stats
+  export.py             # results → rankings.json (the contract)
+benchmarks/           # THE PLUGINS — one folder per benchmark
+  cybersoceval/         # malware + CTI tasks (Jaccard, PurpleLlama methodology)
+plugins/              # open-core seam — private benchmarks live here (gitignored)
 spec/                 # THE CONTRACT — shared with the leaderboard + router
   taxonomy.json         # 19 domains × tasks × target benchmark × metric × status
   results.schema.json   # JSON Schema for rankings.json
   metrics.md            # which metric fits which task (+ provenance)
 scripts/
-  export_rankings.py    # results/*.jsonl → rankings.json (the leaderboard's input)
-plugins/              # open-core seam — private benchmarks/metrics live here (gitignored)
-benchmarks/           # open benchmark adapters (add new ones here)
-results/              # raw per-question outputs (*.jsonl)
+  run.py                # run a task against the roster (spends API $)
+  export.py             # results/*.jsonl → rankings.json (no spend)
+results/              # raw per-question outputs (*.jsonl, append-only)
 docs/                 # the domain / eval / metric maps
 ```
 
@@ -35,9 +48,18 @@ docs/                 # the domain / eval / metric maps
 
 ```bash
 # keys (never committed): create .env with OPENAI_API_KEY / TOGETHER_API_KEY / ANTHROPIC_API_KEY
-python3 run_cybersoceval.py --task cti --n 30
-python3 scripts/export_rankings.py         # → rankings.json
+# datasets: a PurpleLlama checkout next to this repo (or set $SECROUTER_DATA_DIR)
+python3 scripts/run.py --list                  # show registered tasks
+python3 scripts/run.py --task cti --n 30       # run one task (spends API $)
+python3 scripts/export.py                      # → rankings.json + rankings.js (no spend)
 ```
+
+## Adding a benchmark
+
+Create `benchmarks/<name>/bench.py`, build a `harness.task.Task` with your `load / prompt /
+parse / score` functions and metric metadata, and register it in `benchmarks/__init__.py`.
+Results produced outside this engine (e.g. sandboxed agentic evals) can join at the export
+layer instead via `Task.load_results` — the contract doesn't care how a score was produced.
 
 ## Open-core
 
