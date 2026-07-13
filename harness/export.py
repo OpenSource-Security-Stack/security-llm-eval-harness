@@ -21,6 +21,7 @@ MODEL_ORDER = ["opus-4.8", "gpt-5.5", "gpt-5.1",
 # on the v0 cached domains, deepseek-v4 after Together retired serverless Qwen.
 MIX_POOL = ["minimax-m3", "qwen3-235b", "deepseek-v4", "glm-5.2"]
 MIX_RULE = "majority"
+INCLUDE_MIXTURE = False   # 2026-07-12: mixture rows off the leaderboard for now (machinery stays)
 
 
 def build_domain(task):
@@ -36,7 +37,7 @@ def build_domain(task):
                      "score": round(s["mean"], 3), "exact_pct": round(s["exact"], 1),
                      "answered_pct": round(s["answered"]), "cost_per_1k_usd": round(s["cost_per_1k"], 2)})
     pool = [m for m in MIX_POOL if m in present]
-    if task.combine and len(pool) >= 2:
+    if INCLUDE_MIXTURE and task.combine and len(pool) >= 2:
         weights = {m: singles[m]["mean"] for m in present}
         sm = mixture_stats(byq, correct, pool, MIX_RULE, task, weights)
         rows.append({"model": f"Mixture — {len(pool)} open models", "type": "mixture",
