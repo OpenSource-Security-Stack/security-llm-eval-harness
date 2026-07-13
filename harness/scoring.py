@@ -57,16 +57,48 @@ def _series_stats(answers_by_q, correct, task):
 def single_stats(byq, correct, model, task):
     ans = {}
     cost = 0.0
+    lats = []
     for qid in correct:
         m = byq[qid].get(model)
         if m:
             ans[qid] = (m["pred"], m["answered"])
             cost += m["cost"]
+            if m["latency"]:
+                lats.append(m["latency"])
         else:
             ans[qid] = (None, False)
     ex, mv, ap = _series_stats(ans, correct, task)
     return {"exact": ex, "mean": mv, "answered": ap,
-            "cost_per_1k": cost / len(correct) * 1000}
+            "cost_per_1k": cost / len(correct) * 1000,
+            "latency_s": sum(lats) / len(lats) if lats else 0.0}
+
+
+def per_question(byq, correct, model, task):
+    """Per-question metric values for one model (0.0 when unanswered/missing).
+    The raw series behind the mean — feeds the bootstrap CI."""
+    mid = task.metric["id"]
+    vals = []
+    for qid, gold in correct.items():
+        m = byq[qid].get(model)
+        if m and m["answered"]:
+            vals.append(task.score(m["pred"], gold)[mid])
+        else:
+            vals.append(0.0)
+    return vals
+
+
+def bootstrap_ci(values, n_boot=10000, alpha=0.05, seed=1337):
+    """Percentile bootstrap CI on the mean. Fixed seed -> reproducible exports."""
+    import random
+    if not values:
+        return [0.0, 0.0]
+    rng = random.Random(seed)
+    n = len(values)
+    means = sorted(sum(rng.choice(values) for _ in range(n)) / n
+                   for _ in range(n_boot))
+    lo = means[int(alpha / 2 * n_boot)]
+    hi = means[min(int((1 - alpha / 2) * n_boot), n_boot - 1)]
+    return [lo, hi]
 
 
 def mixture_stats(byq, correct, pool, rule, task, weights=None):

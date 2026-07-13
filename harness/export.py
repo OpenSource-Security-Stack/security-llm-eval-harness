@@ -8,7 +8,7 @@ Also writes rankings.js (`window.RANKINGS`) so the static leaderboard can
 import json
 
 from . import config
-from .scoring import index, mixture_stats, single_stats
+from .scoring import bootstrap_ci, index, mixture_stats, per_question, single_stats
 
 DISPLAY = {"opus-4.8": "Claude Opus 4.8", "gpt-5.5": "GPT-5.5", "gpt-5.1": "GPT-5.1",
            "minimax-m3": "MiniMax M3", "qwen3-235b": "Qwen3-235B",
@@ -34,9 +34,12 @@ def build_domain(task):
     rows = []
     for m in present:
         s = singles[m]
+        ci = bootstrap_ci(per_question(byq, correct, m, task))
         rows.append({"model": DISPLAY.get(m, m), "type": "closed" if m in CLOSED else "open",
                      "score": round(s["mean"], 3), "exact_pct": round(s["exact"], 1),
-                     "answered_pct": round(s["answered"]), "cost_per_1k_usd": round(s["cost_per_1k"], 2)})
+                     "answered_pct": round(s["answered"]), "cost_per_1k_usd": round(s["cost_per_1k"], 2),
+                     "latency_s": round(s["latency_s"], 1),
+                     "ci": [round(ci[0], 3), round(ci[1], 3)]})
     pool = [m for m in MIX_POOL if m in present]
     if INCLUDE_MIXTURE and task.combine and len(pool) >= 2:
         weights = {m: singles[m]["mean"] for m in present}

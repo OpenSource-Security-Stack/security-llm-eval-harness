@@ -17,7 +17,12 @@ window.RANKINGS = {
           "score": 0.75,
           "exact_pct": 66.7,
           "answered_pct": 100,
-          "cost_per_1k_usd": 227.06
+          "cost_per_1k_usd": 227.06,
+          "latency_s": 2.2,
+          "ci": [
+            0.617,
+            0.878
+          ]
         },
         {
           "model": "MiniMax M3",
@@ -25,7 +30,12 @@ window.RANKINGS = {
           "score": 0.722,
           "exact_pct": 60.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 3.51
+          "cost_per_1k_usd": 3.51,
+          "latency_s": 9.9,
+          "ci": [
+            0.594,
+            0.85
+          ]
         },
         {
           "model": "GLM-5.2",
@@ -33,7 +43,12 @@ window.RANKINGS = {
           "score": 0.722,
           "exact_pct": 66.7,
           "answered_pct": 90,
-          "cost_per_1k_usd": 29.99
+          "cost_per_1k_usd": 29.99,
+          "latency_s": 26.0,
+          "ci": [
+            0.567,
+            0.867
+          ]
         },
         {
           "model": "GPT-5.5",
@@ -41,7 +56,12 @@ window.RANKINGS = {
           "score": 0.7,
           "exact_pct": 60.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 14.17
+          "cost_per_1k_usd": 14.17,
+          "latency_s": 6.0,
+          "ci": [
+            0.561,
+            0.839
+          ]
         },
         {
           "model": "Qwen3-235B",
@@ -49,7 +69,12 @@ window.RANKINGS = {
           "score": 0.684,
           "exact_pct": 56.7,
           "answered_pct": 100,
-          "cost_per_1k_usd": 1.95
+          "cost_per_1k_usd": 1.95,
+          "latency_s": 1.4,
+          "ci": [
+            0.546,
+            0.817
+          ]
         },
         {
           "model": "gpt-oss-120b",
@@ -57,7 +82,12 @@ window.RANKINGS = {
           "score": 0.672,
           "exact_pct": 56.7,
           "answered_pct": 97,
-          "cost_per_1k_usd": 1.6
+          "cost_per_1k_usd": 1.6,
+          "latency_s": 2.8,
+          "ci": [
+            0.528,
+            0.811
+          ]
         }
       ]
     },
@@ -72,7 +102,12 @@ window.RANKINGS = {
           "score": 0.567,
           "exact_pct": 56.7,
           "answered_pct": 100,
-          "cost_per_1k_usd": 41.5
+          "cost_per_1k_usd": 41.5,
+          "latency_s": 7.9,
+          "ci": [
+            0.4,
+            0.733
+          ]
         },
         {
           "model": "DeepSeek-V4-Pro",
@@ -80,7 +115,12 @@ window.RANKINGS = {
           "score": 0.567,
           "exact_pct": 56.7,
           "answered_pct": 100,
-          "cost_per_1k_usd": 1.83
+          "cost_per_1k_usd": 1.83,
+          "latency_s": 10.3,
+          "ci": [
+            0.4,
+            0.733
+          ]
         },
         {
           "model": "GPT-5.5",
@@ -88,7 +128,12 @@ window.RANKINGS = {
           "score": 0.533,
           "exact_pct": 53.3,
           "answered_pct": 100,
-          "cost_per_1k_usd": 2.81
+          "cost_per_1k_usd": 2.81,
+          "latency_s": 5.7,
+          "ci": [
+            0.367,
+            0.7
+          ]
         },
         {
           "model": "MiniMax M3",
@@ -96,7 +141,12 @@ window.RANKINGS = {
           "score": 0.5,
           "exact_pct": 50.0,
           "answered_pct": 97,
-          "cost_per_1k_usd": 1.9
+          "cost_per_1k_usd": 1.9,
+          "latency_s": 12.6,
+          "ci": [
+            0.333,
+            0.667
+          ]
         },
         {
           "model": "GLM-5.2",
@@ -104,7 +154,12 @@ window.RANKINGS = {
           "score": 0.4,
           "exact_pct": 40.0,
           "answered_pct": 80,
-          "cost_per_1k_usd": 25.01
+          "cost_per_1k_usd": 25.01,
+          "latency_s": 24.9,
+          "ci": [
+            0.233,
+            0.567
+          ]
         },
         {
           "model": "gpt-oss-120b",
@@ -112,7 +167,12 @@ window.RANKINGS = {
           "score": 0.4,
           "exact_pct": 40.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 0.19
+          "cost_per_1k_usd": 0.19,
+          "latency_s": 3.2,
+          "ci": [
+            0.233,
+            0.567
+          ]
         }
       ]
     },
@@ -127,7 +187,12 @@ window.RANKINGS = {
           "score": 0.601,
           "exact_pct": 30.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 295.44
+          "cost_per_1k_usd": 295.44,
+          "latency_s": 2.5,
+          "ci": [
+            0.479,
+            0.719
+          ]
         },
         {
           "model": "GPT-5.5",
@@ -135,7 +200,12 @@ window.RANKINGS = {
           "score": 0.582,
           "exact_pct": 30.0,
           "answered_pct": 97,
-          "cost_per_1k_usd": 19.57
+          "cost_per_1k_usd": 19.57,
+          "latency_s": 8.2,
+          "ci": [
+            0.458,
+            0.705
+          ]
         },
         {
           "model": "gpt-oss-120b",
@@ -143,7 +213,12 @@ window.RANKINGS = {
           "score": 0.542,
           "exact_pct": 23.3,
           "answered_pct": 93,
-          "cost_per_1k_usd": 2.33
+          "cost_per_1k_usd": 2.33,
+          "latency_s": 6.5,
+          "ci": [
+            0.416,
+            0.669
+          ]
         },
         {
           "model": "MiniMax M3",
@@ -151,7 +226,12 @@ window.RANKINGS = {
           "score": 0.527,
           "exact_pct": 23.3,
           "answered_pct": 87,
-          "cost_per_1k_usd": 7.59
+          "cost_per_1k_usd": 7.59,
+          "latency_s": 18.8,
+          "ci": [
+            0.393,
+            0.654
+          ]
         },
         {
           "model": "Qwen3-235B",
@@ -159,7 +239,12 @@ window.RANKINGS = {
           "score": 0.516,
           "exact_pct": 23.3,
           "answered_pct": 93,
-          "cost_per_1k_usd": 2.73
+          "cost_per_1k_usd": 2.73,
+          "latency_s": 1.6,
+          "ci": [
+            0.386,
+            0.647
+          ]
         },
         {
           "model": "GLM-5.2",
@@ -167,7 +252,12 @@ window.RANKINGS = {
           "score": 0.445,
           "exact_pct": 16.7,
           "answered_pct": 80,
-          "cost_per_1k_usd": 45.1
+          "cost_per_1k_usd": 45.1,
+          "latency_s": 31.7,
+          "ci": [
+            0.318,
+            0.577
+          ]
         }
       ]
     }
