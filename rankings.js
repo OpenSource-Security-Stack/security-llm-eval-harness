@@ -720,6 +720,7 @@ window.RANKINGS = {
           "model": "Claude Opus 4.8",
           "type": "closed",
           "score": 81.5,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.933,
           "coverage": [
             3,
@@ -739,6 +740,7 @@ window.RANKINGS = {
           "model": "GPT-5.5",
           "type": "closed",
           "score": 80.6,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.8,
           "coverage": [
             3,
@@ -757,6 +759,7 @@ window.RANKINGS = {
           "model": "MiniMax M3",
           "type": "open",
           "score": 77.4,
+          "answered_pct_avg": 99.3,
           "win_rate": 0.467,
           "coverage": [
             3,
@@ -773,6 +776,7 @@ window.RANKINGS = {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 76.1,
+          "answered_pct_avg": 98.7,
           "win_rate": 0.533,
           "coverage": [
             3,
@@ -789,6 +793,7 @@ window.RANKINGS = {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 70.3,
+          "answered_pct_avg": 99.3,
           "win_rate": 0.2,
           "coverage": [
             3,
@@ -805,6 +810,7 @@ window.RANKINGS = {
           "model": "GLM-5.2",
           "type": "open",
           "score": 57.0,
+          "answered_pct_avg": 70.7,
           "win_rate": 0.067,
           "coverage": [
             3,
@@ -830,6 +836,7 @@ window.RANKINGS = {
           "model": "GPT-5.5",
           "type": "closed",
           "score": 73.7,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.85,
           "coverage": [
             2,
@@ -848,6 +855,7 @@ window.RANKINGS = {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 73.3,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.75,
           "coverage": [
             2,
@@ -864,6 +872,7 @@ window.RANKINGS = {
           "model": "Claude Opus 4.8",
           "type": "closed",
           "score": 72.5,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.8,
           "coverage": [
             2,
@@ -882,6 +891,7 @@ window.RANKINGS = {
           "model": "MiniMax M3",
           "type": "open",
           "score": 67.2,
+          "answered_pct_avg": 98.0,
           "win_rate": 0.3,
           "coverage": [
             2,
@@ -898,6 +908,7 @@ window.RANKINGS = {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 64.4,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.2,
           "coverage": [
             2,
@@ -914,6 +925,7 @@ window.RANKINGS = {
           "model": "GLM-5.2",
           "type": "open",
           "score": 53.6,
+          "answered_pct_avg": 74.0,
           "win_rate": 0.1,
           "coverage": [
             2,
@@ -938,6 +950,7 @@ window.RANKINGS = {
           "model": "Claude Opus 4.8",
           "type": "closed",
           "score": 57.7,
+          "answered_pct_avg": 100.0,
           "win_rate": 1.0,
           "coverage": [
             1,
@@ -956,6 +969,7 @@ window.RANKINGS = {
           "model": "MiniMax M3",
           "type": "open",
           "score": 53.9,
+          "answered_pct_avg": 92.0,
           "win_rate": 0.8,
           "coverage": [
             1,
@@ -972,6 +986,7 @@ window.RANKINGS = {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 53.0,
+          "answered_pct_avg": 96.0,
           "win_rate": 0.6,
           "coverage": [
             1,
@@ -988,6 +1003,7 @@ window.RANKINGS = {
           "model": "GPT-5.5",
           "type": "closed",
           "score": 52.8,
+          "answered_pct_avg": 98.0,
           "win_rate": 0.4,
           "coverage": [
             1,
@@ -1004,6 +1020,7 @@ window.RANKINGS = {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 52.4,
+          "answered_pct_avg": 94.0,
           "win_rate": 0.2,
           "coverage": [
             1,
@@ -1020,6 +1037,7 @@ window.RANKINGS = {
           "model": "GLM-5.2",
           "type": "open",
           "score": 45.2,
+          "answered_pct_avg": 82.0,
           "win_rate": 0.0,
           "coverage": [
             1,
@@ -1044,6 +1062,7 @@ window.RANKINGS = {
           "model": "Claude Opus 4.8",
           "type": "closed",
           "score": 57.7,
+          "answered_pct_avg": 100.0,
           "win_rate": 1.0,
           "coverage": [
             1,
@@ -1062,6 +1081,7 @@ window.RANKINGS = {
           "model": "GPT-5.5",
           "type": "closed",
           "score": 57.5,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.8,
           "coverage": [
             1,
@@ -1078,6 +1098,7 @@ window.RANKINGS = {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 52.6,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.6,
           "coverage": [
             1,
@@ -1094,6 +1115,7 @@ window.RANKINGS = {
           "model": "MiniMax M3",
           "type": "open",
           "score": 50.5,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.4,
           "coverage": [
             1,
@@ -1110,6 +1132,7 @@ window.RANKINGS = {
           "model": "GLM-5.2",
           "type": "open",
           "score": 45.9,
+          "answered_pct_avg": 86.0,
           "win_rate": 0.2,
           "coverage": [
             1,
@@ -1126,6 +1149,7 @@ window.RANKINGS = {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 43.8,
+          "answered_pct_avg": 100.0,
           "win_rate": 0.0,
           "coverage": [
             1,

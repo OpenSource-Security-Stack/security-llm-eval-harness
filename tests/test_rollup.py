@@ -106,3 +106,14 @@ x = ru["g"]["models"][0]
 close(x["cost_per_1k_avg"], 20.0)
 assert x["cost_per_1k_range"] == [10.0, 30.0]
 print("cost_per_1k_avg tests pass ✓")
+
+# --- answered_pct_avg (RELIABILITY on the overarching table) -------------------
+l7 = {"name": "A", "direction": "higher", "metric": "accuracy",
+      "models": [{"model": "X", "type": "open", "score": 0.5, "score_norm": 50.0,
+                  "cost_per_1k_usd": 1.0, "answered_pct": 100}]}
+l8 = {"name": "B", "direction": "higher", "metric": "accuracy",
+      "models": [{"model": "X", "type": "open", "score": 0.5, "score_norm": 50.0,
+                  "cost_per_1k_usd": 1.0, "answered_pct": 60}]}
+ru = build_rollups({"g": {"name": "G", "leaves": [("l7", l7), ("l8", l8)]}})
+close(ru["g"]["models"][0]["answered_pct_avg"], 80.0)
+print("answered_pct_avg tests pass ✓")

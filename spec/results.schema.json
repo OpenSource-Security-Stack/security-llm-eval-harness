@@ -108,6 +108,10 @@
                 "cost_per_1k_avg": {
                   "type": "number",
                   "description": "Mean cost_per_1k_usd across the model's leaves (equal weight per benchmark — same convention as `score`). The display cost; range stays as detail."
+                },
+                "answered_pct_avg": {
+                  "type": "number",
+                  "description": "Mean answered_pct across the model's leaves (equal weight per benchmark). Display label: RELIABILITY."
                 }
               }
             }

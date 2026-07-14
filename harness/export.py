@@ -106,10 +106,11 @@ def build_rollups(groups):
             wr = leaf_win_rates(rows, leaf.get("direction", "higher"))
             best = rows[0]["score"]
             for r in rows:
-                pm = per.setdefault(r["model"], {"type": r["type"], "rates": [],
-                                                 "norms": [], "costs": [], "best_at": []})
+                pm = per.setdefault(r["model"], {"type": r["type"], "rates": [], "norms": [],
+                                                 "costs": [], "ans": [], "best_at": []})
                 pm["rates"].append(wr[r["model"]])
                 pm["norms"].append(r["score_norm"])
+                pm["ans"].append(r.get("answered_pct", 100))
                 if r.get("cost_per_1k_usd"):
                     pm["costs"].append(r["cost_per_1k_usd"])
                 if r["score"] == best:
@@ -118,6 +119,7 @@ def build_rollups(groups):
         for m, pm in per.items():
             row = {"model": m, "type": pm["type"],
                    "score": round(sum(pm["norms"]) / len(pm["norms"]), 1),
+                   "answered_pct_avg": round(sum(pm["ans"]) / len(pm["ans"]), 1),
                    "win_rate": round(sum(pm["rates"]) / len(pm["rates"]), 3),
                    "coverage": [len(pm["rates"]), len(g["leaves"])],
                    "best_at": pm["best_at"]}
