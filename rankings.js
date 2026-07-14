@@ -350,5 +350,106 @@ window.RANKINGS = {
         }
       ]
     }
+  },
+  "rollups": {
+    "vulnmgmt": {
+      "name": "Vulnerability Management",
+      "leaves": [
+        "cve_cwe",
+        "cvss"
+      ],
+      "models": [
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "win_rate": 0.85,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [
+            "CVE\u2192CWE Mapping"
+          ],
+          "cost_per_1k_range": [
+            1.83,
+            7.3
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "win_rate": 0.8,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [
+            "CVSS Severity Scoring"
+          ],
+          "cost_per_1k_range": [
+            8.59,
+            48.52
+          ]
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "win_rate": 0.65,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [
+            "CVE\u2192CWE Mapping"
+          ],
+          "cost_per_1k_range": [
+            13.83,
+            20.65
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "win_rate": 0.35,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            0.19,
+            0.77
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "win_rate": 0.3,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            1.9,
+            3.54
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "win_rate": 0.05,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            25.01,
+            53.44
+          ]
+        }
+      ]
+    }
   }
 };

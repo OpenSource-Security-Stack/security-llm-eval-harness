@@ -246,6 +246,7 @@ _SUITE = "CyberSOCEval (Meta × CrowdStrike)"
 
 MALWARE = Task(
     id="malware", name="Malware Analysis", suite=_SUITE,
+    domain="malware", domain_name="Malware Analysis",
     benchmark_line=f"{_SUITE} · malware task · metric: Jaccard",
     metric={"id": "jaccard", "direction": "higher", "aggregate": "mean"},
     load=mal_load, key=mal_key, strata=mal_strata, gold=mal_gold,
@@ -256,6 +257,7 @@ MALWARE = Task(
 
 CTI = Task(
     id="cti", name="Threat-Intel Reasoning", suite=_SUITE,
+    domain="cti", domain_name="Threat Intelligence",
     benchmark_line=f"{_SUITE} · CTI task · metric: Jaccard",
     metric={"id": "jaccard", "direction": "higher", "aggregate": "mean"},
     load=cti_load, key=cti_key, strata=cti_strata, gold=cti_gold,

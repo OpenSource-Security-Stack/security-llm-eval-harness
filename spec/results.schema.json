@@ -15,6 +15,34 @@
         "generated": {"type": "string", "description": "ISO date the rankings were produced"}
       }
     },
+    "rollups": {
+      "type": "object",
+      "description": "Optional per-domain win-rate summaries, present only for domains with >= 2 benchmark leaves. Keyed by taxonomy domain id (e.g. 'vulnmgmt').",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "leaves", "models"],
+        "properties": {
+          "name": {"type": "string", "description": "Domain display name"},
+          "leaves": {"type": "array", "items": {"type": "string"}, "description": "Leaf ids (keys into domains) this rollup summarizes"},
+          "models": {
+            "type": "array",
+            "description": "Sorted by win_rate desc.",
+            "items": {
+              "type": "object",
+              "required": ["model", "type", "win_rate", "coverage"],
+              "properties": {
+                "model": {"type": "string"},
+                "type": {"enum": ["open", "closed", "mixture"]},
+                "win_rate": {"type": "number", "description": "Mean fraction of competing models beaten, averaged over the leaves this model appears in (ties = 0.5, direction-aware). Label as 'beats X% of competing models, averaged across N benchmarks'."},
+                "coverage": {"type": "array", "items": {"type": "integer"}, "description": "[leaves_present, leaves_total] — show a badge when partial; win_rate is computed over present leaves only"},
+                "best_at": {"type": "array", "items": {"type": "string"}, "description": "Leaf display names where this model is (tied-)best"},
+                "cost_per_1k_range": {"type": "array", "items": {"type": "number"}, "description": "[min, max] cost_per_1k_usd across the model's leaves"}
+              }
+            }
+          }
+        }
+      }
+    },
     "domains": {
       "type": "object",
       "description": "Keyed by domain/task id (e.g. 'cti', 'malware').",

@@ -100,6 +100,7 @@ def load_results():
 
 CVE_CWE = Task(
     id="cve_cwe", name="CVE→CWE Mapping", suite="CTIBench (RCM)",
+    domain="vulnmgmt", domain_name="Vulnerability Management",
     benchmark_line="CTIBench-RCM · CVE root-cause → CWE · metric: accuracy",
     metric={"id": "accuracy", "direction": "higher", "aggregate": "mean"},
     load=load, key=key, strata=strata, gold=gold,
@@ -215,6 +216,7 @@ def vsp_load_results():
 
 CVSS = Task(
     id="cvss", name="CVSS Severity Scoring", suite="CTIBench (VSP)",
+    domain="vulnmgmt", domain_name="Vulnerability Management",
     benchmark_line="CTIBench-VSP · CVE description → CVSS v3.1 · metric: MAE (lower is better)",
     metric={"id": "mae", "direction": "lower", "aggregate": "mean"},
     load=vsp_load, key=key, strata=vsp_strata, gold=lambda tc: tc["GT"].strip().upper(),

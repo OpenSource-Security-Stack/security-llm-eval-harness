@@ -15,11 +15,16 @@ from typing import Callable, Optional
 
 @dataclass
 class Task:
-    # identity — `id` is the domain key in rankings.json (e.g. "cti")
+    # identity — `id` is the leaf key in rankings.json (e.g. "cti")
     id: str
     name: str                      # display name, e.g. "Threat-Intel Reasoning"
     suite: str                     # e.g. "CyberSOCEval (Meta × CrowdStrike)"
     benchmark_line: str            # provenance line shown on the leaderboard
+
+    # parent domain (taxonomy id + display name) — leaves sharing a domain are
+    # combined into a win-rate rollup at export when the domain has >= 2 leaves
+    domain: str = ""
+    domain_name: str = ""
 
     # metric metadata — export uses this instead of assuming mean/higher-better
     metric: dict = field(default_factory=lambda: {
