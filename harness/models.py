@@ -28,9 +28,12 @@ ROSTER = {
 # results still price correctly. Excluded from default runs.
 LEGACY = {"qwen3-235b"}   # Together retired ALL large serverless Qwen 2026-07; slot -> deepseek-v4
 
-# Runnable but excluded from the analysis/leaderboard (2026-07-12, per Manish:
-# gpt-5.5 already represents OpenAI's frontier). Run explicitly via --models.
-EXCLUDED = {"gpt-5.1"}
+# Excluded from the analysis/leaderboard. gpt-5.1 (2026-07-12): gpt-5.5 already
+# represents OpenAI's frontier. qwen3-235b (2026-07-14): endpoint retired, its
+# frozen n=30 rows on 2 of 7 leaves are clutter next to the full-matrix roster.
+# Cached results stay in results/; restore by removing from this set (+ export
+# MODEL_ORDER for the leaderboard).
+EXCLUDED = {"gpt-5.1", "qwen3-235b"}
 
 DEFAULT_MODELS = [k for k in ROSTER if k not in LEGACY | EXCLUDED]
 

@@ -103,21 +103,6 @@ window.RANKINGS = {
             0.637,
             0.84
           ]
-        },
-        {
-          "model": "Qwen3-235B",
-          "type": "open",
-          "score": 0.684,
-          "score_norm": 68.4,
-          "exact_pct": 56.7,
-          "answered_pct": 100,
-          "cost_per_1k_usd": 1.95,
-          "latency_s": 1.4,
-          "n": 30,
-          "ci": [
-            0.546,
-            0.817
-          ]
         }
       ]
     },
@@ -605,21 +590,6 @@ window.RANKINGS = {
           ]
         },
         {
-          "model": "Qwen3-235B",
-          "type": "open",
-          "score": 0.516,
-          "score_norm": 51.6,
-          "exact_pct": 23.3,
-          "answered_pct": 93,
-          "cost_per_1k_usd": 2.73,
-          "latency_s": 1.6,
-          "n": 30,
-          "ci": [
-            0.386,
-            0.647
-          ]
-        },
-        {
           "model": "GLM-5.2",
           "type": "open",
           "score": 0.452,
@@ -768,7 +738,7 @@ window.RANKINGS = {
           "model": "GPT-5.5",
           "type": "closed",
           "score": 80.6,
-          "win_rate": 0.822,
+          "win_rate": 0.8,
           "coverage": [
             3,
             3
@@ -785,7 +755,7 @@ window.RANKINGS = {
           "model": "MiniMax M3",
           "type": "open",
           "score": 77.4,
-          "win_rate": 0.511,
+          "win_rate": 0.467,
           "coverage": [
             3,
             3
@@ -800,7 +770,7 @@ window.RANKINGS = {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 76.1,
-          "win_rate": 0.544,
+          "win_rate": 0.533,
           "coverage": [
             3,
             3
@@ -815,7 +785,7 @@ window.RANKINGS = {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 70.3,
-          "win_rate": 0.244,
+          "win_rate": 0.2,
           "coverage": [
             3,
             3
@@ -827,25 +797,10 @@ window.RANKINGS = {
           ]
         },
         {
-          "model": "Qwen3-235B",
-          "type": "open",
-          "score": 68.4,
-          "win_rate": 0.0,
-          "coverage": [
-            1,
-            3
-          ],
-          "best_at": [],
-          "cost_per_1k_range": [
-            1.95,
-            1.95
-          ]
-        },
-        {
           "model": "GLM-5.2",
           "type": "open",
           "score": 57.0,
-          "win_rate": 0.111,
+          "win_rate": 0.067,
           "coverage": [
             3,
             3
@@ -988,7 +943,7 @@ window.RANKINGS = {
           "model": "MiniMax M3",
           "type": "open",
           "score": 53.9,
-          "win_rate": 0.833,
+          "win_rate": 0.8,
           "coverage": [
             1,
             1
@@ -1003,7 +958,7 @@ window.RANKINGS = {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 53.0,
-          "win_rate": 0.667,
+          "win_rate": 0.6,
           "coverage": [
             1,
             1
@@ -1018,7 +973,7 @@ window.RANKINGS = {
           "model": "GPT-5.5",
           "type": "closed",
           "score": 52.8,
-          "win_rate": 0.5,
+          "win_rate": 0.4,
           "coverage": [
             1,
             1
@@ -1033,7 +988,7 @@ window.RANKINGS = {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 52.4,
-          "win_rate": 0.333,
+          "win_rate": 0.2,
           "coverage": [
             1,
             1
@@ -1042,21 +997,6 @@ window.RANKINGS = {
           "cost_per_1k_range": [
             25.97,
             25.97
-          ]
-        },
-        {
-          "model": "Qwen3-235B",
-          "type": "open",
-          "score": 51.6,
-          "win_rate": 0.167,
-          "coverage": [
-            1,
-            1
-          ],
-          "best_at": [],
-          "cost_per_1k_range": [
-            2.73,
-            2.73
           ]
         },
         {
