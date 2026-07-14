@@ -749,6 +749,7 @@ window.RANKINGS = {
         {
           "model": "Claude Opus 4.8",
           "type": "closed",
+          "score": 81.5,
           "win_rate": 0.933,
           "coverage": [
             3,
@@ -766,6 +767,7 @@ window.RANKINGS = {
         {
           "model": "GPT-5.5",
           "type": "closed",
+          "score": 80.6,
           "win_rate": 0.822,
           "coverage": [
             3,
@@ -780,22 +782,9 @@ window.RANKINGS = {
           ]
         },
         {
-          "model": "DeepSeek-V4-Pro",
-          "type": "open",
-          "win_rate": 0.544,
-          "coverage": [
-            3,
-            3
-          ],
-          "best_at": [],
-          "cost_per_1k_range": [
-            1.65,
-            20.09
-          ]
-        },
-        {
           "model": "MiniMax M3",
           "type": "open",
+          "score": 77.4,
           "win_rate": 0.511,
           "coverage": [
             3,
@@ -808,8 +797,24 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 76.1,
+          "win_rate": 0.544,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            1.65,
+            20.09
+          ]
+        },
+        {
           "model": "gpt-oss-120b",
           "type": "open",
+          "score": 70.3,
           "win_rate": 0.244,
           "coverage": [
             3,
@@ -822,22 +827,9 @@ window.RANKINGS = {
           ]
         },
         {
-          "model": "GLM-5.2",
-          "type": "open",
-          "win_rate": 0.111,
-          "coverage": [
-            3,
-            3
-          ],
-          "best_at": [],
-          "cost_per_1k_range": [
-            28.38,
-            57.17
-          ]
-        },
-        {
           "model": "Qwen3-235B",
           "type": "open",
+          "score": 68.4,
           "win_rate": 0.0,
           "coverage": [
             1,
@@ -847,6 +839,21 @@ window.RANKINGS = {
           "cost_per_1k_range": [
             1.95,
             1.95
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 57.0,
+          "win_rate": 0.111,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            28.38,
+            57.17
           ]
         }
       ]
@@ -861,6 +868,7 @@ window.RANKINGS = {
         {
           "model": "GPT-5.5",
           "type": "closed",
+          "score": 73.7,
           "win_rate": 0.85,
           "coverage": [
             2,
@@ -875,8 +883,24 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 73.3,
+          "win_rate": 0.75,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            1.9,
+            7.62
+          ]
+        },
+        {
           "model": "Claude Opus 4.8",
           "type": "closed",
+          "score": 72.5,
           "win_rate": 0.8,
           "coverage": [
             2,
@@ -891,22 +915,9 @@ window.RANKINGS = {
           ]
         },
         {
-          "model": "DeepSeek-V4-Pro",
-          "type": "open",
-          "win_rate": 0.75,
-          "coverage": [
-            2,
-            2
-          ],
-          "best_at": [],
-          "cost_per_1k_range": [
-            1.9,
-            7.62
-          ]
-        },
-        {
           "model": "MiniMax M3",
           "type": "open",
+          "score": 67.2,
           "win_rate": 0.3,
           "coverage": [
             2,
@@ -921,6 +932,7 @@ window.RANKINGS = {
         {
           "model": "gpt-oss-120b",
           "type": "open",
+          "score": 64.4,
           "win_rate": 0.2,
           "coverage": [
             2,
@@ -935,6 +947,7 @@ window.RANKINGS = {
         {
           "model": "GLM-5.2",
           "type": "open",
+          "score": 53.6,
           "win_rate": 0.1,
           "coverage": [
             2,
@@ -944,6 +957,221 @@ window.RANKINGS = {
           "cost_per_1k_range": [
             22.85,
             40.75
+          ]
+        }
+      ]
+    },
+    "malware": {
+      "name": "Malware Analysis",
+      "leaves": [
+        "malware"
+      ],
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 57.7,
+          "win_rate": 1.0,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [
+            "Malware Analysis"
+          ],
+          "cost_per_1k_range": [
+            95.04,
+            95.04
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 53.9,
+          "win_rate": 0.833,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            6.25,
+            6.25
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 53.0,
+          "win_rate": 0.667,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            2.18,
+            2.18
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 52.8,
+          "win_rate": 0.5,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            70.69,
+            70.69
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 52.4,
+          "win_rate": 0.333,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            25.97,
+            25.97
+          ]
+        },
+        {
+          "model": "Qwen3-235B",
+          "type": "open",
+          "score": 51.6,
+          "win_rate": 0.167,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            2.73,
+            2.73
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 45.2,
+          "win_rate": 0.0,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            41.7,
+            41.7
+          ]
+        }
+      ]
+    },
+    "deteng": {
+      "name": "Detection Engineering",
+      "leaves": [
+        "sigma_attack"
+      ],
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 57.7,
+          "win_rate": 1.0,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [
+            "Sigma Rule \u2192 ATT&CK"
+          ],
+          "cost_per_1k_range": [
+            7.86,
+            7.86
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 57.5,
+          "win_rate": 0.8,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            34.33,
+            34.33
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 52.6,
+          "win_rate": 0.6,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            3.62,
+            3.62
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 50.5,
+          "win_rate": 0.4,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            0.82,
+            0.82
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 45.9,
+          "win_rate": 0.2,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            18.59,
+            18.59
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 43.8,
+          "win_rate": 0.0,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            0.49,
+            0.49
           ]
         }
       ]

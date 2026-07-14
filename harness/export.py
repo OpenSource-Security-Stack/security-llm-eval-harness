@@ -90,13 +90,15 @@ def leaf_win_rates(rows, direction):
 
 def build_rollups(groups):
     """groups: {domain_id: {"name": str, "leaves": [(leaf_id, leaf_entry), ...]}}
-    -> rollups dict for domains with >= 2 leaves. Win rate = mean over the
-    leaves a model appears in (equal weight per leaf, NOT per question);
-    coverage records how many of the domain's leaves that is."""
+    -> one rollup per domain (INCLUDING single-leaf domains — every domain tab
+    gets the same overarching-table structure).
+
+    Headline `score` = mean of the model's per-leaf score_norm (equal weight
+    per leaf, same 0-100 higher-better scale as the leaf tables). `win_rate`
+    (fraction of rivals beaten, direction-aware, ties 0.5) is kept as a
+    secondary/router signal. `coverage` records leaves present of total."""
     rollups = {}
     for gid, g in groups.items():
-        if len(g["leaves"]) < 2:
-            continue
         per = {}
         for leaf_id, leaf in g["leaves"]:
             rows = leaf["models"]
@@ -104,8 +106,9 @@ def build_rollups(groups):
             best = rows[0]["score"]
             for r in rows:
                 pm = per.setdefault(r["model"], {"type": r["type"], "rates": [],
-                                                 "costs": [], "best_at": []})
+                                                 "norms": [], "costs": [], "best_at": []})
                 pm["rates"].append(wr[r["model"]])
+                pm["norms"].append(r["score_norm"])
                 if r.get("cost_per_1k_usd"):
                     pm["costs"].append(r["cost_per_1k_usd"])
                 if r["score"] == best:
@@ -113,13 +116,14 @@ def build_rollups(groups):
         models = []
         for m, pm in per.items():
             row = {"model": m, "type": pm["type"],
+                   "score": round(sum(pm["norms"]) / len(pm["norms"]), 1),
                    "win_rate": round(sum(pm["rates"]) / len(pm["rates"]), 3),
                    "coverage": [len(pm["rates"]), len(g["leaves"])],
                    "best_at": pm["best_at"]}
             if pm["costs"]:
                 row["cost_per_1k_range"] = [round(min(pm["costs"]), 2), round(max(pm["costs"]), 2)]
             models.append(row)
-        models.sort(key=lambda r: (-r["win_rate"], r["model"]))
+        models.sort(key=lambda r: (-r["score"], r["model"]))
         rollups[gid] = {"name": g["name"], "leaves": [lid for lid, _ in g["leaves"]],
                         "models": models}
     return rollups

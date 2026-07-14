@@ -33,7 +33,7 @@
     },
     "rollups": {
       "type": "object",
-      "description": "Optional per-domain win-rate summaries, present only for domains with >= 2 benchmark leaves. Keyed by taxonomy domain id (e.g. 'vulnmgmt').",
+      "description": "Per-domain summaries — one for EVERY domain (single-leaf domains included, so all domain tabs share the same structure). Keyed by taxonomy domain id.",
       "additionalProperties": {
         "type": "object",
         "required": [
@@ -55,12 +55,13 @@
           },
           "models": {
             "type": "array",
-            "description": "Sorted by win_rate desc.",
+            "description": "Sorted by score desc.",
             "items": {
               "type": "object",
               "required": [
                 "model",
                 "type",
+                "score",
                 "win_rate",
                 "coverage"
               ],
@@ -77,7 +78,7 @@
                 },
                 "win_rate": {
                   "type": "number",
-                  "description": "Mean fraction of competing models beaten, averaged over the leaves this model appears in (ties = 0.5, direction-aware). Label as 'beats X% of competing models, averaged across N benchmarks'."
+                  "description": "Secondary/router signal: mean fraction of competing models beaten across present leaves (ties 0.5, direction-aware)."
                 },
                 "coverage": {
                   "type": "array",
@@ -99,6 +100,10 @@
                     "type": "number"
                   },
                   "description": "[min, max] cost_per_1k_usd across the model's leaves"
+                },
+                "score": {
+                  "type": "number",
+                  "description": "Headline domain score: mean of the model's per-leaf score_norm (0-100, higher=better, equal weight per leaf, computed over present leaves)"
                 }
               }
             }
