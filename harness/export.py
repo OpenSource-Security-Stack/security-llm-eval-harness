@@ -122,6 +122,8 @@ def build_rollups(groups):
                    "coverage": [len(pm["rates"]), len(g["leaves"])],
                    "best_at": pm["best_at"]}
             if pm["costs"]:
+                # same equal-weight-per-benchmark convention as `score`
+                row["cost_per_1k_avg"] = round(sum(pm["costs"]) / len(pm["costs"]), 2)
                 row["cost_per_1k_range"] = [round(min(pm["costs"]), 2), round(max(pm["costs"]), 2)]
             models.append(row)
         models.sort(key=lambda r: (-r["score"], r["model"]))

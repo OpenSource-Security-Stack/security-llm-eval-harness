@@ -104,6 +104,10 @@
                 "score": {
                   "type": "number",
                   "description": "Headline domain score: mean of the model's per-leaf score_norm (0-100, higher=better, equal weight per leaf, computed over present leaves)"
+                },
+                "cost_per_1k_avg": {
+                  "type": "number",
+                  "description": "Mean cost_per_1k_usd across the model's leaves (equal weight per benchmark — same convention as `score`). The display cost; range stays as detail."
                 }
               }
             }

@@ -729,6 +729,7 @@ window.RANKINGS = {
             "Threat-Intel Reasoning",
             "ATT&CK Technique Extraction"
           ],
+          "cost_per_1k_avg": 39.64,
           "cost_per_1k_range": [
             1.7,
             80.91
@@ -746,6 +747,7 @@ window.RANKINGS = {
           "best_at": [
             "CTI Knowledge (MCQ)"
           ],
+          "cost_per_1k_avg": 54.68,
           "cost_per_1k_range": [
             10.23,
             97.32
@@ -761,6 +763,7 @@ window.RANKINGS = {
             3
           ],
           "best_at": [],
+          "cost_per_1k_avg": 2.82,
           "cost_per_1k_range": [
             0.66,
             4.15
@@ -776,6 +779,7 @@ window.RANKINGS = {
             3
           ],
           "best_at": [],
+          "cost_per_1k_avg": 11.02,
           "cost_per_1k_range": [
             1.65,
             20.09
@@ -791,6 +795,7 @@ window.RANKINGS = {
             3
           ],
           "best_at": [],
+          "cost_per_1k_avg": 0.98,
           "cost_per_1k_range": [
             0.17,
             1.66
@@ -806,6 +811,7 @@ window.RANKINGS = {
             3
           ],
           "best_at": [],
+          "cost_per_1k_avg": 43.5,
           "cost_per_1k_range": [
             28.38,
             57.17
@@ -832,6 +838,7 @@ window.RANKINGS = {
           "best_at": [
             "CVSS Severity Scoring"
           ],
+          "cost_per_1k_avg": 29.9,
           "cost_per_1k_range": [
             9.27,
             50.52
@@ -847,6 +854,7 @@ window.RANKINGS = {
             2
           ],
           "best_at": [],
+          "cost_per_1k_avg": 4.76,
           "cost_per_1k_range": [
             1.9,
             7.62
@@ -864,6 +872,7 @@ window.RANKINGS = {
           "best_at": [
             "CVE\u2192CWE Mapping"
           ],
+          "cost_per_1k_avg": 17.69,
           "cost_per_1k_range": [
             14.08,
             21.3
@@ -879,6 +888,7 @@ window.RANKINGS = {
             2
           ],
           "best_at": [],
+          "cost_per_1k_avg": 2.39,
           "cost_per_1k_range": [
             1.48,
             3.3
@@ -894,6 +904,7 @@ window.RANKINGS = {
             2
           ],
           "best_at": [],
+          "cost_per_1k_avg": 0.53,
           "cost_per_1k_range": [
             0.23,
             0.82
@@ -909,6 +920,7 @@ window.RANKINGS = {
             2
           ],
           "best_at": [],
+          "cost_per_1k_avg": 31.8,
           "cost_per_1k_range": [
             22.85,
             40.75
@@ -934,6 +946,7 @@ window.RANKINGS = {
           "best_at": [
             "Malware Analysis"
           ],
+          "cost_per_1k_avg": 95.04,
           "cost_per_1k_range": [
             95.04,
             95.04
@@ -949,6 +962,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 6.25,
           "cost_per_1k_range": [
             6.25,
             6.25
@@ -964,6 +978,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 2.18,
           "cost_per_1k_range": [
             2.18,
             2.18
@@ -979,6 +994,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 70.69,
           "cost_per_1k_range": [
             70.69,
             70.69
@@ -994,6 +1010,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 25.97,
           "cost_per_1k_range": [
             25.97,
             25.97
@@ -1009,6 +1026,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 41.7,
           "cost_per_1k_range": [
             41.7,
             41.7
@@ -1034,6 +1052,7 @@ window.RANKINGS = {
           "best_at": [
             "Sigma Rule \u2192 ATT&CK"
           ],
+          "cost_per_1k_avg": 7.86,
           "cost_per_1k_range": [
             7.86,
             7.86
@@ -1049,6 +1068,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 34.33,
           "cost_per_1k_range": [
             34.33,
             34.33
@@ -1064,6 +1084,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 3.62,
           "cost_per_1k_range": [
             3.62,
             3.62
@@ -1079,6 +1100,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 0.82,
           "cost_per_1k_range": [
             0.82,
             0.82
@@ -1094,6 +1116,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 18.59,
           "cost_per_1k_range": [
             18.59,
             18.59
@@ -1109,6 +1132,7 @@ window.RANKINGS = {
             1
           ],
           "best_at": [],
+          "cost_per_1k_avg": 0.49,
           "cost_per_1k_range": [
             0.49,
             0.49

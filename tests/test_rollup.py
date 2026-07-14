@@ -95,3 +95,14 @@ close(normalize_score(1.274, {"direction": "lower", "worst": 10.0}), 87.3)   # C
 close(normalize_score(10.0, {"direction": "lower", "worst": 10.0}), 0.0)     # refused all
 close(normalize_score(0.0, {"direction": "lower", "worst": 10.0}), 100.0)    # perfect
 print("normalize_score tests pass ✓")
+
+# --- cost_per_1k_avg: equal weight per benchmark, same convention as score ----
+l5 = {"name": "A", "direction": "higher", "metric": "accuracy",
+      "models": [{"model": "X", "type": "open", "score": 0.5, "score_norm": 50.0, "cost_per_1k_usd": 10.0}]}
+l6 = {"name": "B", "direction": "higher", "metric": "accuracy",
+      "models": [{"model": "X", "type": "open", "score": 0.5, "score_norm": 50.0, "cost_per_1k_usd": 30.0}]}
+ru = build_rollups({"g": {"name": "G", "leaves": [("l5", l5), ("l6", l6)]}})
+x = ru["g"]["models"][0]
+close(x["cost_per_1k_avg"], 20.0)
+assert x["cost_per_1k_range"] == [10.0, 30.0]
+print("cost_per_1k_avg tests pass ✓")
