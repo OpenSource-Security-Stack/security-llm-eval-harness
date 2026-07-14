@@ -212,11 +212,33 @@ def cti_prompt(tc):
 # ---------------------------------------------------------------------------
 # Cached-results import (the merged v0 runs) -> canonical qids across models
 # ---------------------------------------------------------------------------
+def _overlay_newer(task_id, base):
+    """Overlay non-merged run files onto the curated merged7 base.
+
+    A file record only lands where the base has NO record or an error record —
+    mirrors the runner's resume rule (it only re-runs missing/errored pairs),
+    and keeps stale pre-merged7 raw files from overwriting curated data."""
+    merged = {(r["model"], r["_qid"]): r for r in base}
+    for path in sorted(config.RESULTS.glob(f"{task_id}_n*_*.jsonl")):
+        if "merged" in path.name:
+            continue
+        for line in open(path):
+            if line.strip():
+                r = json.loads(line)
+                if "qkey" not in r:                 # pre-merged7 legacy raw file
+                    continue
+                r["_qid"] = r["qkey"]
+                k = (r["model"], r["_qid"])
+                if k not in merged or "error" in merged[k]:
+                    merged[k] = r
+    return list(merged.values())
+
+
 def cti_load_results():
     recs = [json.loads(l) for l in open(config.RESULTS / "cti_n30_merged7.jsonl") if l.strip()]
     for r in recs:
         r["_qid"] = r["qkey"]                       # qkey is stable across models
-    return recs
+    return _overlay_newer("cti", recs)
 
 
 def mal_load_results():
@@ -236,7 +258,7 @@ def mal_load_results():
         else:                                       # older family
             r["_qid"] = composite[(r["sha256"], norm_gold(r["correct_options"]),
                                    r["topic"], r["difficulty"])]
-    return recs
+    return _overlay_newer("malware", recs)
 
 
 # ---------------------------------------------------------------------------

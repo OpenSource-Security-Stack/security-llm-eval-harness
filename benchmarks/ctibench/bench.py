@@ -223,3 +223,129 @@ CVSS = Task(
     prompt=prompt, parse=vsp_parse, score=vsp_score,
     load_results=vsp_load_results,
 )
+
+
+# ---------------------------------------------------------------------------
+# CTIBench-MCQ — CTI knowledge, 2,500 four-option questions.
+# Prompt (verbatim): "The last line of your answer should contain only the
+# single letter corresponding to the best option."
+# ---------------------------------------------------------------------------
+MCQ_DATA = config.REPO / "benchmarks/ctibench/data/cti-mcq.tsv"
+
+
+def mcq_load():
+    if not MCQ_DATA.exists():
+        raise FileNotFoundError(
+            f"{MCQ_DATA} missing — fetch it:\n  curl -sL -o {MCQ_DATA} "
+            "https://huggingface.co/datasets/AI4Sec/cti-bench/resolve/main/cti-mcq.tsv")
+    with open(MCQ_DATA) as f:
+        return list(csv.DictReader(f, delimiter="\t"))
+
+
+def mcq_key(tc):
+    import hashlib
+    return "mcq-" + hashlib.sha1(tc["Question"].encode()).hexdigest()[:12]
+
+
+def mcq_strata(tc):
+    return tc["GT"].strip().upper()      # balance across answer letters (A/B/C/D)
+
+
+def mcq_parse(text):
+    """Letter on the last non-empty line; fallback: last standalone A-D."""
+    if not text:
+        return None
+    for line in reversed(text.strip().splitlines()):
+        line = line.strip()
+        if line:
+            m = re.fullmatch(r"\**\(?([A-Da-d])\)?[\.\**]*", line)
+            if m:
+                return m.group(1).upper()
+            break
+    hits = re.findall(r"\b([A-D])\b", text)
+    return hits[-1] if hits else None
+
+
+MCQ = Task(
+    id="cti_mcq", name="CTI Knowledge (MCQ)", suite="CTIBench (MCQ)",
+    domain="cti", domain_name="Threat Intelligence",
+    benchmark_line="CTIBench-MCQ · CTI knowledge, 4-option MCQ · metric: accuracy",
+    metric={"id": "accuracy", "direction": "higher", "aggregate": "mean"},
+    load=mcq_load, key=mcq_key, strata=mcq_strata,
+    gold=lambda tc: tc["GT"].strip().upper(),
+    prompt=prompt, parse=mcq_parse, score=score,
+    load_results=lambda: _merge_results("cti_mcq"),
+)
+
+
+# ---------------------------------------------------------------------------
+# CTIBench-ATE — extract MITRE ATT&CK technique IDs from malware/tool
+# descriptions. 60 rows (FULL set — run with --n 60). Per-item F1 over
+# technique-ID sets, sub-techniques normalized to parents (GT is parent-level).
+# ---------------------------------------------------------------------------
+ATE_DATA = config.REPO / "benchmarks/ctibench/data/cti-ate.tsv"
+
+_TID = re.compile(r"T\d{4}(?:\.\d{3})?")
+
+
+def ate_load():
+    if not ATE_DATA.exists():
+        raise FileNotFoundError(
+            f"{ATE_DATA} missing — fetch it:\n  curl -sL -o {ATE_DATA} "
+            "https://huggingface.co/datasets/AI4Sec/cti-bench/resolve/main/cti-ate.tsv")
+    with open(ATE_DATA) as f:
+        return list(csv.DictReader(f, delimiter="\t"))
+
+
+def _tid_set(text):
+    """Technique IDs in text, sub-techniques folded to parents (T1071.001->T1071)."""
+    return sorted({t.split(".")[0] for t in _TID.findall(text or "")})
+
+
+def ate_parse(text):
+    """IDs from the last line that contains any; fallback: whole-text scan."""
+    if not text:
+        return None
+    for line in reversed(text.strip().splitlines()):
+        ids = _tid_set(line)
+        if ids:
+            return ids
+    ids = _tid_set(text)
+    return ids or None
+
+
+def ate_score(pred, gold_):
+    from harness.metrics import set_prf
+    d = set_prf(_tid_set(",".join(pred)) if pred else [], _tid_set(gold_))
+    return {"f1": d["f1"], "precision": d["precision"], "recall": d["recall"],
+            "exact": d["fp"] == 0 and d["fn"] == 0}
+
+
+ATE = Task(
+    id="cti_ate", name="ATT&CK Technique Extraction", suite="CTIBench (ATE)",
+    domain="cti", domain_name="Threat Intelligence",
+    benchmark_line="CTIBench-ATE · text → MITRE technique IDs · metric: mean F1 · full set (60)",
+    metric={"id": "f1", "direction": "higher", "aggregate": "mean"},
+    load=ate_load, key=lambda tc: tc["URL"].rstrip("/").rsplit("/", 1)[-1],
+    strata=lambda tc: tc["Platform"],
+    gold=lambda tc: tc["GT"],
+    prompt=prompt, parse=ate_parse, score=ate_score,
+    load_results=lambda: _merge_results("cti_ate"),
+)
+
+
+def _merge_results(task_id):
+    """Merge every run for task_id; last write wins per (model, qid)."""
+    files = sorted(config.RESULTS.glob(f"{task_id}_n*_*.jsonl"))
+    if not files:
+        raise FileNotFoundError(f"no {task_id} results yet — run scripts/run.py --task {task_id}")
+    merged = {}
+    for path in files:
+        for line in open(path):
+            if line.strip():
+                r = json.loads(line)
+                merged[(r["model"], r["qkey"])] = r
+    recs = list(merged.values())
+    for r in recs:
+        r["_qid"] = r["qkey"]
+    return recs

@@ -86,7 +86,7 @@
           "benchmark": "CTIBench-MCQ",
           "metric": "accuracy",
           "run": "api",
-          "status": "queued",
+          "status": "live",
           "source": {
             "repo": "https://github.com/xashru/cti-bench",
             "data": "https://huggingface.co/datasets/AI4Sec/cti-bench",
@@ -100,7 +100,7 @@
           "benchmark": "CTIBench-ATE",
           "metric": "hierarchical_f1",
           "run": "api",
-          "status": "queued",
+          "status": "live",
           "source": {
             "repo": "https://github.com/xashru/cti-bench",
             "data": "https://huggingface.co/datasets/AI4Sec/cti-bench",
@@ -291,7 +291,7 @@
           "benchmark": "Sigma→ATT&CK (SigmaHQ-derived)",
           "metric": "hierarchical_f1",
           "run": "api",
-          "status": "queued",
+          "status": "live",
           "source": {
             "repo": "https://github.com/SigmaHQ/sigma",
             "license": "DRL 1.1 (Detection Rule License)",

@@ -1,0 +1,74 @@
+[
+  {
+    "model": "gpt-5.5",
+    "n": 60,
+    "exact_pct": 10.0,
+    "mean_jaccard": 0.758,
+    "parse_pct": 100.0,
+    "mean_latency": 51.66,
+    "mean_completion_tokens": 2979,
+    "cost_per_1k_questions_usd": 97.3157,
+    "cost_per_correct_usd": 0.973157,
+    "total_cost_usd": 5.83894
+  },
+  {
+    "model": "opus-4.8",
+    "n": 60,
+    "exact_pct": 10.0,
+    "mean_jaccard": 0.7613,
+    "parse_pct": 100.0,
+    "mean_latency": 11.23,
+    "mean_completion_tokens": 886,
+    "cost_per_1k_questions_usd": 36.298,
+    "cost_per_correct_usd": 0.36298,
+    "total_cost_usd": 2.17788
+  },
+  {
+    "model": "minimax-m3",
+    "n": 60,
+    "exact_pct": 8.3,
+    "mean_jaccard": 0.7383,
+    "parse_pct": 98.3,
+    "mean_latency": 25.16,
+    "mean_completion_tokens": 3036,
+    "cost_per_1k_questions_usd": 4.1479,
+    "cost_per_correct_usd": 0.049775,
+    "total_cost_usd": 0.248877
+  },
+  {
+    "model": "deepseek-v4",
+    "n": 60,
+    "exact_pct": 10.0,
+    "mean_jaccard": 0.7359,
+    "parse_pct": 100.0,
+    "mean_latency": 34.2,
+    "mean_completion_tokens": 2441,
+    "cost_per_1k_questions_usd": 11.3071,
+    "cost_per_correct_usd": 0.113071,
+    "total_cost_usd": 0.678424
+  },
+  {
+    "model": "glm-5.2",
+    "n": 60,
+    "exact_pct": 6.7,
+    "mean_jaccard": 0.4665,
+    "parse_pct": 60.0,
+    "mean_latency": 113.68,
+    "mean_completion_tokens": 12487,
+    "cost_per_1k_questions_usd": 57.168,
+    "cost_per_correct_usd": 0.857521,
+    "total_cost_usd": 3.430082
+  },
+  {
+    "model": "gpt-oss-120b",
+    "n": 60,
+    "exact_pct": 8.3,
+    "mean_jaccard": 0.6653,
+    "parse_pct": 100.0,
+    "mean_latency": 20.03,
+    "mean_completion_tokens": 1434,
+    "cost_per_1k_questions_usd": 1.1077,
+    "cost_per_correct_usd": 0.013293,
+    "total_cost_usd": 0.066463
+  }
+]

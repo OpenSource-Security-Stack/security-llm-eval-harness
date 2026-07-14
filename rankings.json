@@ -1,66 +1,100 @@
 {
   "meta": {
     "suite": "multiple suites",
-    "n": 30,
+    "n": 50,
     "generated": "unset (stamp on publish)"
   },
   "domains": {
     "cti": {
       "name": "Threat-Intel Reasoning",
       "benchmark": "CyberSOCEval (Meta \u00d7 CrowdStrike) \u00b7 CTI task \u00b7 metric: Jaccard",
+      "domain": "cti",
+      "domain_name": "Threat Intelligence",
       "metric": "jaccard",
       "direction": "higher",
       "models": [
         {
           "model": "Claude Opus 4.8",
           "type": "closed",
-          "score": 0.75,
-          "exact_pct": 66.7,
+          "score": 0.803,
+          "exact_pct": 72.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 75.69,
-          "latency_s": 2.2,
+          "cost_per_1k_usd": 80.91,
+          "latency_s": 2.5,
+          "n": 50,
           "ci": [
-            0.617,
-            0.878
+            0.707,
+            0.89
           ]
         },
         {
-          "model": "MiniMax M3",
+          "model": "DeepSeek-V4-Pro",
           "type": "open",
-          "score": 0.722,
-          "exact_pct": 60.0,
-          "answered_pct": 100,
-          "cost_per_1k_usd": 3.51,
-          "latency_s": 9.9,
+          "score": 0.767,
+          "exact_pct": 68.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 20.09,
+          "latency_s": 16.7,
+          "n": 50,
           "ci": [
-            0.594,
-            0.85
-          ]
-        },
-        {
-          "model": "GLM-5.2",
-          "type": "open",
-          "score": 0.722,
-          "exact_pct": 66.7,
-          "answered_pct": 90,
-          "cost_per_1k_usd": 29.99,
-          "latency_s": 26.0,
-          "ci": [
-            0.567,
-            0.867
+            0.667,
+            0.863
           ]
         },
         {
           "model": "GPT-5.5",
           "type": "closed",
-          "score": 0.7,
-          "exact_pct": 60.0,
+          "score": 0.76,
+          "exact_pct": 66.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 53.85,
-          "latency_s": 6.0,
+          "cost_per_1k_usd": 56.48,
+          "latency_s": 6.1,
+          "n": 50,
           "ci": [
-            0.561,
-            0.839
+            0.66,
+            0.857
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.743,
+          "exact_pct": 62.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 3.64,
+          "latency_s": 8.4,
+          "n": 50,
+          "ci": [
+            0.647,
+            0.837
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.743,
+          "exact_pct": 68.0,
+          "answered_pct": 92,
+          "cost_per_1k_usd": 28.38,
+          "latency_s": 39.8,
+          "n": 50,
+          "ci": [
+            0.633,
+            0.847
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.743,
+          "exact_pct": 64.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 1.66,
+          "latency_s": 3.2,
+          "n": 50,
+          "ci": [
+            0.637,
+            0.84
           ]
         },
         {
@@ -71,22 +105,198 @@
           "answered_pct": 100,
           "cost_per_1k_usd": 1.95,
           "latency_s": 1.4,
+          "n": 30,
           "ci": [
             0.546,
             0.817
+          ]
+        }
+      ]
+    },
+    "cti_ate": {
+      "name": "ATT&CK Technique Extraction",
+      "benchmark": "CTIBench-ATE \u00b7 text \u2192 MITRE technique IDs \u00b7 metric: mean F1 \u00b7 full set (60)",
+      "domain": "cti",
+      "domain_name": "Threat Intelligence",
+      "metric": "f1",
+      "direction": "higher",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.761,
+          "exact_pct": 10.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 36.3,
+          "latency_s": 11.2,
+          "n": 60,
+          "ci": [
+            0.713,
+            0.805
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.758,
+          "exact_pct": 10.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 97.32,
+          "latency_s": 51.7,
+          "n": 60,
+          "ci": [
+            0.706,
+            0.804
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.738,
+          "exact_pct": 8.3,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 4.15,
+          "latency_s": 25.2,
+          "n": 60,
+          "ci": [
+            0.684,
+            0.789
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.736,
+          "exact_pct": 10.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 11.31,
+          "latency_s": 34.2,
+          "n": 60,
+          "ci": [
+            0.688,
+            0.781
           ]
         },
         {
           "model": "gpt-oss-120b",
           "type": "open",
-          "score": 0.672,
-          "exact_pct": 56.7,
-          "answered_pct": 97,
-          "cost_per_1k_usd": 1.6,
-          "latency_s": 2.8,
+          "score": 0.665,
+          "exact_pct": 8.3,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 1.11,
+          "latency_s": 20.0,
+          "n": 60,
           "ci": [
-            0.528,
-            0.811
+            0.601,
+            0.726
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.467,
+          "exact_pct": 6.7,
+          "answered_pct": 60,
+          "cost_per_1k_usd": 57.17,
+          "latency_s": 113.7,
+          "n": 60,
+          "ci": [
+            0.364,
+            0.569
+          ]
+        }
+      ]
+    },
+    "cti_mcq": {
+      "name": "CTI Knowledge (MCQ)",
+      "benchmark": "CTIBench-MCQ \u00b7 CTI knowledge, 4-option MCQ \u00b7 metric: accuracy",
+      "domain": "cti",
+      "domain_name": "Threat Intelligence",
+      "metric": "accuracy",
+      "direction": "higher",
+      "models": [
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.9,
+          "exact_pct": 90.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 10.23,
+          "latency_s": 7.1,
+          "n": 50,
+          "ci": [
+            0.82,
+            0.98
+          ]
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.88,
+          "exact_pct": 88.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 1.7,
+          "latency_s": 1.6,
+          "n": 50,
+          "ci": [
+            0.78,
+            0.96
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.84,
+          "exact_pct": 84.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.66,
+          "latency_s": 4.7,
+          "n": 50,
+          "ci": [
+            0.74,
+            0.94
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.78,
+          "exact_pct": 78.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 1.65,
+          "latency_s": 6.9,
+          "n": 50,
+          "ci": [
+            0.66,
+            0.88
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.7,
+          "exact_pct": 70.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.17,
+          "latency_s": 2.8,
+          "n": 50,
+          "ci": [
+            0.58,
+            0.82
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.5,
+          "exact_pct": 50.0,
+          "answered_pct": 60,
+          "cost_per_1k_usd": 44.94,
+          "latency_s": 52.7,
+          "n": 50,
+          "ci": [
+            0.36,
+            0.64
           ]
         }
       ]
@@ -94,85 +304,93 @@
     "cve_cwe": {
       "name": "CVE\u2192CWE Mapping",
       "benchmark": "CTIBench-RCM \u00b7 CVE root-cause \u2192 CWE \u00b7 metric: accuracy",
+      "domain": "vulnmgmt",
+      "domain_name": "Vulnerability Management",
       "metric": "accuracy",
       "direction": "higher",
       "models": [
         {
           "model": "Claude Opus 4.8",
           "type": "closed",
-          "score": 0.567,
-          "exact_pct": 56.7,
+          "score": 0.62,
+          "exact_pct": 62.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 13.83,
-          "latency_s": 7.9,
+          "cost_per_1k_usd": 14.08,
+          "latency_s": 8.0,
+          "n": 50,
           "ci": [
-            0.4,
-            0.733
-          ]
-        },
-        {
-          "model": "DeepSeek-V4-Pro",
-          "type": "open",
-          "score": 0.567,
-          "exact_pct": 56.7,
-          "answered_pct": 100,
-          "cost_per_1k_usd": 1.83,
-          "latency_s": 10.3,
-          "ci": [
-            0.4,
-            0.733
+            0.48,
+            0.76
           ]
         },
         {
           "model": "GPT-5.5",
           "type": "closed",
-          "score": 0.533,
-          "exact_pct": 53.3,
+          "score": 0.6,
+          "exact_pct": 60.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 8.59,
-          "latency_s": 5.7,
+          "cost_per_1k_usd": 9.27,
+          "latency_s": 6.6,
+          "n": 50,
           "ci": [
-            0.367,
-            0.7
+            0.46,
+            0.74
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.6,
+          "exact_pct": 60.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 1.9,
+          "latency_s": 9.6,
+          "n": 50,
+          "ci": [
+            0.46,
+            0.74
           ]
         },
         {
           "model": "MiniMax M3",
           "type": "open",
-          "score": 0.5,
-          "exact_pct": 50.0,
-          "answered_pct": 97,
-          "cost_per_1k_usd": 1.9,
-          "latency_s": 12.6,
+          "score": 0.52,
+          "exact_pct": 52.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 1.48,
+          "latency_s": 12.8,
+          "n": 50,
           "ci": [
-            0.333,
-            0.667
+            0.38,
+            0.66
           ]
         },
         {
           "model": "GLM-5.2",
           "type": "open",
-          "score": 0.4,
-          "exact_pct": 40.0,
-          "answered_pct": 80,
-          "cost_per_1k_usd": 25.01,
-          "latency_s": 24.9,
+          "score": 0.5,
+          "exact_pct": 50.0,
+          "answered_pct": 82,
+          "cost_per_1k_usd": 22.85,
+          "latency_s": 33.4,
+          "n": 50,
           "ci": [
-            0.233,
-            0.567
+            0.36,
+            0.64
           ]
         },
         {
           "model": "gpt-oss-120b",
           "type": "open",
-          "score": 0.4,
-          "exact_pct": 40.0,
+          "score": 0.46,
+          "exact_pct": 46.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 0.19,
-          "latency_s": 3.2,
+          "cost_per_1k_usd": 0.23,
+          "latency_s": 4.0,
+          "n": 50,
           "ci": [
-            0.233,
-            0.567
+            0.32,
+            0.6
           ]
         }
       ]
@@ -180,85 +398,93 @@
     "cvss": {
       "name": "CVSS Severity Scoring",
       "benchmark": "CTIBench-VSP \u00b7 CVE description \u2192 CVSS v3.1 \u00b7 metric: MAE (lower is better)",
+      "domain": "vulnmgmt",
+      "domain_name": "Vulnerability Management",
       "metric": "mae",
       "direction": "lower",
       "models": [
         {
           "model": "GPT-5.5",
           "type": "closed",
-          "score": 1.157,
-          "exact_pct": 43.3,
+          "score": 1.274,
+          "exact_pct": 34.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 48.52,
-          "latency_s": 33.7,
+          "cost_per_1k_usd": 50.52,
+          "latency_s": 34.9,
+          "n": 50,
           "ci": [
-            0.677,
-            1.667
+            0.908,
+            1.68
           ]
         },
         {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
-          "score": 1.623,
-          "exact_pct": 36.7,
+          "score": 1.338,
+          "exact_pct": 34.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 7.3,
-          "latency_s": 31.2,
+          "cost_per_1k_usd": 7.62,
+          "latency_s": 176.0,
+          "n": 50,
           "ci": [
-            1.057,
-            2.197
-          ]
-        },
-        {
-          "model": "gpt-oss-120b",
-          "type": "open",
-          "score": 1.7,
-          "exact_pct": 16.7,
-          "answered_pct": 100,
-          "cost_per_1k_usd": 0.77,
-          "latency_s": 20.5,
-          "ci": [
-            1.103,
-            2.377
+            0.946,
+            1.756
           ]
         },
         {
           "model": "Claude Opus 4.8",
           "type": "closed",
-          "score": 1.74,
-          "exact_pct": 26.7,
+          "score": 1.704,
+          "exact_pct": 28.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 20.65,
-          "latency_s": 9.1,
+          "cost_per_1k_usd": 21.3,
+          "latency_s": 9.4,
+          "n": 50,
           "ci": [
-            1.163,
-            2.343
+            1.26,
+            2.17
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 1.72,
+          "exact_pct": 16.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.82,
+          "latency_s": 18.8,
+          "n": 50,
+          "ci": [
+            1.284,
+            2.192
           ]
         },
         {
           "model": "MiniMax M3",
           "type": "open",
-          "score": 1.957,
-          "exact_pct": 23.3,
-          "answered_pct": 97,
-          "cost_per_1k_usd": 3.54,
-          "latency_s": 14.4,
+          "score": 1.758,
+          "exact_pct": 22.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 3.3,
+          "latency_s": 42.6,
+          "n": 50,
           "ci": [
-            1.217,
-            2.817
+            1.234,
+            2.35
           ]
         },
         {
           "model": "GLM-5.2",
           "type": "open",
-          "score": 5.107,
+          "score": 4.272,
           "exact_pct": 20.0,
-          "answered_pct": 57,
-          "cost_per_1k_usd": 53.44,
-          "latency_s": 107.9,
+          "answered_pct": 66,
+          "cost_per_1k_usd": 40.75,
+          "latency_s": 263.5,
+          "n": 50,
           "ci": [
-            3.52,
-            6.707
+            3.114,
+            5.438
           ]
         }
       ]
@@ -266,59 +492,79 @@
     "malware": {
       "name": "Malware Analysis",
       "benchmark": "CyberSOCEval (Meta \u00d7 CrowdStrike) \u00b7 malware task \u00b7 metric: Jaccard",
+      "domain": "malware",
+      "domain_name": "Malware Analysis",
       "metric": "jaccard",
       "direction": "higher",
       "models": [
         {
           "model": "Claude Opus 4.8",
           "type": "closed",
-          "score": 0.601,
+          "score": 0.577,
           "exact_pct": 30.0,
           "answered_pct": 100,
-          "cost_per_1k_usd": 98.48,
-          "latency_s": 2.5,
+          "cost_per_1k_usd": 95.04,
+          "latency_s": 2.8,
+          "n": 50,
           "ci": [
-            0.479,
-            0.719
-          ]
-        },
-        {
-          "model": "GPT-5.5",
-          "type": "closed",
-          "score": 0.582,
-          "exact_pct": 30.0,
-          "answered_pct": 97,
-          "cost_per_1k_usd": 74.3,
-          "latency_s": 8.2,
-          "ci": [
-            0.458,
-            0.705
-          ]
-        },
-        {
-          "model": "gpt-oss-120b",
-          "type": "open",
-          "score": 0.542,
-          "exact_pct": 23.3,
-          "answered_pct": 93,
-          "cost_per_1k_usd": 2.33,
-          "latency_s": 6.5,
-          "ci": [
-            0.416,
-            0.669
+            0.477,
+            0.678
           ]
         },
         {
           "model": "MiniMax M3",
           "type": "open",
-          "score": 0.527,
-          "exact_pct": 23.3,
-          "answered_pct": 87,
-          "cost_per_1k_usd": 7.59,
-          "latency_s": 18.8,
+          "score": 0.539,
+          "exact_pct": 26.0,
+          "answered_pct": 92,
+          "cost_per_1k_usd": 6.25,
+          "latency_s": 13.8,
+          "n": 50,
           "ci": [
-            0.393,
-            0.654
+            0.436,
+            0.641
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.53,
+          "exact_pct": 24.0,
+          "answered_pct": 96,
+          "cost_per_1k_usd": 2.18,
+          "latency_s": 6.5,
+          "n": 50,
+          "ci": [
+            0.431,
+            0.632
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.528,
+          "exact_pct": 26.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 70.69,
+          "latency_s": 7.3,
+          "n": 50,
+          "ci": [
+            0.426,
+            0.63
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.524,
+          "exact_pct": 26.0,
+          "answered_pct": 94,
+          "cost_per_1k_usd": 25.97,
+          "latency_s": 18.0,
+          "n": 50,
+          "ci": [
+            0.422,
+            0.628
           ]
         },
         {
@@ -329,6 +575,7 @@
           "answered_pct": 93,
           "cost_per_1k_usd": 2.73,
           "latency_s": 1.6,
+          "n": 30,
           "ci": [
             0.386,
             0.647
@@ -337,20 +584,228 @@
         {
           "model": "GLM-5.2",
           "type": "open",
-          "score": 0.445,
-          "exact_pct": 16.7,
-          "answered_pct": 80,
-          "cost_per_1k_usd": 45.1,
-          "latency_s": 31.7,
+          "score": 0.452,
+          "exact_pct": 20.0,
+          "answered_pct": 82,
+          "cost_per_1k_usd": 41.7,
+          "latency_s": 35.1,
+          "n": 50,
+          "ci": [
+            0.35,
+            0.56
+          ]
+        }
+      ]
+    },
+    "sigma_attack": {
+      "name": "Sigma Rule \u2192 ATT&CK",
+      "benchmark": "SigmaHQ rules (tags stripped) \u2192 technique IDs \u00b7 metric: mean F1",
+      "domain": "deteng",
+      "domain_name": "Detection Engineering",
+      "metric": "f1",
+      "direction": "higher",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.577,
+          "exact_pct": 42.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 7.86,
+          "latency_s": 4.0,
+          "n": 50,
+          "ci": [
+            0.452,
+            0.693
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.575,
+          "exact_pct": 46.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 34.33,
+          "latency_s": 23.6,
+          "n": 50,
+          "ci": [
+            0.448,
+            0.695
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.526,
+          "exact_pct": 40.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 3.62,
+          "latency_s": 29.2,
+          "n": 50,
+          "ci": [
+            0.397,
+            0.649
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.505,
+          "exact_pct": 42.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.82,
+          "latency_s": 5.7,
+          "n": 50,
+          "ci": [
+            0.375,
+            0.632
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.459,
+          "exact_pct": 36.0,
+          "answered_pct": 86,
+          "cost_per_1k_usd": 18.59,
+          "latency_s": 202.5,
+          "n": 50,
+          "ci": [
+            0.333,
+            0.584
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.438,
+          "exact_pct": 30.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.49,
+          "latency_s": 15.5,
+          "n": 50,
           "ci": [
             0.318,
-            0.577
+            0.56
           ]
         }
       ]
     }
   },
   "rollups": {
+    "cti": {
+      "name": "Threat Intelligence",
+      "leaves": [
+        "cti",
+        "cti_ate",
+        "cti_mcq"
+      ],
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "win_rate": 0.933,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [
+            "Threat-Intel Reasoning",
+            "ATT&CK Technique Extraction"
+          ],
+          "cost_per_1k_range": [
+            1.7,
+            80.91
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "win_rate": 0.822,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [
+            "CTI Knowledge (MCQ)"
+          ],
+          "cost_per_1k_range": [
+            10.23,
+            97.32
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "win_rate": 0.544,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            1.65,
+            20.09
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "win_rate": 0.511,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            0.66,
+            4.15
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "win_rate": 0.244,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            0.17,
+            1.66
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "win_rate": 0.111,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            28.38,
+            57.17
+          ]
+        },
+        {
+          "model": "Qwen3-235B",
+          "type": "open",
+          "win_rate": 0.0,
+          "coverage": [
+            1,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            1.95,
+            1.95
+          ]
+        }
+      ]
+    },
     "vulnmgmt": {
       "name": "Vulnerability Management",
       "leaves": [
@@ -359,25 +814,9 @@
       ],
       "models": [
         {
-          "model": "DeepSeek-V4-Pro",
-          "type": "open",
-          "win_rate": 0.85,
-          "coverage": [
-            2,
-            2
-          ],
-          "best_at": [
-            "CVE\u2192CWE Mapping"
-          ],
-          "cost_per_1k_range": [
-            1.83,
-            7.3
-          ]
-        },
-        {
           "model": "GPT-5.5",
           "type": "closed",
-          "win_rate": 0.8,
+          "win_rate": 0.85,
           "coverage": [
             2,
             2
@@ -386,14 +825,14 @@
             "CVSS Severity Scoring"
           ],
           "cost_per_1k_range": [
-            8.59,
-            48.52
+            9.27,
+            50.52
           ]
         },
         {
           "model": "Claude Opus 4.8",
           "type": "closed",
-          "win_rate": 0.65,
+          "win_rate": 0.8,
           "coverage": [
             2,
             2
@@ -402,22 +841,22 @@
             "CVE\u2192CWE Mapping"
           ],
           "cost_per_1k_range": [
-            13.83,
-            20.65
+            14.08,
+            21.3
           ]
         },
         {
-          "model": "gpt-oss-120b",
+          "model": "DeepSeek-V4-Pro",
           "type": "open",
-          "win_rate": 0.35,
+          "win_rate": 0.75,
           "coverage": [
             2,
             2
           ],
           "best_at": [],
           "cost_per_1k_range": [
-            0.19,
-            0.77
+            1.9,
+            7.62
           ]
         },
         {
@@ -430,22 +869,36 @@
           ],
           "best_at": [],
           "cost_per_1k_range": [
-            1.9,
-            3.54
+            1.48,
+            3.3
           ]
         },
         {
-          "model": "GLM-5.2",
+          "model": "gpt-oss-120b",
           "type": "open",
-          "win_rate": 0.05,
+          "win_rate": 0.2,
           "coverage": [
             2,
             2
           ],
           "best_at": [],
           "cost_per_1k_range": [
-            25.01,
-            53.44
+            0.23,
+            0.82
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "win_rate": 0.1,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_range": [
+            22.85,
+            40.75
           ]
         }
       ]

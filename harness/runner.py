@@ -63,39 +63,69 @@ def score_one(model_key, task, tc, prompt):
     return rec
 
 
+def _done_index(task):
+    """(model, qid) pairs already answered in results/ — used to skip work on
+    resume/expansion. Records that errored (query error) are NOT counted done,
+    so they get retried; parse failures ARE done (model behavior, not infra)."""
+    if not task.load_results:
+        return set()
+    try:
+        recs = task.load_results()
+    except FileNotFoundError:
+        return set()
+    return {(r["model"], r["_qid"]) for r in recs if "error" not in r}
+
+
 def run(task, models, n=30, workers=8):
-    """Run a Task against a model roster; write raw jsonl + summary json."""
+    """Run a Task against a model roster; write raw jsonl + summary json.
+
+    Resumable: (model, question) pairs that already have a non-error record in
+    results/ are skipped, and fresh records are written INCREMENTALLY — a
+    crashed run loses at most the in-flight calls, and rerunning the same
+    command finishes the remainder. Subsets are nested (deterministic
+    round-robin), so raising --n only pays for the new questions."""
     questions = task.load()
     subset = select_subset(questions, n, task.key, task.strata)
+    done_idx = _done_index(task)
     print(f"Task: {task.id}  ({task.name})")
     print(f"Questions: {len(subset)}  |  by strata: {dict(Counter(task.strata(q) for q in subset))}")
     print(f"Models: {models}")
     print("Prices ($/1M in/out): " +
           ", ".join(f"{m}={PRICES[m]['input']}/{PRICES[m]['output']}" for m in models) + "\n")
 
-    prompts = {task.key(q): task.prompt(q) for q in subset}
-    jobs = [(mk, tc, prompts[task.key(tc)]) for mk in models for tc in subset]
-
-    records, done = [], 0
-    with cf.ThreadPoolExecutor(max_workers=workers) as ex:
-        futs = {ex.submit(score_one, mk, task, tc, p): mk for mk, tc, p in jobs}
-        for fut in cf.as_completed(futs):
-            records.append(fut.result())
-            done += 1
-            print(f"\r  {done}/{len(jobs)} calls done", end="", flush=True)
-    print()
+    jobs = [(mk, tc) for mk in models for tc in subset
+            if (mk, task.key(tc)) not in done_idx]
+    skipped = len(models) * len(subset) - len(jobs)
+    if skipped:
+        print(f"resume: {skipped} (model, question) pairs already answered — skipped")
+    if not jobs:
+        print("nothing to do — all pairs answered")
+        return []
+    needed = {task.key(tc) for _, tc in jobs}
+    prompts = {k: task.prompt(q) for q in subset if (k := task.key(q)) in needed}
 
     config.RESULTS.mkdir(exist_ok=True)
     ts = int(time.time())
     out = config.RESULTS / f"{task.id}_n{n}_{ts}.jsonl"
-    with open(out, "w") as f:
-        for r in records:
+    records, done = [], 0
+    with open(out, "w") as f, cf.ThreadPoolExecutor(max_workers=workers) as ex:
+        futs = {ex.submit(score_one, mk, task, tc, prompts[task.key(tc)]): mk
+                for mk, tc in jobs}
+        for fut in cf.as_completed(futs):
+            r = fut.result()
+            records.append(r)
             f.write(json.dumps(r) + "\n")
+            f.flush()                       # checkpoint: every record lands on disk
+            done += 1
+            print(f"\r  {done}/{len(jobs)} calls done", end="", flush=True)
+    print()
 
     summary = summarize(records, models)
     spath = config.RESULTS / f"summary_{task.id}_n{n}_{ts}.json"
     spath.write_text(json.dumps(summary, indent=2))
-    print(f"\nRaw:     {out}")
+    print(f"\n(summary covers this run's {len(records)} fresh records only — "
+          f"export merges all runs)")
+    print(f"Raw:     {out}")
     print(f"Summary: {spath}")
     return records
 

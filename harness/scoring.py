@@ -72,33 +72,38 @@ def _series_stats(answers_by_q, correct, task):
     return ex, _agg_fn(task)(items, task.metric["id"]), ans
 
 
+def attempted(byq, correct, model):
+    """The questions this model actually has records for. Stats are computed
+    over this set, NOT the domain union — a legacy model that predates newer
+    questions (e.g. a retired endpoint) is scored on what it attempted, with
+    the per-row `n` disclosing the smaller basis. Subsets are nested, so a
+    smaller n is always a prefix of the larger ones."""
+    return {qid: gold for qid, gold in correct.items() if model in byq[qid]}
+
+
 def single_stats(byq, correct, model, task):
+    corr = attempted(byq, correct, model)
     ans = {}
     cost = 0.0
     lats = []
-    for qid in correct:
-        m = byq[qid].get(model)
-        if m:
-            ans[qid] = (m["pred"], m["answered"])
-            cost += m["cost"]
-            if m["latency"]:
-                lats.append(m["latency"])
-        else:
-            ans[qid] = (None, False)
-    ex, mv, ap = _series_stats(ans, correct, task)
-    return {"exact": ex, "mean": mv, "answered": ap,
-            "cost_per_1k": cost / len(correct) * 1000,
+    for qid in corr:
+        m = byq[qid][model]
+        ans[qid] = (m["pred"], m["answered"])
+        cost += m["cost"]
+        if m["latency"]:
+            lats.append(m["latency"])
+    ex, mv, ap = _series_stats(ans, corr, task)
+    return {"exact": ex, "mean": mv, "answered": ap, "n": len(corr),
+            "cost_per_1k": cost / len(corr) * 1000 if corr else 0.0,
             "latency_s": sum(lats) / len(lats) if lats else 0.0}
 
 
 def per_question(byq, correct, model, task):
-    """Per-item score dicts for one model (unanswered/missing scored as None-pred).
+    """Per-item score dicts for one model over its attempted questions.
     The raw series behind the domain score — feeds the bootstrap CI."""
-    ans = {}
-    for qid in correct:
-        m = byq[qid].get(model)
-        ans[qid] = (m["pred"], m["answered"]) if m else (None, False)
-    items, _, _ = _score_items(ans, correct, task)
+    corr = attempted(byq, correct, model)
+    ans = {qid: (byq[qid][model]["pred"], byq[qid][model]["answered"]) for qid in corr}
+    items, _, _ = _score_items(ans, corr, task)
     return items
 
 

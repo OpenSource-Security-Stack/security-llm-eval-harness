@@ -4,15 +4,31 @@
   "title": "Security Router rankings.json",
   "description": "The contract between the eval harness (producer) and the leaderboard + router (consumers). The harness emits this; downstreams render or route on it.",
   "type": "object",
-  "required": ["meta", "domains"],
+  "required": [
+    "meta",
+    "domains"
+  ],
   "properties": {
     "meta": {
       "type": "object",
-      "required": ["suite", "n", "generated"],
+      "required": [
+        "suite",
+        "n",
+        "generated"
+      ],
       "properties": {
-        "suite": {"type": "string", "description": "Benchmark suite name"},
-        "n": {"type": "integer", "description": "Questions per task"},
-        "generated": {"type": "string", "description": "ISO date the rankings were produced"}
+        "suite": {
+          "type": "string",
+          "description": "Benchmark suite name"
+        },
+        "n": {
+          "type": "integer",
+          "description": "Questions per task"
+        },
+        "generated": {
+          "type": "string",
+          "description": "ISO date the rankings were produced"
+        }
       }
     },
     "rollups": {
@@ -20,23 +36,70 @@
       "description": "Optional per-domain win-rate summaries, present only for domains with >= 2 benchmark leaves. Keyed by taxonomy domain id (e.g. 'vulnmgmt').",
       "additionalProperties": {
         "type": "object",
-        "required": ["name", "leaves", "models"],
+        "required": [
+          "name",
+          "leaves",
+          "models"
+        ],
         "properties": {
-          "name": {"type": "string", "description": "Domain display name"},
-          "leaves": {"type": "array", "items": {"type": "string"}, "description": "Leaf ids (keys into domains) this rollup summarizes"},
+          "name": {
+            "type": "string",
+            "description": "Domain display name"
+          },
+          "leaves": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Leaf ids (keys into domains) this rollup summarizes"
+          },
           "models": {
             "type": "array",
             "description": "Sorted by win_rate desc.",
             "items": {
               "type": "object",
-              "required": ["model", "type", "win_rate", "coverage"],
+              "required": [
+                "model",
+                "type",
+                "win_rate",
+                "coverage"
+              ],
               "properties": {
-                "model": {"type": "string"},
-                "type": {"enum": ["open", "closed", "mixture"]},
-                "win_rate": {"type": "number", "description": "Mean fraction of competing models beaten, averaged over the leaves this model appears in (ties = 0.5, direction-aware). Label as 'beats X% of competing models, averaged across N benchmarks'."},
-                "coverage": {"type": "array", "items": {"type": "integer"}, "description": "[leaves_present, leaves_total] — show a badge when partial; win_rate is computed over present leaves only"},
-                "best_at": {"type": "array", "items": {"type": "string"}, "description": "Leaf display names where this model is (tied-)best"},
-                "cost_per_1k_range": {"type": "array", "items": {"type": "number"}, "description": "[min, max] cost_per_1k_usd across the model's leaves"}
+                "model": {
+                  "type": "string"
+                },
+                "type": {
+                  "enum": [
+                    "open",
+                    "closed",
+                    "mixture"
+                  ]
+                },
+                "win_rate": {
+                  "type": "number",
+                  "description": "Mean fraction of competing models beaten, averaged over the leaves this model appears in (ties = 0.5, direction-aware). Label as 'beats X% of competing models, averaged across N benchmarks'."
+                },
+                "coverage": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "description": "[leaves_present, leaves_total] — show a badge when partial; win_rate is computed over present leaves only"
+                },
+                "best_at": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Leaf display names where this model is (tied-)best"
+                },
+                "cost_per_1k_range": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "description": "[min, max] cost_per_1k_usd across the model's leaves"
+                }
               }
             }
           }
@@ -48,29 +111,90 @@
       "description": "Keyed by domain/task id (e.g. 'cti', 'malware').",
       "additionalProperties": {
         "type": "object",
-        "required": ["name", "benchmark", "metric", "models"],
+        "required": [
+          "name",
+          "benchmark",
+          "metric",
+          "models"
+        ],
         "properties": {
-          "name": {"type": "string"},
-          "benchmark": {"type": "string"},
-          "metric": {"type": "string", "description": "Primary quality metric id, e.g. 'jaccard'"},
-          "direction": {"enum": ["higher", "lower"], "description": "Whether a higher or lower score is better (e.g. MAE is 'lower'). Consumers must not assume 'higher'."},
-          "note": {"type": "string"},
+          "name": {
+            "type": "string"
+          },
+          "benchmark": {
+            "type": "string"
+          },
+          "metric": {
+            "type": "string",
+            "description": "Primary quality metric id, e.g. 'jaccard'"
+          },
+          "direction": {
+            "enum": [
+              "higher",
+              "lower"
+            ],
+            "description": "Whether a higher or lower score is better (e.g. MAE is 'lower'). Consumers must not assume 'higher'."
+          },
+          "note": {
+            "type": "string"
+          },
           "models": {
             "type": "array",
             "items": {
               "type": "object",
-              "required": ["model", "type", "score"],
+              "required": [
+                "model",
+                "type",
+                "score"
+              ],
               "properties": {
-                "model": {"type": "string"},
-                "type": {"enum": ["open", "closed", "mixture"]},
-                "score": {"type": "number", "description": "Primary metric value (higher = better)"},
-                "exact_pct": {"type": "number"},
-                "answered_pct": {"type": "number"},
-                "cost_per_1k_usd": {"type": "number"},
-                "latency_s": {"type": "number"},
-                "ci": {"type": "array", "items": {"type": "number"}, "description": "[low, high] confidence interval on score"}
+                "model": {
+                  "type": "string"
+                },
+                "type": {
+                  "enum": [
+                    "open",
+                    "closed",
+                    "mixture"
+                  ]
+                },
+                "score": {
+                  "type": "number",
+                  "description": "Primary metric value (higher = better)"
+                },
+                "exact_pct": {
+                  "type": "number"
+                },
+                "answered_pct": {
+                  "type": "number"
+                },
+                "cost_per_1k_usd": {
+                  "type": "number"
+                },
+                "latency_s": {
+                  "type": "number"
+                },
+                "ci": {
+                  "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
+                  "description": "[low, high] confidence interval on score"
+                },
+                "n": {
+                  "type": "integer",
+                  "description": "Questions this model was scored on (may be smaller than meta.n for legacy models; subsets are nested)"
+                }
               }
             }
+          },
+          "domain": {
+            "type": "string",
+            "description": "Parent taxonomy domain id (e.g. 'deteng') — leaves sharing it group into one domain tab"
+          },
+          "domain_name": {
+            "type": "string",
+            "description": "Parent domain display name (e.g. 'Detection Engineering') — the tab label"
           }
         }
       }

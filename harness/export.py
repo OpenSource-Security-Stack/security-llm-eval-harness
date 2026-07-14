@@ -38,7 +38,7 @@ def build_domain(task):
         rows.append({"model": DISPLAY.get(m, m), "type": "closed" if m in CLOSED else "open",
                      "score": round(s["mean"], 3), "exact_pct": round(s["exact"], 1),
                      "answered_pct": round(s["answered"]), "cost_per_1k_usd": round(s["cost_per_1k"], 2),
-                     "latency_s": round(s["latency_s"], 1),
+                     "latency_s": round(s["latency_s"], 1), "n": s["n"],
                      "ci": [round(ci[0], 3), round(ci[1], 3)]})
     pool = [m for m in MIX_POOL if m in present]
     if INCLUDE_MIXTURE and task.combine and len(pool) >= 2:
@@ -122,6 +122,8 @@ def export(tasks, out_dir=None):
         n_used = n
         suites.append(task.suite)
         domains[task.id] = {"name": task.name, "benchmark": task.benchmark_line,
+                            "domain": task.domain or task.id,
+                            "domain_name": task.domain_name or task.name,
                             "metric": task.metric["id"],
                             "direction": task.metric.get("direction", "higher"),
                             "models": rows}
