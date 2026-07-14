@@ -71,3 +71,14 @@ d = {m["model"]: m for m in ru["d"]["models"]}
 assert "T" in d["A"]["best_at"] and "T" in d["B"]["best_at"]
 
 print("all rollup tests pass ✓")
+
+# --- normalize_score (display Score 0-100) ------------------------------------
+from harness.export import normalize_score  # noqa: E402
+
+close(normalize_score(0.577, {"direction": "higher"}), 57.7)
+close(normalize_score(0.62, {"direction": "higher"}), 62.0)
+close(normalize_score(1.0, {"direction": "higher"}), 100.0)
+close(normalize_score(1.274, {"direction": "lower", "worst": 10.0}), 87.3)   # CVSS MAE
+close(normalize_score(10.0, {"direction": "lower", "worst": 10.0}), 0.0)     # refused all
+close(normalize_score(0.0, {"direction": "lower", "worst": 10.0}), 100.0)    # perfect
+print("normalize_score tests pass ✓")

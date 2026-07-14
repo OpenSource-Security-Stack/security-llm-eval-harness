@@ -218,7 +218,7 @@ CVSS = Task(
     id="cvss", name="CVSS Severity Scoring", suite="CTIBench (VSP)",
     domain="vulnmgmt", domain_name="Vulnerability Management",
     benchmark_line="CTIBench-VSP · CVE description → CVSS v3.1 · metric: MAE (lower is better)",
-    metric={"id": "mae", "direction": "lower", "aggregate": "mean"},
+    metric={"id": "mae", "direction": "lower", "aggregate": "mean", "worst": 10.0},
     load=vsp_load, key=key, strata=vsp_strata, gold=lambda tc: tc["GT"].strip().upper(),
     prompt=prompt, parse=vsp_parse, score=vsp_score,
     load_results=vsp_load_results,

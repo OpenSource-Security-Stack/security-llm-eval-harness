@@ -184,6 +184,10 @@
                 "n": {
                   "type": "integer",
                   "description": "Questions this model was scored on (may be smaller than meta.n for legacy models; subsets are nested)"
+                },
+                "score_norm": {
+                  "type": "number",
+                  "description": "Display score in [0,100], higher=better, monotone with `score` (lower-direction metrics inverted via metric worst-value). NOT comparable across leaves."
                 }
               }
             }

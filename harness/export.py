@@ -36,7 +36,9 @@ def build_domain(task):
         s = singles[m]
         ci = bootstrap_ci(per_question(byq, correct, m, task), task)
         rows.append({"model": DISPLAY.get(m, m), "type": "closed" if m in CLOSED else "open",
-                     "score": round(s["mean"], 3), "exact_pct": round(s["exact"], 1),
+                     "score": round(s["mean"], 3),
+                     "score_norm": normalize_score(s["mean"], task.metric),
+                     "exact_pct": round(s["exact"], 1),
                      "answered_pct": round(s["answered"]), "cost_per_1k_usd": round(s["cost_per_1k"], 2),
                      "latency_s": round(s["latency_s"], 1), "n": s["n"],
                      "ci": [round(ci[0], 3), round(ci[1], 3)]})
@@ -50,6 +52,22 @@ def build_domain(task):
     reverse = task.metric.get("direction", "higher") == "higher"
     rows.sort(key=lambda r: r["score"], reverse=reverse)
     return rows, len(correct)
+
+
+def normalize_score(score, metric):
+    """Primary metric -> Score in [0, 100], higher = better, monotone.
+
+    higher-direction metrics (jaccard/accuracy/f1/... in [0,1]): score * 100.
+    lower-direction metrics: (1 - score/worst) * 100, where metric['worst'] is
+    the worst possible value (= what a refusal scores, e.g. 10 for CVSS MAE).
+    100 = flawless, 0 = worst possible / refused everything. Display-only —
+    rankings are identical to the raw metric's; not comparable across leaves."""
+    if metric.get("direction", "higher") == "higher":
+        v = score * 100
+    else:
+        worst = metric["worst"]
+        v = (1 - score / worst) * 100
+    return round(max(0.0, min(100.0, v)), 1)
 
 
 def leaf_win_rates(rows, direction):
