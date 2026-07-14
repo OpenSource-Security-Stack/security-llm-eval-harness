@@ -110,4 +110,33 @@ items = [{"accuracy": 1.0}, {"accuracy": 0.0}] * 15
 lo, hi = bootstrap_ci(items, FakeTask())
 assert 0.2 < lo < 0.5 < hi < 0.8, (lo, hi)     # CI brackets the 0.5 mean
 
-print("all metric tests pass ✓")
+# --- CVSS v3.1 base score (ctibench plugin) — against NVD-published scores ----
+from benchmarks.ctibench.bench import cvss31_base_score, parse_cvss_vector, vsp_score  # noqa: E402
+
+known = [
+    ("CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H", 9.8),   # classic critical RCE
+    ("CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H", 5.5),   # CVE-2024-23848 (NVD)
+    ("CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N", 5.4),   # scope-changed XSS shape
+    ("CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N", 8.1),
+    ("CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:N", 0.0),   # no impact -> 0
+    ("CVSS:3.1/AV:P/AC:H/PR:H/UI:R/S:U/C:L/I:N/A:N", 1.6),   # near-floor
+]
+for vec, want in known:
+    got = cvss31_base_score(parse_cvss_vector(vec))
+    assert abs(got - want) < 1e-9, (vec, got, want)
+
+# vector parsing robustness: lowercase, embedded in prose, picks the LAST one
+m = parse_cvss_vector("I think cvss:3.1/av:n/ac:l/pr:n/ui:n/s:u/c:h/i:h/a:h fits.")
+assert m and m["AV"] == "N"
+assert parse_cvss_vector("no vector here") is None
+assert parse_cvss_vector("CVSS:3.1/AV:N/AC:L") is None       # incomplete -> None
+
+# vsp_score: identical vectors -> mae 0 + exact; None -> worst 10
+g = "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+assert vsp_score(g, g) == {"mae": 0.0, "exact": True}
+assert vsp_score(None, g) == {"mae": 10.0, "exact": False}
+s = vsp_score("CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H", g)   # 5.5 vs 9.8
+close(s["mae"], 4.3)
+assert s["exact"] is False
+
+print("all metric tests pass ✓ (incl. CVSS v3.1 calculator)")

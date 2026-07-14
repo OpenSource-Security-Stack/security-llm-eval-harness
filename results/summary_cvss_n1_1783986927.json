@@ -1,0 +1,14 @@
+[
+  {
+    "model": "gpt-oss-120b",
+    "n": 1,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.2,
+    "parse_pct": 100.0,
+    "mean_latency": 16.98,
+    "mean_completion_tokens": 1131,
+    "cost_per_1k_questions_usd": 0.739,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.000739
+  }
+]

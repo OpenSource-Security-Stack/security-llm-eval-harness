@@ -197,7 +197,7 @@
           "benchmark": "CTIBench-VSP",
           "metric": "mae",
           "run": "api",
-          "status": "queued",
+          "status": "live",
           "source": {
             "repo": "https://github.com/xashru/cti-bench",
             "data": "https://huggingface.co/datasets/AI4Sec/cti-bench",

@@ -67,7 +67,9 @@ def export(tasks, out_dir=None):
         n_used = n
         suites.append(task.suite)
         domains[task.id] = {"name": task.name, "benchmark": task.benchmark_line,
-                            "metric": task.metric["id"], "models": rows}
+                            "metric": task.metric["id"],
+                            "direction": task.metric.get("direction", "higher"),
+                            "models": rows}
     if not domains:
         print("no domains exported — check results/ and dataset paths")
         return None

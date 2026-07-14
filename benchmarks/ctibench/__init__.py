@@ -1,1 +1,1 @@
-from .bench import CVE_CWE  # noqa: F401
+from .bench import CVE_CWE, CVSS  # noqa: F401

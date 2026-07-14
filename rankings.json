@@ -9,6 +9,7 @@
       "name": "Threat-Intel Reasoning",
       "benchmark": "CyberSOCEval (Meta \u00d7 CrowdStrike) \u00b7 CTI task \u00b7 metric: Jaccard",
       "metric": "jaccard",
+      "direction": "higher",
       "models": [
         {
           "model": "Claude Opus 4.8",
@@ -94,6 +95,7 @@
       "name": "CVE\u2192CWE Mapping",
       "benchmark": "CTIBench-RCM \u00b7 CVE root-cause \u2192 CWE \u00b7 metric: accuracy",
       "metric": "accuracy",
+      "direction": "higher",
       "models": [
         {
           "model": "Claude Opus 4.8",
@@ -175,10 +177,97 @@
         }
       ]
     },
+    "cvss": {
+      "name": "CVSS Severity Scoring",
+      "benchmark": "CTIBench-VSP \u00b7 CVE description \u2192 CVSS v3.1 \u00b7 metric: MAE (lower is better)",
+      "metric": "mae",
+      "direction": "lower",
+      "models": [
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 1.157,
+          "exact_pct": 43.3,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 48.52,
+          "latency_s": 33.7,
+          "ci": [
+            0.677,
+            1.667
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 1.623,
+          "exact_pct": 36.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 7.3,
+          "latency_s": 31.2,
+          "ci": [
+            1.057,
+            2.197
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 1.7,
+          "exact_pct": 16.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.77,
+          "latency_s": 20.5,
+          "ci": [
+            1.103,
+            2.377
+          ]
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 1.74,
+          "exact_pct": 26.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 20.65,
+          "latency_s": 9.1,
+          "ci": [
+            1.163,
+            2.343
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 1.957,
+          "exact_pct": 23.3,
+          "answered_pct": 97,
+          "cost_per_1k_usd": 3.54,
+          "latency_s": 14.4,
+          "ci": [
+            1.217,
+            2.817
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 5.107,
+          "exact_pct": 20.0,
+          "answered_pct": 57,
+          "cost_per_1k_usd": 53.44,
+          "latency_s": 107.9,
+          "ci": [
+            3.52,
+            6.707
+          ]
+        }
+      ]
+    },
     "malware": {
       "name": "Malware Analysis",
       "benchmark": "CyberSOCEval (Meta \u00d7 CrowdStrike) \u00b7 malware task \u00b7 metric: Jaccard",
       "metric": "jaccard",
+      "direction": "higher",
       "models": [
         {
           "model": "Claude Opus 4.8",

@@ -44,13 +44,16 @@ def score_one(model_key, task, tc, prompt):
            "prompt_tokens": res.get("prompt_tokens"),
            "completion_tokens": res.get("completion_tokens")}
     rec["cost_usd"] = round(cost_usd(model_key, rec["prompt_tokens"], rec["completion_tokens"]), 6)
+    # non-answers score as the metric's WORST value (task.score(None, gold)),
+    # not 0.0 — 0 would look perfect on lower-is-better metrics like MAE
+    worst = round(task.score(None, gold)[task.metric["id"]], 4)
     if "error" in res:
-        rec.update({"error": res["error"], "parse_ok": False, "score": 0.0,
+        rec.update({"error": res["error"], "parse_ok": False, "score": worst,
                     "answered_correctly": "query error"})
         return rec
     pred = task.parse(res["content"])
     if pred is None:
-        rec.update({"raw": res["content"][:200], "parse_ok": False, "score": 0.0,
+        rec.update({"raw": res["content"][:200], "parse_ok": False, "score": worst,
                     "answered_correctly": "parsing error"})
         return rec
     m = task.score(pred, gold)          # per-item metric dict, e.g. {"jaccard":…, "exact":…}

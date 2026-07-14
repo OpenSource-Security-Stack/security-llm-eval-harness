@@ -25,6 +25,7 @@
           "name": {"type": "string"},
           "benchmark": {"type": "string"},
           "metric": {"type": "string", "description": "Primary quality metric id, e.g. 'jaccard'"},
+          "direction": {"enum": ["higher", "lower"], "description": "Whether a higher or lower score is better (e.g. MAE is 'lower'). Consumers must not assume 'higher'."},
           "note": {"type": "string"},
           "models": {
             "type": "array",
