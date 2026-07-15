@@ -709,6 +709,7 @@
   "rollups": {
     "cti": {
       "name": "Threat Intelligence",
+      "order": 1,
       "leaves": [
         "cti",
         "cti_ate",
@@ -826,6 +827,7 @@
     },
     "vulnmgmt": {
       "name": "Vulnerability Management",
+      "order": 4,
       "leaves": [
         "cve_cwe",
         "cvss"
@@ -941,6 +943,7 @@
     },
     "malware": {
       "name": "Malware Analysis",
+      "order": 2,
       "leaves": [
         "malware"
       ],
@@ -1053,6 +1056,7 @@
     },
     "deteng": {
       "name": "Detection Engineering",
+      "order": 3,
       "leaves": [
         "sigma_attack"
       ],

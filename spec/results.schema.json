@@ -115,6 +115,10 @@
                 }
               }
             }
+          },
+          "order": {
+            "type": "integer",
+            "description": "Display position of the domain tab (1 = leftmost)"
           }
         }
       }

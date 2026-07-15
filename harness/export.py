@@ -22,6 +22,10 @@ MODEL_ORDER = ["opus-4.8", "gpt-5.5",
 # The third mixture slot holds whichever model a domain was run with: qwen3-235b
 # on the v0 cached domains, deepseek-v4 after Together retired serverless Qwen.
 MIX_POOL = ["minimax-m3", "qwen3-235b", "deepseek-v4", "glm-5.2"]
+
+# Domain tab order on the leaderboard (per Manish 2026-07-15). Unlisted domains
+# append after, alphabetically.
+DOMAIN_ORDER = ["cti", "malware", "deteng", "vulnmgmt"]
 MIX_RULE = "majority"
 INCLUDE_MIXTURE = False   # 2026-07-12: mixture rows off the leaderboard for now (machinery stays)
 
@@ -129,7 +133,10 @@ def build_rollups(groups):
                 row["cost_per_1k_range"] = [round(min(pm["costs"]), 2), round(max(pm["costs"]), 2)]
             models.append(row)
         models.sort(key=lambda r: (-r["score"], r["model"]))
-        rollups[gid] = {"name": g["name"], "leaves": [lid for lid, _ in g["leaves"]],
+        order = (DOMAIN_ORDER.index(gid) + 1 if gid in DOMAIN_ORDER
+                 else len(DOMAIN_ORDER) + 1)
+        rollups[gid] = {"name": g["name"], "order": order,
+                        "leaves": [lid for lid, _ in g["leaves"]],
                         "models": models}
     return rollups
 

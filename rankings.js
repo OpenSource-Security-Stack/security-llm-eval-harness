@@ -710,6 +710,7 @@ window.RANKINGS = {
   "rollups": {
     "cti": {
       "name": "Threat Intelligence",
+      "order": 1,
       "leaves": [
         "cti",
         "cti_ate",
@@ -827,6 +828,7 @@ window.RANKINGS = {
     },
     "vulnmgmt": {
       "name": "Vulnerability Management",
+      "order": 4,
       "leaves": [
         "cve_cwe",
         "cvss"
@@ -942,6 +944,7 @@ window.RANKINGS = {
     },
     "malware": {
       "name": "Malware Analysis",
+      "order": 2,
       "leaves": [
         "malware"
       ],
@@ -1054,6 +1057,7 @@ window.RANKINGS = {
     },
     "deteng": {
       "name": "Detection Engineering",
+      "order": 3,
       "leaves": [
         "sigma_attack"
       ],
