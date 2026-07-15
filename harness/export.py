@@ -101,7 +101,7 @@ def build_rollups(groups):
     Headline `score` = mean of the model's per-leaf score_norm (equal weight
     per leaf, same 0-100 higher-better scale as the leaf tables). `win_rate`
     (fraction of rivals beaten, direction-aware, ties 0.5) is kept as a
-    secondary/router signal. `coverage` records leaves present of total."""
+    secondary signal. `coverage` records leaves present of total."""
     rollups = {}
     for gid, g in groups.items():
         per = {}

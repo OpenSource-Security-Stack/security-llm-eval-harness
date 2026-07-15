@@ -148,7 +148,7 @@ def mixture_stats(byq, correct, pool, rule, task, weights=None):
 
 
 def oracle(byq, correct, pool, task):
-    """Upper bounds (peek at the key): ceiling for a perfect per-question router."""
+    """Upper bounds (peek at the key): ceiling for perfect per-question model selection."""
     mid = task.metric["id"]
     n = len(correct)
     any_exact = 0
