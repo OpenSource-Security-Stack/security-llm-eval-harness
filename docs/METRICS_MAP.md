@@ -1,8 +1,8 @@
-# Security Router — Metrics Map (which metric fits which domain)
+# Security LLM Evals — Metrics Map (which metric fits which domain)
 
 For each routable domain: the **output shape** the model produces, the **primary metric** that
 fits, the **error asymmetry** (which mistake is costly → what the metric must weight), and the
-**benchmark** that measures it. The router ranks models *within* a domain on the primary metric,
+**benchmark** that measures it. Models are ranked *within* a domain on the primary metric,
 then composes it with the universal secondary axes (cost / latency / reliability).
 
 Two rules drive every choice:
@@ -43,7 +43,7 @@ Two rules drive every choice:
 
 ---
 
-## Universal secondary axes (router folds these in for *every* domain)
+## Universal secondary axes (folded in for *every* domain)
 - **Reliability** — parse/format-adherence / answered rate (a right answer you can't parse = wrong).
 - **Cost** — $/task and **$/correct** (quality-weighted cost).
 - **Latency** — time/task. Weighted heavily for real-time SOC, lightly for async vuln-mgmt.
@@ -58,7 +58,7 @@ Two rules drive every choice:
 - **Agentic** — success-rate, pass@k, capability-milestone, efficiency (cost/turns)
 - **Safety** — ASR, FRR, refusal-rate
 
-## Router design notes
+## Ranking design notes
 - Metrics rank models **within** a domain — cross-domain comparability isn't required. Normalize
   each to 0–1 only for dashboards.
 - The routing objective = **quality metric × cost × latency × reliability**, weighted by the

@@ -1,4 +1,4 @@
-# Security Router — v0 Model Comparison
+# Security LLM Evals — v0 Model Comparison
 
 **Leaves:** `malware.sandbox_interpretation`, `cti.ti_reasoning` (CyberSOCEval). **N = 30 questions/leaf**, 7 models. Scoring = Jaccard over multi-select letters (PurpleLlama methodology). CTI = CrowdStrike-only subset.
 

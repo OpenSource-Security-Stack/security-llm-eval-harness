@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/allyai/security-llm-eval-harness/spec/results.schema.json",
-  "title": "Security Router rankings.json",
-  "description": "The contract between the eval harness (producer) and the leaderboard + router (consumers). The harness emits this; downstreams render or route on it.",
+  "title": "Security LLM Evals rankings.json",
+  "description": "The contract between the eval harness (producer) and the leaderboard (consumer). The harness emits this; downstreams render it.",
   "type": "object",
   "required": [
     "meta",
@@ -78,7 +78,7 @@
                 },
                 "win_rate": {
                   "type": "number",
-                  "description": "Secondary/router signal: mean fraction of competing models beaten across present leaves (ties 0.5, direction-aware)."
+                  "description": "Secondary signal: mean fraction of competing models beaten across present leaves (ties 0.5, direction-aware). Not displayed on the leaderboard."
                 },
                 "coverage": {
                   "type": "array",

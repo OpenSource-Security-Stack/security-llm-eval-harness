@@ -1,7 +1,7 @@
 """Central config: repo paths, dataset root, .env loading.
 
 Dataset location resolves in this order:
-  1. $SECROUTER_DATA_DIR (explicit override — set this if your layout differs)
+  1. $SECEVAL_DATA_DIR (explicit override — set this if your layout differs)
   2. <repo>/../PurpleLlama/CybersecurityBenchmarks/datasets/crwd_meta
      (the default sibling-checkout layout: inferenceplatform/{this repo, PurpleLlama})
 
@@ -22,7 +22,7 @@ _ENV_CANDIDATES = [REPO / ".env", REPO.parent / "security-router" / ".env"]
 
 def data_dir() -> Path:
     """PurpleLlama crwd_meta dataset root (lazy — honors .env-loaded overrides)."""
-    override = os.environ.get("SECROUTER_DATA_DIR")
+    override = os.environ.get("SECEVAL_DATA_DIR") or os.environ.get("SECROUTER_DATA_DIR")
     if override:
         return Path(override).expanduser()
     return REPO.parent / "PurpleLlama/CybersecurityBenchmarks/datasets/crwd_meta"

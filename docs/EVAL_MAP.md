@@ -1,4 +1,4 @@
-# Security Router — Eval Map (by domain)
+# Security LLM Evals — Eval Map (by domain)
 
 Benchmarks for evaluating LLMs/agents on security tasks, grouped by taxonomy domain.
 Built from the 2026-07 landscape survey. Sources fetch-verified 2026-07-13 — canonical links/licenses in `spec/taxonomy.json`. See `reference-security-eval-landscape`

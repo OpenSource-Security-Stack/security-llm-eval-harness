@@ -1,8 +1,8 @@
 # Metrics — which one fits which task (and why)
 
 Every task is scored on a **primary quality metric** chosen to match (a) the model's output shape
-and (b) the task's error asymmetry (which mistake is costly). The router ranks models *within* a
-task on this metric, then composes it with universal secondary axes: **cost, latency, reliability
+and (b) the task's error asymmetry (which mistake is costly). Models are ranked *within* a
+task on this metric, composed with universal secondary axes: **cost, latency, reliability
 (answered rate), and calibration.** Full detail in `docs/METRICS_MAP.md`.
 
 | metric id | family | used for | provenance | harness support |

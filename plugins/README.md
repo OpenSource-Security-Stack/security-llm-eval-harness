@@ -17,7 +17,7 @@ the core. Two ways to keep it private:
 ## What's safe to keep private here
 - Proprietary benchmark datasets or task adapters
 - Custom scoring / weighting logic (e.g. a domain-specific composite)
-- Router-specific ranking heuristics
+- Proprietary ranking heuristics
 
 ## What must stay public (the contract)
 - `spec/results.schema.json` — the `rankings.json` shape
