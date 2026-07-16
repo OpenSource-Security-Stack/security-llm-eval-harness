@@ -9,7 +9,7 @@ rendered by the [security-llm-leaderboard](../security-llm-leaderboard).
 ## Why
 
 No single model is best across security tasks. On CyberSOCEval the ranking reshuffles between
-malware analysis and threat-intel; open-weight models win on some leaves and lose on others.
+malware analysis and threat-intel; open-weight models win some tasks and lose others.
 This harness measures those per-task differences reproducibly, so the right model can be
 chosen for each task.
 
@@ -63,16 +63,18 @@ layer instead via `Task.load_results` — the contract doesn't care how a score 
 
 ## Open-core
 
-The framework and the open-benchmark adapters are MIT-licensed. Proprietary benchmarks, custom
-scoring, or routing heuristics can be kept private via the `plugins/` seam (see
-`plugins/README.md`) without forking — they register against the public interfaces and are never
-committed to this repo. The **only** thing consumers depend on is the stable `rankings.json`
-contract in `spec/`.
+The framework and the open-benchmark adapters are MIT-licensed. Proprietary benchmarks or
+custom scoring can be kept private via the `plugins/` seam (see `plugins/README.md`) without
+forking — they register against the public interfaces and are never committed to this repo.
+The **only** thing consumers depend on is the stable `rankings.json` contract in `spec/`.
 
 ## Status
 
-Live leaves: `malware.sandbox_interpretation`, `cti.ti_reasoning` (CyberSOCEval). Everything else
-in `spec/taxonomy.json` is mapped and queued. See `docs/UNIFIED_MAP.md`.
+Live: **4 domains, 7 benchmarks, 6 models** — threat intelligence (CyberSOCEval-CTI,
+CTIBench-MCQ, CTIBench-ATE), malware analysis (CyberSOCEval), detection engineering
+(SigmaHQ-derived Sigma→ATT&CK), and vulnerability management (CTIBench-RCM, CTIBench-VSP).
+Rankings at [secllmleaderboard.dev](https://secllmleaderboard.dev). More domains queued in
+`spec/taxonomy.json`.
 
 ## License
 
