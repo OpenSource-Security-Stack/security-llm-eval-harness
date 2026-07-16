@@ -1,81 +1,54 @@
 # security-llm-eval-harness
 
-Open evaluation harness for measuring **how well LLMs perform security tasks** — one metric
-per task, cost/latency/reliability tracked alongside quality. It produces a `rankings.json`
-rendered by the [security-llm-leaderboard](../security-llm-leaderboard).
+Open evaluation harness for measuring **how well LLMs perform security tasks** — accuracy,
+cost, and reliability, per task. It runs models against publicly available security benchmarks
+and produces the `rankings.json` rendered by
+[security-llm-leaderboard](https://github.com/OpenSource-Security-Stack/security-llm-leaderboard)
+— live at [secllmleaderboard.dev](https://secllmleaderboard.dev).
 
-**harness → rankings.json → leaderboard.**
+Currently: **4 domains, 7 benchmarks, 6 models** — threat intelligence, malware analysis,
+detection engineering, and vulnerability management.
 
-## Why
-
-No single model is best across security tasks. On CyberSOCEval the ranking reshuffles between
-malware analysis and threat-intel; open-weight models win some tasks and lose others.
-This harness measures those per-task differences reproducibly, so the right model can be
-chosen for each task.
-
-## How it works
-
-**Plugins ask, engine runs, contract publishes.** Each benchmark is a small plugin answering
-four questions — where's my data, how do I ask, how do I read the answer, how do I grade it —
-plus its metric metadata. The engine handles everything else identically for every benchmark:
-model fan-out, retries, cost tracking, append-only results. Export squashes results into
-`rankings.json`.
-
-```
-harness/              # THE ENGINE — benchmark-agnostic
-  config.py             # paths, .env loading, $SECEVAL_DATA_DIR dataset override
-  models.py             # model roster, provider clients, pricing
-  metrics.py            # pure metric fns (jaccard, letter parsing, …)
-  task.py               # the Task plugin interface (4 fns + metric metadata)
-  runner.py             # generic run loop → results/*.jsonl
-  scoring.py            # records → model stats + mixture stats
-  export.py             # results → rankings.json (the contract)
-benchmarks/           # THE PLUGINS — one folder per benchmark
-  cybersoceval/         # malware + CTI tasks (Jaccard, PurpleLlama methodology)
-plugins/              # open-core seam — private benchmarks live here (gitignored)
-spec/                 # THE CONTRACT — shared with the leaderboard
-  taxonomy.json         # 19 domains × tasks × target benchmark × metric × status
-  results.schema.json   # JSON Schema for rankings.json
-  metrics.md            # which metric fits which task (+ provenance)
-scripts/
-  run.py                # run a task against the roster (spends API $)
-  export.py             # results/*.jsonl → rankings.json (no spend)
-results/              # raw per-question outputs (*.jsonl, append-only)
-docs/                 # the domain / eval / metric maps
-```
-
-## Quickstart
+## Setup
 
 ```bash
-# keys (never committed): create .env with OPENAI_API_KEY / TOGETHER_API_KEY / ANTHROPIC_API_KEY
-# datasets: a PurpleLlama checkout next to this repo (or set $SECEVAL_DATA_DIR)
-python3 scripts/run.py --list                  # show registered tasks
-python3 scripts/run.py --task cti --n 30       # run one task (spends API $)
-python3 scripts/export.py                      # → rankings.json + rankings.js (no spend)
+git clone https://github.com/OpenSource-Security-Stack/security-llm-eval-harness.git
+cd security-llm-eval-harness
+
+# 1. API keys (never committed): create a .env in the repo root
+#    OPENAI_API_KEY=...  TOGETHER_API_KEY=...  ANTHROPIC_API_KEY=...
+
+# 2. Datasets: each benchmark documents its fetch command in benchmarks/<name>/bench.py
+#    (e.g. CTIBench TSVs from HuggingFace, SigmaHQ rules from GitHub). CyberSOCEval needs
+#    a PurpleLlama checkout next to this repo, or set $SECEVAL_DATA_DIR.
+
+# 3. Run
+python3 scripts/run.py --list                  # show registered benchmarks
+python3 scripts/run.py --task cti_mcq --n 50   # run one benchmark (spends API $)
+python3 scripts/export.py                      # results → rankings.json (no spend)
 ```
 
-## Adding a benchmark
+Raw per-question results land in `results/*.jsonl` (append-only; runs are resumable — rerunning
+skips already-answered questions). `scripts/export.py` rebuilds `rankings.json` from everything
+cached, at no API cost.
 
-Create `benchmarks/<name>/bench.py`, build a `harness.task.Task` with your `load / prompt /
-parse / score` functions and metric metadata, and register it in `benchmarks/__init__.py`.
-Results produced outside this engine (e.g. sandboxed agentic evals) can join at the export
-layer instead via `Task.load_results` — the contract doesn't care how a score was produced.
+## Contributing
 
-## Open-core
+**Add a benchmark:** create `benchmarks/<name>/bench.py`, build a `harness.task.Task` with your
+`load / prompt / parse / score` functions and metric metadata, register it in
+`benchmarks/__init__.py`. Only publicly available, licensed datasets are accepted — see
+`spec/benchmark-policy.md`; every benchmark is credited to its original authors.
 
-The framework and the open-benchmark adapters are MIT-licensed. Proprietary benchmarks or
-custom scoring can be kept private via the `plugins/` seam (see `plugins/README.md`) without
-forking — they register against the public interfaces and are never committed to this repo.
-The **only** thing consumers depend on is the stable `rankings.json` contract in `spec/`.
+**Add a model:** add a roster entry in `harness/models.py` (provider + API id + pricing).
 
-## Status
+**Add a metric:** pure functions in `harness/metrics.py`, with tests in `tests/`.
 
-Live: **4 domains, 7 benchmarks, 6 models** — threat intelligence (CyberSOCEval-CTI,
-CTIBench-MCQ, CTIBench-ATE), malware analysis (CyberSOCEval), detection engineering
-(SigmaHQ-derived Sigma→ATT&CK), and vulnerability management (CTIBench-RCM, CTIBench-VSP).
-Rankings at [secllmleaderboard.dev](https://secllmleaderboard.dev). More domains queued in
-`spec/taxonomy.json`.
+Run the tests before a PR: `python3 tests/test_metrics.py && python3 tests/test_rollup.py`
+
+Issues and PRs welcome — a benchmark or model you think belongs here is exactly the
+contribution we want.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Benchmark data belongs to its original authors (each dataset's
+license is recorded in `spec/taxonomy.json` and shown on the leaderboard's credits page).
