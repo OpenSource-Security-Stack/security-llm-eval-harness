@@ -133,12 +133,10 @@ def build_rollups(groups):
                 row["cost_per_1k_avg"] = round(sum(pm["costs"]) / len(pm["costs"]), 2)
                 row["cost_per_1k_range"] = [round(min(pm["costs"]), 2), round(max(pm["costs"]), 2)]
             models.append(row)
-        # Fully-measured models rank first (by score); partial-coverage models are
-        # listed beneath them (a domain average over fewer benchmarks isn't
-        # comparable to a complete one). Leaf tables are unaffected — there every
-        # model competes on the same questions.
-        n_leaves = len(g["leaves"])
-        models.sort(key=lambda r: (r["coverage"][0] < n_leaves, -r["score"], r["model"]))
+        # Sort purely by score. Partial-coverage models rank on their (fewer-
+        # benchmark) average like anyone else; the n/N badge discloses the
+        # partial basis. Leaf tables are unaffected — same questions there.
+        models.sort(key=lambda r: (-r["score"], r["model"]))
         order = (DOMAIN_ORDER.index(gid) + 1 if gid in DOMAIN_ORDER
                  else len(DOMAIN_ORDER) + 1)
         rollups[gid] = {"name": g["name"], "order": order,

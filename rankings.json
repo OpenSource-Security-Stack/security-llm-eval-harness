@@ -792,6 +792,25 @@
       ],
       "models": [
         {
+          "model": "Kimi K3",
+          "type": "open",
+          "score": 84.8,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.875,
+          "coverage": [
+            2,
+            3
+          ],
+          "best_at": [
+            "CTI Knowledge (MCQ)"
+          ],
+          "cost_per_1k_avg": 27.08,
+          "cost_per_1k_range": [
+            15.64,
+            38.52
+          ]
+        },
+        {
           "model": "Claude Opus 4.8",
           "type": "closed",
           "score": 81.5,
@@ -896,25 +915,6 @@
           "cost_per_1k_range": [
             28.38,
             57.17
-          ]
-        },
-        {
-          "model": "Kimi K3",
-          "type": "open",
-          "score": 84.8,
-          "answered_pct_avg": 100.0,
-          "win_rate": 0.875,
-          "coverage": [
-            2,
-            3
-          ],
-          "best_at": [
-            "CTI Knowledge (MCQ)"
-          ],
-          "cost_per_1k_avg": 27.08,
-          "cost_per_1k_range": [
-            15.64,
-            38.52
           ]
         }
       ]
