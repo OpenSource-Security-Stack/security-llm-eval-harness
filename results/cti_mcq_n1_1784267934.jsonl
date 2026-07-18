@@ -1,0 +1,1 @@
+{"model": "kimi-k3", "qkey": "mcq-007dfba799ec", "strata": "A", "correct_options": "A", "latency": 12.12, "prompt_tokens": 227, "completion_tokens": 295, "cost_usd": 0.005106, "model_answers": "A", "parse_ok": true, "score": 1.0, "answered_correctly": "true"}

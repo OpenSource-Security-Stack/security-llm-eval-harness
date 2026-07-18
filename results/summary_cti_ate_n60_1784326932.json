@@ -1,0 +1,14 @@
+[
+  {
+    "model": "kimi-k3",
+    "n": 44,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.0,
+    "parse_pct": 0.0,
+    "mean_latency": 20.97,
+    "mean_completion_tokens": 0,
+    "cost_per_1k_questions_usd": 0.0,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.0
+  }
+]

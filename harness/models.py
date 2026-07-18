@@ -22,6 +22,7 @@ ROSTER = {
     "deepseek-v4":   ("together",  "deepseek-ai/DeepSeek-V4-Pro"),
     "glm-5.2":       ("together",  "zai-org/GLM-5.2"),
     "gpt-oss-120b":  ("together",  "openai/gpt-oss-120b"),
+    "kimi-k3":       ("moonshot",  "kimi-k3"),
 }
 
 # No longer runnable (delisted from serverless) — kept in ROSTER so cached
@@ -41,6 +42,9 @@ PROVIDERS = {
     "openai":    ("https://api.openai.com/v1/chat/completions", "OPENAI_API_KEY"),
     "together":  ("https://api.together.xyz/v1/chat/completions", "TOGETHER_API_KEY"),
     "anthropic": ("https://api.anthropic.com/v1/messages", "ANTHROPIC_API_KEY"),
+    # OpenAI-compatible. NB: kimi-k3 fixes temperature/top_p (requests must OMIT
+    # them) and always thinks; final answer arrives in message.content as usual.
+    "moonshot":  ("https://api.moonshot.ai/v1/chat/completions", "MOONSHOT_API_KEY"),
 }
 
 # Together prices are fetched live from /v1/models at startup.
@@ -51,6 +55,7 @@ PRICES_MANUAL = {
     "gpt-5.1":         {"input": 1.25, "output": 10.0},   # user-confirmed at run time; delisted from OpenAI pricing page by 2026-07
     "gpt-5.5":         {"input": 5.0,  "output": 30.0},   # verified 2026-07-13: developers.openai.com/api/docs/pricing
     "claude-opus-4-8": {"input": 5.0,  "output": 25.0},   # verified 2026-07-13: platform.claude.com/docs/en/about-claude/pricing
+    "kimi-k3":         {"input": 3.0,  "output": 15.0},   # verified 2026-07-16: platform.kimi.ai/docs/pricing/chat-k3 (cache-miss input)
     "Qwen/Qwen3-235B-A22B-Instruct-2507-tput": {"input": 0.20, "output": 0.60},  # delisted 2026-07
 }
 PRICES = {}  # filled by load_prices(): model_key -> {"input":$/1M, "output":$/1M}
