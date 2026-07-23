@@ -1,0 +1,1 @@
+{"model": "nemotron-3-ultra", "qkey": "mcq-007dfba799ec", "strata": "A", "correct_options": "A", "latency": 3.12, "prompt_tokens": 162, "completion_tokens": 625, "cost_usd": 0.002347, "model_answers": "A", "parse_ok": true, "score": 1.0, "answered_correctly": "true"}

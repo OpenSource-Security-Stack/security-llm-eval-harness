@@ -23,6 +23,9 @@ ROSTER = {
     "glm-5.2":       ("together",  "zai-org/GLM-5.2"),
     "gpt-oss-120b":  ("together",  "openai/gpt-oss-120b"),
     "kimi-k3":       ("moonshot",  "kimi-k3"),
+    "gemma-4-31b":   ("together",  "google/gemma-4-31B-it"),
+    "inkling":       ("together",  "thinkingmachines/Inkling"),
+    "nemotron-3-ultra": ("together", "nvidia/nemotron-3-ultra-550b-a55b"),
 }
 
 # No longer runnable (delisted from serverless) — kept in ROSTER so cached
@@ -57,6 +60,10 @@ PRICES_MANUAL = {
     "claude-opus-4-8": {"input": 5.0,  "output": 25.0},   # verified 2026-07-13: platform.claude.com/docs/en/about-claude/pricing
     "kimi-k3":         {"input": 3.0,  "output": 15.0},   # verified 2026-07-16: platform.kimi.ai/docs/pricing/chat-k3 (cache-miss input)
     "Qwen/Qwen3-235B-A22B-Instruct-2507-tput": {"input": 0.20, "output": 0.60},  # delisted 2026-07
+    # Together-hosted; live /v1/models lookup is authoritative, these are fallbacks pinned at run time (2026-07-21):
+    "google/gemma-4-31B-it":     {"input": 0.39, "output": 0.97},
+    "thinkingmachines/Inkling":  {"input": 1.0,  "output": 4.05},
+    "nvidia/nemotron-3-ultra-550b-a55b": {"input": 0.6, "output": 3.6},
 }
 PRICES = {}  # filled by load_prices(): model_key -> {"input":$/1M, "output":$/1M}
 

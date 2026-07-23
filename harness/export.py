@@ -13,13 +13,16 @@ from .scoring import bootstrap_ci, index, mixture_stats, per_question, single_st
 DISPLAY = {"opus-4.8": "Claude Opus 4.8", "gpt-5.5": "GPT-5.5", "gpt-5.1": "GPT-5.1",
            "minimax-m3": "MiniMax M3", "qwen3-235b": "Qwen3-235B",
            "deepseek-v4": "DeepSeek-V4-Pro", "glm-5.2": "GLM-5.2",
-           "gpt-oss-120b": "gpt-oss-120b", "kimi-k3": "Kimi K3"}
+           "gpt-oss-120b": "gpt-oss-120b", "kimi-k3": "Kimi K3",
+           "gemma-4-31b": "Gemma 4 31B", "inkling": "Inkling",
+           "nemotron-3-ultra": "Nemotron 3 Ultra"}
 CLOSED = {"opus-4.8", "gpt-5.5", "gpt-5.1"}
 # kimi-k3 counted open: announced open-source, weights release committed 2026-07-27
 # dropped from the analysis (results stay cached; re-add here to restore):
 # gpt-5.1 2026-07-12 · qwen3-235b 2026-07-14 (retired endpoint, frozen n=30 rows)
 MODEL_ORDER = ["opus-4.8", "gpt-5.5",
-               "minimax-m3", "deepseek-v4", "kimi-k3", "glm-5.2", "gpt-oss-120b"]
+               "minimax-m3", "deepseek-v4", "kimi-k3", "glm-5.2",
+               "gemma-4-31b", "inkling", "nemotron-3-ultra", "gpt-oss-120b"]
 # The third mixture slot holds whichever model a domain was run with: qwen3-235b
 # on the v0 cached domains, deepseek-v4 after Together retired serverless Qwen.
 MIX_POOL = ["minimax-m3", "qwen3-235b", "deepseek-v4", "glm-5.2"]

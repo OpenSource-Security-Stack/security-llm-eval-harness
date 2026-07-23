@@ -45,6 +45,21 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.783,
+          "score_norm": 78.3,
+          "exact_pct": 70.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 13.96,
+          "latency_s": 12.9,
+          "n": 50,
+          "ci": [
+            0.683,
+            0.877
+          ]
+        },
+        {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 0.767,
@@ -118,6 +133,36 @@ window.RANKINGS = {
             0.637,
             0.84
           ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.68,
+          "score_norm": 68.0,
+          "exact_pct": 58.0,
+          "answered_pct": 90,
+          "cost_per_1k_usd": 14.93,
+          "latency_s": 12.0,
+          "n": 50,
+          "ci": [
+            0.567,
+            0.787
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.677,
+          "score_norm": 67.7,
+          "exact_pct": 56.0,
+          "answered_pct": 94,
+          "cost_per_1k_usd": 5.55,
+          "latency_s": 107.5,
+          "n": 50,
+          "ci": [
+            0.567,
+            0.783
+          ]
         }
       ]
     },
@@ -129,6 +174,21 @@ window.RANKINGS = {
       "metric": "f1",
       "direction": "higher",
       "models": [
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.773,
+          "score_norm": 77.3,
+          "exact_pct": 16.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 22.77,
+          "latency_s": 87.5,
+          "n": 60,
+          "ci": [
+            0.726,
+            0.816
+          ]
+        },
         {
           "model": "Claude Opus 4.8",
           "type": "closed",
@@ -175,6 +235,21 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.738,
+          "score_norm": 73.8,
+          "exact_pct": 11.7,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 13.29,
+          "latency_s": 18.9,
+          "n": 60,
+          "ci": [
+            0.688,
+            0.786
+          ]
+        },
+        {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 0.736,
@@ -187,6 +262,21 @@ window.RANKINGS = {
           "ci": [
             0.688,
             0.781
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.725,
+          "score_norm": 72.5,
+          "exact_pct": 6.7,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 2.03,
+          "latency_s": 43.0,
+          "n": 60,
+          "ci": [
+            0.672,
+            0.773
           ]
         },
         {
@@ -275,6 +365,21 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.86,
+          "score_norm": 86.0,
+          "exact_pct": 86.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 4.42,
+          "latency_s": 53.8,
+          "n": 50,
+          "ci": [
+            0.76,
+            0.96
+          ]
+        },
+        {
           "model": "MiniMax M3",
           "type": "open",
           "score": 0.84,
@@ -298,6 +403,21 @@ window.RANKINGS = {
           "answered_pct": 98,
           "cost_per_1k_usd": 1.65,
           "latency_s": 6.9,
+          "n": 50,
+          "ci": [
+            0.66,
+            0.88
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.78,
+          "score_norm": 78.0,
+          "exact_pct": 78.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 7.03,
+          "latency_s": 11.3,
           "n": 50,
           "ci": [
             0.66,
@@ -332,6 +452,21 @@ window.RANKINGS = {
           "ci": [
             0.36,
             0.64
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.46,
+          "score_norm": 46.0,
+          "exact_pct": 46.0,
+          "answered_pct": 64,
+          "cost_per_1k_usd": 0.54,
+          "latency_s": 308.0,
+          "n": 50,
+          "ci": [
+            0.32,
+            0.6
           ]
         }
       ]
@@ -405,6 +540,21 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.54,
+          "score_norm": 54.0,
+          "exact_pct": 54.0,
+          "answered_pct": 96,
+          "cost_per_1k_usd": 5.07,
+          "latency_s": 8.3,
+          "n": 50,
+          "ci": [
+            0.4,
+            0.68
+          ]
+        },
+        {
           "model": "MiniMax M3",
           "type": "open",
           "score": 0.52,
@@ -413,6 +563,21 @@ window.RANKINGS = {
           "answered_pct": 98,
           "cost_per_1k_usd": 1.48,
           "latency_s": 12.8,
+          "n": 50,
+          "ci": [
+            0.38,
+            0.66
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.52,
+          "score_norm": 52.0,
+          "exact_pct": 52.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 5.87,
+          "latency_s": 50.9,
           "n": 50,
           "ci": [
             0.38,
@@ -432,6 +597,21 @@ window.RANKINGS = {
           "ci": [
             0.36,
             0.64
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.46,
+          "score_norm": 46.0,
+          "exact_pct": 46.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.74,
+          "latency_s": 101.8,
+          "n": 50,
+          "ci": [
+            0.32,
+            0.6
           ]
         },
         {
@@ -505,6 +685,36 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 1.502,
+          "score_norm": 85.0,
+          "exact_pct": 30.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 2.26,
+          "latency_s": 109.1,
+          "n": 50,
+          "ci": [
+            1.114,
+            1.922
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 1.518,
+          "score_norm": 84.8,
+          "exact_pct": 32.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 25.32,
+          "latency_s": 186.4,
+          "n": 50,
+          "ci": [
+            1.072,
+            2.062
+          ]
+        },
+        {
           "model": "Claude Opus 4.8",
           "type": "closed",
           "score": 1.704,
@@ -532,6 +742,21 @@ window.RANKINGS = {
           "ci": [
             1.284,
             2.192
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 1.722,
+          "score_norm": 82.8,
+          "exact_pct": 24.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 9.67,
+          "latency_s": 20.7,
+          "n": 50,
+          "ci": [
+            1.292,
+            2.182
           ]
         },
         {
@@ -575,6 +800,21 @@ window.RANKINGS = {
       "direction": "higher",
       "models": [
         {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.58,
+          "score_norm": 58.0,
+          "exact_pct": 32.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 19.05,
+          "latency_s": 14.0,
+          "n": 50,
+          "ci": [
+            0.478,
+            0.678
+          ]
+        },
+        {
           "model": "Claude Opus 4.8",
           "type": "closed",
           "score": 0.577,
@@ -587,6 +827,21 @@ window.RANKINGS = {
           "ci": [
             0.477,
             0.678
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.542,
+          "score_norm": 54.2,
+          "exact_pct": 26.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 7.19,
+          "latency_s": 78.9,
+          "n": 50,
+          "ci": [
+            0.443,
+            0.643
           ]
         },
         {
@@ -650,6 +905,21 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.516,
+          "score_norm": 51.6,
+          "exact_pct": 26.0,
+          "answered_pct": 96,
+          "cost_per_1k_usd": 16.77,
+          "latency_s": 12.6,
+          "n": 50,
+          "ci": [
+            0.412,
+            0.619
+          ]
+        },
+        {
           "model": "GLM-5.2",
           "type": "open",
           "score": 0.452,
@@ -705,6 +975,21 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.553,
+          "score_norm": 55.3,
+          "exact_pct": 38.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 17.92,
+          "latency_s": 50.9,
+          "n": 50,
+          "ci": [
+            0.428,
+            0.67
+          ]
+        },
+        {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
           "score": 0.526,
@@ -717,6 +1002,36 @@ window.RANKINGS = {
           "ci": [
             0.397,
             0.649
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.515,
+          "score_norm": 51.5,
+          "exact_pct": 36.0,
+          "answered_pct": 94,
+          "cost_per_1k_usd": 1.29,
+          "latency_s": 74.8,
+          "n": 50,
+          "ci": [
+            0.393,
+            0.633
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.514,
+          "score_norm": 51.4,
+          "exact_pct": 38.0,
+          "answered_pct": 98,
+          "cost_per_1k_usd": 6.33,
+          "latency_s": 13.7,
+          "n": 50,
+          "ci": [
+            0.388,
+            0.635
           ]
         },
         {
@@ -797,7 +1112,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 84.8,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.875,
+          "win_rate": 0.917,
           "coverage": [
             2,
             3
@@ -816,14 +1131,13 @@ window.RANKINGS = {
           "type": "closed",
           "score": 81.5,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.889,
+          "win_rate": 0.884,
           "coverage": [
             3,
             3
           ],
           "best_at": [
-            "Threat-Intel Reasoning",
-            "ATT&CK Technique Extraction"
+            "Threat-Intel Reasoning"
           ],
           "cost_per_1k_avg": 39.64,
           "cost_per_1k_range": [
@@ -836,7 +1150,7 @@ window.RANKINGS = {
           "type": "closed",
           "score": 80.6,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.739,
+          "win_rate": 0.75,
           "coverage": [
             3,
             3
@@ -851,11 +1165,30 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Inkling",
+          "type": "open",
+          "score": 80.5,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.815,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [
+            "ATT&CK Technique Extraction"
+          ],
+          "cost_per_1k_avg": 13.72,
+          "cost_per_1k_range": [
+            4.42,
+            22.77
+          ]
+        },
+        {
           "model": "MiniMax M3",
           "type": "open",
           "score": 77.4,
           "answered_pct_avg": 99.3,
-          "win_rate": 0.422,
+          "win_rate": 0.484,
           "coverage": [
             3,
             3
@@ -872,7 +1205,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 76.1,
           "answered_pct_avg": 98.7,
-          "win_rate": 0.467,
+          "win_rate": 0.477,
           "coverage": [
             3,
             3
@@ -885,11 +1218,28 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 73.3,
+          "answered_pct_avg": 96.7,
+          "win_rate": 0.354,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 11.75,
+          "cost_per_1k_range": [
+            7.03,
+            14.93
+          ]
+        },
+        {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 70.3,
           "answered_pct_avg": 99.3,
-          "win_rate": 0.178,
+          "win_rate": 0.227,
           "coverage": [
             3,
             3
@@ -902,11 +1252,28 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 62.1,
+          "answered_pct_avg": 85.3,
+          "win_rate": 0.083,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 2.71,
+          "cost_per_1k_range": [
+            0.54,
+            5.55
+          ]
+        },
+        {
           "model": "GLM-5.2",
           "type": "open",
           "score": 57.0,
           "answered_pct_avg": 70.7,
-          "win_rate": 0.056,
+          "win_rate": 0.148,
           "coverage": [
             3,
             3
@@ -933,7 +1300,7 @@ window.RANKINGS = {
           "type": "closed",
           "score": 73.7,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.875,
+          "win_rate": 0.917,
           "coverage": [
             2,
             2
@@ -952,7 +1319,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 73.3,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.792,
+          "win_rate": 0.861,
           "coverage": [
             2,
             2
@@ -969,7 +1336,7 @@ window.RANKINGS = {
           "type": "closed",
           "score": 72.5,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.75,
+          "win_rate": 0.722,
           "coverage": [
             2,
             2
@@ -988,7 +1355,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 70.8,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.583,
+          "win_rate": 0.722,
           "coverage": [
             2,
             2
@@ -998,6 +1365,40 @@ window.RANKINGS = {
           "cost_per_1k_range": [
             16.62,
             44.99
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 68.4,
+          "answered_pct_avg": 99.0,
+          "win_rate": 0.472,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 15.6,
+          "cost_per_1k_range": [
+            5.87,
+            25.32
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 68.4,
+          "answered_pct_avg": 98.0,
+          "win_rate": 0.389,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 7.37,
+          "cost_per_1k_range": [
+            5.07,
+            9.67
           ]
         },
         {
@@ -1018,11 +1419,28 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 65.5,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.361,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 1.5,
+          "cost_per_1k_range": [
+            0.74,
+            2.26
+          ]
+        },
+        {
           "model": "gpt-oss-120b",
           "type": "open",
           "score": 64.4,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.167,
+          "win_rate": 0.194,
           "coverage": [
             2,
             2
@@ -1039,7 +1457,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 53.6,
           "answered_pct_avg": 74.0,
-          "win_rate": 0.083,
+          "win_rate": 0.111,
           "coverage": [
             2,
             2
@@ -1061,10 +1479,10 @@ window.RANKINGS = {
       ],
       "models": [
         {
-          "model": "Claude Opus 4.8",
-          "type": "closed",
-          "score": 57.7,
-          "answered_pct_avg": 100.0,
+          "model": "Inkling",
+          "type": "open",
+          "score": 58.0,
+          "answered_pct_avg": 98.0,
           "win_rate": 1.0,
           "coverage": [
             1,
@@ -1073,6 +1491,23 @@ window.RANKINGS = {
           "best_at": [
             "Malware Analysis"
           ],
+          "cost_per_1k_avg": 19.05,
+          "cost_per_1k_range": [
+            19.05,
+            19.05
+          ]
+        },
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 57.7,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.875,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
           "cost_per_1k_avg": 95.04,
           "cost_per_1k_range": [
             95.04,
@@ -1080,11 +1515,28 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 54.2,
+          "answered_pct_avg": 98.0,
+          "win_rate": 0.75,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 7.19,
+          "cost_per_1k_range": [
+            7.19,
+            7.19
+          ]
+        },
+        {
           "model": "MiniMax M3",
           "type": "open",
           "score": 53.9,
           "answered_pct_avg": 92.0,
-          "win_rate": 0.8,
+          "win_rate": 0.625,
           "coverage": [
             1,
             1
@@ -1101,7 +1553,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 53.0,
           "answered_pct_avg": 96.0,
-          "win_rate": 0.6,
+          "win_rate": 0.5,
           "coverage": [
             1,
             1
@@ -1118,7 +1570,7 @@ window.RANKINGS = {
           "type": "closed",
           "score": 52.8,
           "answered_pct_avg": 98.0,
-          "win_rate": 0.4,
+          "win_rate": 0.375,
           "coverage": [
             1,
             1
@@ -1135,7 +1587,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 52.4,
           "answered_pct_avg": 94.0,
-          "win_rate": 0.2,
+          "win_rate": 0.25,
           "coverage": [
             1,
             1
@@ -1145,6 +1597,23 @@ window.RANKINGS = {
           "cost_per_1k_range": [
             25.97,
             25.97
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 51.6,
+          "answered_pct_avg": 96.0,
+          "win_rate": 0.125,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 16.77,
+          "cost_per_1k_range": [
+            16.77,
+            16.77
           ]
         },
         {
@@ -1197,7 +1666,7 @@ window.RANKINGS = {
           "type": "closed",
           "score": 57.5,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.833,
+          "win_rate": 0.889,
           "coverage": [
             1,
             1
@@ -1207,6 +1676,23 @@ window.RANKINGS = {
           "cost_per_1k_range": [
             34.33,
             34.33
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 55.3,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.778,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 17.92,
+          "cost_per_1k_range": [
+            17.92,
+            17.92
           ]
         },
         {
@@ -1227,11 +1713,45 @@ window.RANKINGS = {
           ]
         },
         {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 51.5,
+          "answered_pct_avg": 94.0,
+          "win_rate": 0.556,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 1.29,
+          "cost_per_1k_range": [
+            1.29,
+            1.29
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 51.4,
+          "answered_pct_avg": 98.0,
+          "win_rate": 0.444,
+          "coverage": [
+            1,
+            1
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 6.33,
+          "cost_per_1k_range": [
+            6.33,
+            6.33
+          ]
+        },
+        {
           "model": "MiniMax M3",
           "type": "open",
           "score": 50.5,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.5,
+          "win_rate": 0.333,
           "coverage": [
             1,
             1
@@ -1248,7 +1768,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 48.7,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.333,
+          "win_rate": 0.222,
           "coverage": [
             1,
             1
@@ -1265,7 +1785,7 @@ window.RANKINGS = {
           "type": "open",
           "score": 45.9,
           "answered_pct_avg": 86.0,
-          "win_rate": 0.167,
+          "win_rate": 0.111,
           "coverage": [
             1,
             1

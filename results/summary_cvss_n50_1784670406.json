@@ -1,0 +1,26 @@
+[
+  {
+    "model": "gemma-4-31b",
+    "n": 50,
+    "exact_pct": 30.0,
+    "mean_jaccard": 1.502,
+    "parse_pct": 100.0,
+    "mean_latency": 109.1,
+    "mean_completion_tokens": 2123,
+    "cost_per_1k_questions_usd": 2.2563,
+    "cost_per_correct_usd": 0.007521,
+    "total_cost_usd": 0.112815
+  },
+  {
+    "model": "inkling",
+    "n": 50,
+    "exact_pct": 32.0,
+    "mean_jaccard": 1.518,
+    "parse_pct": 98.0,
+    "mean_latency": 186.43,
+    "mean_completion_tokens": 6264,
+    "cost_per_1k_questions_usd": 25.3186,
+    "cost_per_correct_usd": 0.079121,
+    "total_cost_usd": 1.26593
+  }
+]

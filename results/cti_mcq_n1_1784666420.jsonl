@@ -1,0 +1,2 @@
+{"model": "inkling", "qkey": "mcq-007dfba799ec", "strata": "A", "correct_options": "A", "latency": 8.62, "prompt_tokens": 159, "completion_tokens": 214, "cost_usd": 0.001026, "model_answers": "A", "parse_ok": true, "score": 1.0, "answered_correctly": "true"}
+{"model": "gemma-4-31b", "qkey": "mcq-007dfba799ec", "strata": "A", "correct_options": "A", "latency": 124.29, "prompt_tokens": 160, "completion_tokens": 703, "cost_usd": 0.000744, "model_answers": "A", "parse_ok": true, "score": 1.0, "answered_correctly": "true"}

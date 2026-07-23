@@ -1,0 +1,14 @@
+[
+  {
+    "model": "nemotron-3-ultra",
+    "n": 50,
+    "exact_pct": 24.0,
+    "mean_jaccard": 1.722,
+    "parse_pct": 100.0,
+    "mean_latency": 20.67,
+    "mean_completion_tokens": 2604,
+    "cost_per_1k_questions_usd": 9.6704,
+    "cost_per_correct_usd": 0.040294,
+    "total_cost_usd": 0.483522
+  }
+]
