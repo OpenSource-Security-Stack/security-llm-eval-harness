@@ -1,0 +1,2 @@
+{"model": "gpt-oss-120b", "qkey": "primevul-187732", "strata": "safe", "correct_options": 0, "latency": 2.6, "prompt_tokens": 1385, "completion_tokens": 257, "cost_usd": 0.000362, "model_answers": 1, "parse_ok": true, "score": 0.0, "answered_correctly": "false"}
+{"model": "gpt-oss-120b", "qkey": "primevul-194963", "strata": "vuln", "correct_options": 1, "latency": 4.03, "prompt_tokens": 3233, "completion_tokens": 480, "cost_usd": 0.000773, "model_answers": 0, "parse_ok": true, "score": 0.0, "answered_correctly": "false"}

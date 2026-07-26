@@ -2,7 +2,7 @@
 window.RANKINGS = {
   "meta": {
     "suite": "multiple suites",
-    "n": 50,
+    "n": 60,
     "generated": "unset (stamp on publish)"
   },
   "domains": {
@@ -936,6 +936,296 @@ window.RANKINGS = {
         }
       ]
     },
+    "primevul": {
+      "name": "Vulnerability Detection",
+      "benchmark": "PrimeVul (paired test) \u00b7 C/C++ function \u2192 vulnerable? \u00b7 metric: MCC",
+      "domain": "codesec",
+      "domain_name": "Code Security",
+      "metric": "mcc",
+      "direction": "higher",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.384,
+          "score_norm": 38.4,
+          "exact_pct": 41.7,
+          "answered_pct": 65,
+          "cost_per_1k_usd": 19.8,
+          "latency_s": 7.0,
+          "n": 60,
+          "ci": [
+            0.138,
+            0.605
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.215,
+          "score_norm": 21.5,
+          "exact_pct": 45.0,
+          "answered_pct": 82,
+          "cost_per_1k_usd": 54.35,
+          "latency_s": 24.3,
+          "n": 60,
+          "ci": [
+            -0.03,
+            0.435
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.079,
+          "score_norm": 7.9,
+          "exact_pct": 40.0,
+          "answered_pct": 77,
+          "cost_per_1k_usd": 5.0,
+          "latency_s": 103.8,
+          "n": 60,
+          "ci": [
+            -0.173,
+            0.323
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.073,
+          "score_norm": 7.3,
+          "exact_pct": 36.7,
+          "answered_pct": 70,
+          "cost_per_1k_usd": 27.72,
+          "latency_s": 71.0,
+          "n": 60,
+          "ci": [
+            -0.177,
+            0.322
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.068,
+          "score_norm": 6.8,
+          "exact_pct": 31.7,
+          "answered_pct": 60,
+          "cost_per_1k_usd": 42.77,
+          "latency_s": 353.2,
+          "n": 60,
+          "ci": [
+            -0.187,
+            0.32
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.067,
+          "score_norm": 6.7,
+          "exact_pct": 25.0,
+          "answered_pct": 47,
+          "cost_per_1k_usd": 4.44,
+          "latency_s": 96.8,
+          "n": 60,
+          "ci": [
+            -0.186,
+            0.32
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.067,
+          "score_norm": 6.7,
+          "exact_pct": 28.3,
+          "answered_pct": 53,
+          "cost_per_1k_usd": 6.09,
+          "latency_s": 8.2,
+          "n": 60,
+          "ci": [
+            -0.188,
+            0.323
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.0,
+          "score_norm": 0.0,
+          "exact_pct": 45.0,
+          "answered_pct": 90,
+          "cost_per_1k_usd": 11.05,
+          "latency_s": 202.0,
+          "n": 60,
+          "ci": [
+            -0.246,
+            0.254
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": -0.033,
+          "score_norm": 0.0,
+          "exact_pct": 23.3,
+          "answered_pct": 48,
+          "cost_per_1k_usd": 0.42,
+          "latency_s": 70.6,
+          "n": 60,
+          "ci": [
+            -0.294,
+            0.221
+          ]
+        }
+      ]
+    },
+    "securityeval": {
+      "name": "Secure Code Generation",
+      "benchmark": "SecurityEval \u00b7 Python stub \u2192 completion \u00b7 secure@1 via Bandit (MEDIUM+ = insecure; Bandit-only, no CodeQL)",
+      "domain": "codesec",
+      "domain_name": "Code Security",
+      "metric": "secure_at_1",
+      "direction": "higher",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.94,
+          "score_norm": 94.0,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 10.86,
+          "latency_s": 4.9,
+          "n": 50,
+          "ci": [
+            0.86,
+            1.0
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.94,
+          "score_norm": 94.0,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 2.47,
+          "latency_s": 3.3,
+          "n": 50,
+          "ci": [
+            0.86,
+            1.0
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.92,
+          "score_norm": 92.0,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 40.44,
+          "latency_s": 21.2,
+          "n": 50,
+          "ci": [
+            0.84,
+            0.98
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.92,
+          "score_norm": 92.0,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 6.14,
+          "latency_s": 27.1,
+          "n": 50,
+          "ci": [
+            0.84,
+            0.98
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.92,
+          "score_norm": 92.0,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 2.38,
+          "latency_s": 30.6,
+          "n": 50,
+          "ci": [
+            0.84,
+            0.98
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.9,
+          "score_norm": 90.0,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 0.4,
+          "latency_s": 5.0,
+          "n": 50,
+          "ci": [
+            0.82,
+            0.98
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.88,
+          "score_norm": 88.0,
+          "exact_pct": 0.0,
+          "answered_pct": 96,
+          "cost_per_1k_usd": 2.87,
+          "latency_s": 14.1,
+          "n": 50,
+          "ci": [
+            0.78,
+            0.96
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.88,
+          "score_norm": 88.0,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 10.61,
+          "latency_s": 20.8,
+          "n": 50,
+          "ci": [
+            0.78,
+            0.96
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.82,
+          "score_norm": 82.0,
+          "exact_pct": 0.0,
+          "answered_pct": 92,
+          "cost_per_1k_usd": 23.71,
+          "latency_s": 140.9,
+          "n": 50,
+          "ci": [
+            0.7,
+            0.92
+          ]
+        }
+      ]
+    },
     "sigma_attack": {
       "name": "Sigma Rule \u2192 ATT&CK",
       "benchmark": "SigmaHQ rules (tags stripped) \u2192 technique IDs \u00b7 metric: mean F1",
@@ -1092,6 +1382,151 @@ window.RANKINGS = {
           "ci": [
             0.318,
             0.56
+          ]
+        }
+      ]
+    },
+    "vuln_prio": {
+      "name": "Vulnerability Prioritization",
+      "benchmark": "CISA KEV \u00d7 FIRST EPSS \u00b7 rank a CVE batch by exploitation risk \u00b7 metric: nDCG@10 (gain = EPSS, KEV = 1.0)",
+      "domain": "vulnmgmt",
+      "domain_name": "Vulnerability Management",
+      "metric": "ndcg",
+      "direction": "higher",
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 0.994,
+          "score_norm": 99.4,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 11.35,
+          "latency_s": 2.7,
+          "n": 60,
+          "ci": [
+            0.984,
+            0.999
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 0.973,
+          "score_norm": 97.3,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 67.68,
+          "latency_s": 27.9,
+          "n": 60,
+          "ci": [
+            0.956,
+            0.987
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 0.935,
+          "score_norm": 93.5,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 18.05,
+          "latency_s": 58.2,
+          "n": 60,
+          "ci": [
+            0.916,
+            0.952
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 0.932,
+          "score_norm": 93.2,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 2.01,
+          "latency_s": 11.9,
+          "n": 60,
+          "ci": [
+            0.893,
+            0.965
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 0.901,
+          "score_norm": 90.1,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 11.58,
+          "latency_s": 53.9,
+          "n": 60,
+          "ci": [
+            0.87,
+            0.929
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 0.875,
+          "score_norm": 87.5,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 2.61,
+          "latency_s": 35.9,
+          "n": 60,
+          "ci": [
+            0.831,
+            0.914
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 0.855,
+          "score_norm": 85.5,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 1.09,
+          "latency_s": 13.0,
+          "n": 60,
+          "ci": [
+            0.818,
+            0.89
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 0.833,
+          "score_norm": 83.3,
+          "exact_pct": 0.0,
+          "answered_pct": 100,
+          "cost_per_1k_usd": 28.92,
+          "latency_s": 72.7,
+          "n": 60,
+          "ci": [
+            0.788,
+            0.874
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 0.776,
+          "score_norm": 77.6,
+          "exact_pct": 0.0,
+          "answered_pct": 92,
+          "cost_per_1k_usd": 19.77,
+          "latency_s": 61.3,
+          "n": 60,
+          "ci": [
+            0.696,
+            0.849
           ]
         }
       ]
@@ -1292,62 +1727,149 @@ window.RANKINGS = {
       "order": 4,
       "leaves": [
         "cve_cwe",
-        "cvss"
+        "cvss",
+        "vuln_prio"
       ],
       "models": [
         {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 81.5,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.815,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [
+            "CVE\u2192CWE Mapping",
+            "Vulnerability Prioritization"
+          ],
+          "cost_per_1k_avg": 15.58,
+          "cost_per_1k_range": [
+            11.35,
+            21.3
+          ]
+        },
+        {
           "model": "GPT-5.5",
           "type": "closed",
-          "score": 73.7,
+          "score": 81.5,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.917,
+          "win_rate": 0.903,
           "coverage": [
-            2,
-            2
+            3,
+            3
           ],
           "best_at": [
             "CVSS Severity Scoring"
           ],
-          "cost_per_1k_avg": 29.9,
+          "cost_per_1k_avg": 42.49,
           "cost_per_1k_range": [
             9.27,
-            50.52
+            67.68
           ]
         },
         {
           "model": "DeepSeek-V4-Pro",
           "type": "open",
-          "score": 73.3,
+          "score": 78.9,
           "answered_pct_avg": 100.0,
-          "win_rate": 0.861,
+          "win_rate": 0.741,
           "coverage": [
-            2,
-            2
+            3,
+            3
           ],
           "best_at": [],
-          "cost_per_1k_avg": 4.76,
+          "cost_per_1k_avg": 7.03,
           "cost_per_1k_range": [
             1.9,
-            7.62
+            11.58
           ]
         },
         {
-          "model": "Claude Opus 4.8",
-          "type": "closed",
-          "score": 72.5,
-          "answered_pct_avg": 100.0,
-          "win_rate": 0.722,
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 75.9,
+          "answered_pct_avg": 98.7,
+          "win_rate": 0.375,
           "coverage": [
-            2,
-            2
+            3,
+            3
           ],
-          "best_at": [
-            "CVE\u2192CWE Mapping"
-          ],
-          "cost_per_1k_avg": 17.69,
+          "best_at": [],
+          "cost_per_1k_avg": 2.26,
           "cost_per_1k_range": [
-            14.08,
-            21.3
+            1.48,
+            3.3
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 73.4,
+          "answered_pct_avg": 99.3,
+          "win_rate": 0.356,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 20.04,
+          "cost_per_1k_range": [
+            5.87,
+            28.92
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 72.8,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.366,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 1.87,
+          "cost_per_1k_range": [
+            0.74,
+            2.61
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 71.5,
+          "answered_pct_avg": 96.0,
+          "win_rate": 0.259,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 11.5,
+          "cost_per_1k_range": [
+            5.07,
+            19.77
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 71.4,
+          "answered_pct_avg": 100.0,
+          "win_rate": 0.213,
+          "coverage": [
+            3,
+            3
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 0.71,
+          "cost_per_1k_range": [
+            0.23,
+            1.09
           ]
         },
         {
@@ -1358,7 +1880,7 @@ window.RANKINGS = {
           "win_rate": 0.722,
           "coverage": [
             2,
-            2
+            3
           ],
           "best_at": [],
           "cost_per_1k_avg": 30.8,
@@ -1368,104 +1890,19 @@ window.RANKINGS = {
           ]
         },
         {
-          "model": "Inkling",
-          "type": "open",
-          "score": 68.4,
-          "answered_pct_avg": 99.0,
-          "win_rate": 0.472,
-          "coverage": [
-            2,
-            2
-          ],
-          "best_at": [],
-          "cost_per_1k_avg": 15.6,
-          "cost_per_1k_range": [
-            5.87,
-            25.32
-          ]
-        },
-        {
-          "model": "Nemotron 3 Ultra",
-          "type": "open",
-          "score": 68.4,
-          "answered_pct_avg": 98.0,
-          "win_rate": 0.389,
-          "coverage": [
-            2,
-            2
-          ],
-          "best_at": [],
-          "cost_per_1k_avg": 7.37,
-          "cost_per_1k_range": [
-            5.07,
-            9.67
-          ]
-        },
-        {
-          "model": "MiniMax M3",
-          "type": "open",
-          "score": 67.2,
-          "answered_pct_avg": 98.0,
-          "win_rate": 0.25,
-          "coverage": [
-            2,
-            2
-          ],
-          "best_at": [],
-          "cost_per_1k_avg": 2.39,
-          "cost_per_1k_range": [
-            1.48,
-            3.3
-          ]
-        },
-        {
-          "model": "Gemma 4 31B",
-          "type": "open",
-          "score": 65.5,
-          "answered_pct_avg": 100.0,
-          "win_rate": 0.361,
-          "coverage": [
-            2,
-            2
-          ],
-          "best_at": [],
-          "cost_per_1k_avg": 1.5,
-          "cost_per_1k_range": [
-            0.74,
-            2.26
-          ]
-        },
-        {
-          "model": "gpt-oss-120b",
-          "type": "open",
-          "score": 64.4,
-          "answered_pct_avg": 100.0,
-          "win_rate": 0.194,
-          "coverage": [
-            2,
-            2
-          ],
-          "best_at": [],
-          "cost_per_1k_avg": 0.53,
-          "cost_per_1k_range": [
-            0.23,
-            0.82
-          ]
-        },
-        {
           "model": "GLM-5.2",
           "type": "open",
-          "score": 53.6,
-          "answered_pct_avg": 74.0,
-          "win_rate": 0.111,
+          "score": 66.9,
+          "answered_pct_avg": 82.7,
+          "win_rate": 0.324,
           "coverage": [
-            2,
-            2
+            3,
+            3
           ],
           "best_at": [],
-          "cost_per_1k_avg": 31.8,
+          "cost_per_1k_avg": 27.22,
           "cost_per_1k_range": [
-            22.85,
+            18.05,
             40.75
           ]
         }
@@ -1631,6 +2068,174 @@ window.RANKINGS = {
           "cost_per_1k_range": [
             41.7,
             41.7
+          ]
+        }
+      ]
+    },
+    "codesec": {
+      "name": "Code Security",
+      "order": 5,
+      "leaves": [
+        "primevul",
+        "securityeval"
+      ],
+      "models": [
+        {
+          "model": "Claude Opus 4.8",
+          "type": "closed",
+          "score": 66.2,
+          "answered_pct_avg": 82.5,
+          "win_rate": 0.969,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [
+            "Vulnerability Detection",
+            "Secure Code Generation"
+          ],
+          "cost_per_1k_avg": 15.33,
+          "cost_per_1k_range": [
+            10.86,
+            19.8
+          ]
+        },
+        {
+          "model": "GPT-5.5",
+          "type": "closed",
+          "score": 56.8,
+          "answered_pct_avg": 91.0,
+          "win_rate": 0.75,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 47.39,
+          "cost_per_1k_range": [
+            40.44,
+            54.35
+          ]
+        },
+        {
+          "model": "Nemotron 3 Ultra",
+          "type": "open",
+          "score": 50.4,
+          "answered_pct_avg": 76.5,
+          "win_rate": 0.625,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [
+            "Secure Code Generation"
+          ],
+          "cost_per_1k_avg": 4.28,
+          "cost_per_1k_range": [
+            2.47,
+            6.09
+          ]
+        },
+        {
+          "model": "Gemma 4 31B",
+          "type": "open",
+          "score": 50.0,
+          "answered_pct_avg": 88.5,
+          "win_rate": 0.688,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 3.69,
+          "cost_per_1k_range": [
+            2.38,
+            5.0
+          ]
+        },
+        {
+          "model": "Inkling",
+          "type": "open",
+          "score": 47.6,
+          "answered_pct_avg": 85.0,
+          "win_rate": 0.406,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 19.16,
+          "cost_per_1k_range": [
+            10.61,
+            27.72
+          ]
+        },
+        {
+          "model": "MiniMax M3",
+          "type": "open",
+          "score": 47.4,
+          "answered_pct_avg": 71.5,
+          "win_rate": 0.25,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 3.66,
+          "cost_per_1k_range": [
+            2.87,
+            4.44
+          ]
+        },
+        {
+          "model": "DeepSeek-V4-Pro",
+          "type": "open",
+          "score": 46.0,
+          "answered_pct_avg": 95.0,
+          "win_rate": 0.375,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 8.6,
+          "cost_per_1k_range": [
+            6.14,
+            11.05
+          ]
+        },
+        {
+          "model": "gpt-oss-120b",
+          "type": "open",
+          "score": 45.0,
+          "answered_pct_avg": 74.0,
+          "win_rate": 0.188,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 0.41,
+          "cost_per_1k_range": [
+            0.4,
+            0.42
+          ]
+        },
+        {
+          "model": "GLM-5.2",
+          "type": "open",
+          "score": 44.4,
+          "answered_pct_avg": 76.0,
+          "win_rate": 0.25,
+          "coverage": [
+            2,
+            2
+          ],
+          "best_at": [],
+          "cost_per_1k_avg": 33.24,
+          "cost_per_1k_range": [
+            23.71,
+            42.77
           ]
         }
       ]

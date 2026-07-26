@@ -1,0 +1,110 @@
+[
+  {
+    "model": "opus-4.8",
+    "n": 60,
+    "exact_pct": 68.3,
+    "mean_jaccard": 0.6833,
+    "parse_pct": 100.0,
+    "mean_latency": 7.0,
+    "mean_completion_tokens": 448,
+    "cost_per_1k_questions_usd": 19.7978,
+    "cost_per_correct_usd": 0.028972,
+    "total_cost_usd": 1.187865
+  },
+  {
+    "model": "gpt-5.5",
+    "n": 60,
+    "exact_pct": 58.3,
+    "mean_jaccard": 0.5833,
+    "parse_pct": 100.0,
+    "mean_latency": 24.31,
+    "mean_completion_tokens": 1639,
+    "cost_per_1k_questions_usd": 54.3522,
+    "cost_per_correct_usd": 0.093175,
+    "total_cost_usd": 3.26113
+  },
+  {
+    "model": "minimax-m3",
+    "n": 60,
+    "exact_pct": 50.0,
+    "mean_jaccard": 0.5,
+    "parse_pct": 96.7,
+    "mean_latency": 96.76,
+    "mean_completion_tokens": 3408,
+    "cost_per_1k_questions_usd": 4.4425,
+    "cost_per_correct_usd": 0.008885,
+    "total_cost_usd": 0.266549
+  },
+  {
+    "model": "deepseek-v4",
+    "n": 60,
+    "exact_pct": 50.0,
+    "mean_jaccard": 0.5,
+    "parse_pct": 100.0,
+    "mean_latency": 202.04,
+    "mean_completion_tokens": 2621,
+    "cost_per_1k_questions_usd": 11.0507,
+    "cost_per_correct_usd": 0.022101,
+    "total_cost_usd": 0.663045
+  },
+  {
+    "model": "glm-5.2",
+    "n": 60,
+    "exact_pct": 43.3,
+    "mean_jaccard": 0.4333,
+    "parse_pct": 75.0,
+    "mean_latency": 353.16,
+    "mean_completion_tokens": 9549,
+    "cost_per_1k_questions_usd": 42.7666,
+    "cost_per_correct_usd": 0.098692,
+    "total_cost_usd": 2.565993
+  },
+  {
+    "model": "gpt-oss-120b",
+    "n": 58,
+    "exact_pct": 50.0,
+    "mean_jaccard": 0.5,
+    "parse_pct": 100.0,
+    "mean_latency": 72.94,
+    "mean_completion_tokens": 431,
+    "cost_per_1k_questions_usd": 0.417,
+    "cost_per_correct_usd": 0.000834,
+    "total_cost_usd": 0.024187
+  },
+  {
+    "model": "gemma-4-31b",
+    "n": 60,
+    "exact_pct": 53.3,
+    "mean_jaccard": 0.5333,
+    "parse_pct": 100.0,
+    "mean_latency": 103.8,
+    "mean_completion_tokens": 4633,
+    "cost_per_1k_questions_usd": 4.9978,
+    "cost_per_correct_usd": 0.009371,
+    "total_cost_usd": 0.299868
+  },
+  {
+    "model": "inkling",
+    "n": 60,
+    "exact_pct": 53.3,
+    "mean_jaccard": 0.5333,
+    "parse_pct": 100.0,
+    "mean_latency": 71.05,
+    "mean_completion_tokens": 6586,
+    "cost_per_1k_questions_usd": 27.7187,
+    "cost_per_correct_usd": 0.051973,
+    "total_cost_usd": 1.663123
+  },
+  {
+    "model": "nemotron-3-ultra",
+    "n": 60,
+    "exact_pct": 51.7,
+    "mean_jaccard": 0.5167,
+    "parse_pct": 96.7,
+    "mean_latency": 8.22,
+    "mean_completion_tokens": 1506,
+    "cost_per_1k_questions_usd": 6.0907,
+    "cost_per_correct_usd": 0.011788,
+    "total_cost_usd": 0.36544
+  }
+]

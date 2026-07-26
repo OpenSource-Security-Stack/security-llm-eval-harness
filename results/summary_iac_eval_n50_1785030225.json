@@ -1,0 +1,110 @@
+[
+  {
+    "model": "opus-4.8",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.28,
+    "parse_pct": 100.0,
+    "mean_latency": 20.32,
+    "mean_completion_tokens": 2102,
+    "cost_per_1k_questions_usd": 53.3318,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 2.66659
+  },
+  {
+    "model": "gpt-5.5",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.34,
+    "parse_pct": 100.0,
+    "mean_latency": 56.05,
+    "mean_completion_tokens": 3981,
+    "cost_per_1k_questions_usd": 119.8778,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 5.99389
+  },
+  {
+    "model": "minimax-m3",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.28,
+    "parse_pct": 100.0,
+    "mean_latency": 16.2,
+    "mean_completion_tokens": 2347,
+    "cost_per_1k_questions_usd": 2.8802,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.144008
+  },
+  {
+    "model": "deepseek-v4",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.28,
+    "parse_pct": 100.0,
+    "mean_latency": 41.71,
+    "mean_completion_tokens": 2678,
+    "cost_per_1k_questions_usd": 9.4846,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.47423
+  },
+  {
+    "model": "glm-5.2",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.34,
+    "parse_pct": 94.0,
+    "mean_latency": 196.14,
+    "mean_completion_tokens": 5473,
+    "cost_per_1k_questions_usd": 23.7383,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 1.186913
+  },
+  {
+    "model": "gpt-oss-120b",
+    "n": 48,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.4375,
+    "parse_pct": 100.0,
+    "mean_latency": 49.41,
+    "mean_completion_tokens": 1646,
+    "cost_per_1k_questions_usd": 1.0106,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.04851
+  },
+  {
+    "model": "gemma-4-31b",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.46,
+    "parse_pct": 100.0,
+    "mean_latency": 21.67,
+    "mean_completion_tokens": 1530,
+    "cost_per_1k_questions_usd": 1.5251,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.076255
+  },
+  {
+    "model": "inkling",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.4,
+    "parse_pct": 100.0,
+    "mean_latency": 40.8,
+    "mean_completion_tokens": 2974,
+    "cost_per_1k_questions_usd": 12.1472,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.60736
+  },
+  {
+    "model": "nemotron-3-ultra",
+    "n": 50,
+    "exact_pct": 0.0,
+    "mean_jaccard": 0.34,
+    "parse_pct": 100.0,
+    "mean_latency": 9.68,
+    "mean_completion_tokens": 2001,
+    "cost_per_1k_questions_usd": 7.2687,
+    "cost_per_correct_usd": null,
+    "total_cost_usd": 0.363434
+  }
+]

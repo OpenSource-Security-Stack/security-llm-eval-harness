@@ -29,7 +29,7 @@ MIX_POOL = ["minimax-m3", "qwen3-235b", "deepseek-v4", "glm-5.2"]
 
 # Domain tab order on the leaderboard (per Manish 2026-07-15). Unlisted domains
 # append after, alphabetically.
-DOMAIN_ORDER = ["cti", "malware", "deteng", "vulnmgmt"]
+DOMAIN_ORDER = ["cti", "malware", "deteng", "vulnmgmt", "codesec"]
 MIX_RULE = "majority"
 INCLUDE_MIXTURE = False   # 2026-07-12: mixture rows off the leaderboard for now (machinery stays)
 

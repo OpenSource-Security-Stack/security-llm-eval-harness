@@ -1,0 +1,2 @@
+{"model": "gpt-oss-120b", "qkey": "vd2-122869", "strata": "B", "correct_options": "B", "latency": 1.28, "prompt_tokens": 1521, "completion_tokens": 122, "cost_usd": 0.000301, "model_answers": "B", "parse_ok": true, "score": 1.0, "answered_correctly": "true"}
+{"model": "gpt-oss-120b", "qkey": "vd2-122879", "strata": "A", "correct_options": "A", "latency": 2.56, "prompt_tokens": 1016, "completion_tokens": 152, "cost_usd": 0.000244, "model_answers": "A", "parse_ok": true, "score": 1.0, "answered_correctly": "true"}
